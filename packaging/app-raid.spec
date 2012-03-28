@@ -1,7 +1,7 @@
 
 Name: app-raid
 Epoch: 1
-Version: 1.0.4
+Version: 1.0.10
 Release: 1%{dist}
 Summary: RAID Manager
 License: GPLv3
