@@ -1,7 +1,7 @@
 
 Name: app-raid
 Epoch: 1
-Version: 1.0.10
+Version: 1.1.0
 Release: 1%{dist}
 Summary: RAID Manager
 License: GPLv3
@@ -15,7 +15,7 @@ Requires: app-base
 RAID....
 
 %package core
-Summary: RAID Manager - APIs and install
+Summary: RAID Manager - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
