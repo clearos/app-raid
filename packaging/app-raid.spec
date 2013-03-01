@@ -19,7 +19,6 @@ Summary: RAID Manager - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
-Requires: app-date-core
 Requires: app-mail-notification-core
 Requires: app-tasks-core
 Requires: mdadm

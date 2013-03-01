@@ -55,10 +55,9 @@ clearos_load_language('raid');
 // Classes
 //--------
 
-use \clearos\apps\date\NTP_Time as NTP_Time;
-use \clearos\apps\Raid3ware as Raid3ware;
-use \clearos\apps\RaidLsi as RaidLsi;
-use \clearos\apps\RaidSoftware as RaidSoftware;
+use \clearos\apps\raid\Raid3ware as Raid3ware;
+use \clearos\apps\raid\RaidLsi as RaidLsi;
+use \clearos\apps\raid\RaidSoftware as RaidSoftware;
 use \clearos\apps\base\Configuration_File as Configuration_File;
 use \clearos\apps\base\Daemon as Daemon;
 use \clearos\apps\base\File as File;
@@ -67,7 +66,6 @@ use \clearos\apps\mail_notification\Mail_Notification as Mail_Notification;
 use \clearos\apps\network\Hostname as Hostname;
 use \clearos\apps\tasks\Cron as Cron;
 
-clearos_load_library('date/NTP_Time');
 clearos_load_library('raid/Raid3ware');
 clearos_load_library('raid/RaidLsi');
 clearos_load_library('raid/RaidSoftware');
@@ -82,13 +80,12 @@ clearos_load_library('tasks/Cron');
 // Exceptions
 //-----------
 
+use \Exception as Exception;
 use \clearos\apps\base\Engine_Exception as Engine_Exception;
 use \clearos\apps\base\Validation_Exception as Validation_Exception;
-use \clearos\apps\base\File_Not_Found_Exception as File_Not_Found_Exception;
 
 clearos_load_library('base/Engine_Exception');
 clearos_load_library('base/Validation_Exception');
-clearos_load_library('base/File_Not_Found_Exception');
 
 ///////////////////////////////////////////////////////////////////////////////
 // C L A S S
@@ -747,8 +744,6 @@ class Raid extends Daemon
             $subject = lang('raid_email_notification') . ' - ' . $hostname->get();
             $body = "\n\n" . lang('raid_email_notification') . ":\n";
             $body .= str_pad('', strlen(lang('raid_email_notification') . ':'), '=') . "\n\n";
-            $ntptime = new NTP_Time();
-            date_default_timezone_set($ntptime->get_time_zone());
 
             $thedate = strftime("%b %e %Y");
             $thetime = strftime("%T %Z");

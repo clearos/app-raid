@@ -32,7 +32,6 @@ $app['core_requires'] = array(
 );
 
 $app['core_requires'] = array(
-    'app-date-core', 
     'app-mail-notification-core', 
     'app-tasks-core', 
     'mdadm',
