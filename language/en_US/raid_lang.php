@@ -1,5 +1,6 @@
 <?php
 
+$lang['raid_app_description'] = 'RAID Tools provides status information and administrative actions for software RAID and supported hardware RAID controllers.';
 $lang['raid_raid'] = 'RAID Manager';
 $lang['raid_array'] = 'Array';
 $lang['raid_clean'] = 'Clean';
@@ -39,7 +40,6 @@ $lang['raid_copy_partition_table'] = 'Copy Partition Table';
 $lang['raid_copy_to'] = 'Destination Device';
 $lang['raid_existing_devices'] = 'Existing Devices';
 $lang['raid_manual_override'] = 'Ignore warning...partitions are OK';
-$lang['raid_page_intro'] = 'RAID Tools provides status information and administrative actions for software RAID and supported hardware RAID controllers.';
 $lang['raid_partition_warning'] = 'Warning...a compatible partition table was not found.  If you would like to copy the partition table from a functioning disk to a new device (i.e. a replacement hard disk), confirm your intention using the form below.';
 $lang['raid_raid_details'] = 'RAID Details';
 $lang['raid_raid_not_detected'] = 'RAID support was not detected on this system.';

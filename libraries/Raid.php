@@ -186,7 +186,7 @@ class Raid extends Daemon
                 if ($retval == 0) {
                     $lines = $shell->get_output();
                     foreach ($lines as $line) {
-                        if (preg_match("/^md([[:digit:]]+).*/", $line)) {
+                        if (preg_match("/^md(\d+).*/", $line)) {
                             $type['software'] = TRUE;
                             $found = TRUE;
                             break;
@@ -390,7 +390,6 @@ class Raid extends Daemon
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        $dev = '/dev/sda1'; //TODO REMOVE ME
         $mount = '';
         $shell = new Shell();
         $args = $dev;

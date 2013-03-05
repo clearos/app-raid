@@ -65,12 +65,13 @@ class Software extends ClearOS_Controller
 
         $this->load->library('raid/Raid_Software');
         $this->lang->load('raid');
+        $this->raid = $this->raid->create();
 
         try {
-            $bob[] = array ('status' => 'OK', 'level' => 1, 'size' => 10240000);
-            $bob[] = array ('status' => 'FAIL', 'level' => 1, 'size' => 10240000);
-            $data['raid_array'] = $bob;// TODO $this->raid_software->get_arrays();
-            $data['raid_software'] = $this->raid_software;
+	    $type = $this->raid->get_type_details();
+            $data['raid_array'] = $this->raid->get_arrays();
+            $data['raid_software'] = $this->raid;
+            $data['type'] = $type;
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;

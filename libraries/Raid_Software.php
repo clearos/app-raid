@@ -190,7 +190,7 @@ class Raid_Software extends Raid
                 }
             } else if (preg_match("/^[[:space:]]*(.*)resync =[[:space:]]+([[:digit:]]+\\.[[:digit:]]+)%[[:space:]]*(.*)$/", $line, $match)) {
                 $clean_array = FALSE;
-                $this->_SetParameter('copy_mbr', '0');
+                $this->_set_parameter('copy_mbr', '0');
                 foreach ($myarrays[$dev]['devices'] as $index => $myarray) {
                     $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_SYNCING;
                     $myarrays[$dev]['devices'][$index]['recovery'] = $match[2];
@@ -217,7 +217,7 @@ class Raid_Software extends Raid
                 $args = 'if=' . $copy_from . ' of=' . $dev . ' bs=512 count=1';
                 $retval = $shell->execute(self::CMD_DD, $args, TRUE);
             }
-            $this->_SetParameter('copy_mbr', '1');
+            $this->_set_parameter('copy_mbr', '1');
             $this->loaded = FALSE;
         }
         return $myarrays;

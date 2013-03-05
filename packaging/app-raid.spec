@@ -1,7 +1,7 @@
 
 Name: app-raid
 Epoch: 1
-Version: 1.1.0
+Version: 0.9.0
 Release: 1%{dist}
 Summary: RAID Manager
 License: GPLv3
@@ -12,23 +12,19 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-RAID....
+RAID Tools provides status information and administrative actions for software RAID and supported hardware RAID controllers.
 
 %package core
-Summary: RAID Manager - Core
+Summary: RAID Manager - APIs and install
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-mail-notification-core
 Requires: app-tasks-core
 Requires: mdadm
-Requires: tw_cli >= 9.5.3
-Requires: util-linux
-Requires: vixie-cron
-Requires: udev
 
 %description core
-RAID....
+RAID Tools provides status information and administrative actions for software RAID and supported hardware RAID controllers.
 
 This package provides the core API and libraries.
 

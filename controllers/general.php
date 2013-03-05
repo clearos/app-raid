@@ -83,6 +83,7 @@ class General extends ClearOS_Controller
 
         $this->load->library('raid/Raid');
         $this->lang->load('raid');
+        $this->raid = $this->raid->create();
 
         $data['mode'] = $mode;
 

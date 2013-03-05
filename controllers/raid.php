@@ -67,6 +67,7 @@ class Raid extends ClearOS_Controller
 
         $this->load->library('raid/Raid');
         $this->lang->load('raid');
+        $this->raid = $this->raid->create();
 
         // Load views
         //-----------
@@ -82,7 +83,7 @@ class Raid extends ClearOS_Controller
         else if ($type['id'] == Raid_Class::TYPE_LSI)
             $views[] = 'raid/hardware/' . Raid_Class::TYPE_LSI;
 
-        $this->page->view_forms($views, lang('raid_overview'));
+        $this->page->view_forms($views, $data, lang('raid_overview'));
     }
 
 }

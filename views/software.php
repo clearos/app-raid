@@ -33,6 +33,7 @@
 // Load dependencies
 ///////////////////////////////////////////////////////////////////////////////
 
+use \clearos\apps\raid\Raid_Software as Raid_Software;
 use \clearos\apps\base\Storage_Device as Storage_Device;
 
 clearos_load_library('base/Storage_Device');
@@ -62,10 +63,10 @@ foreach ($raid_array as $dev => $myarray) {
     $mount = $raid_software->get_mount($dev);
     $action = '&#160;';
     $detail_buttons = '';
-    if ($myarray['status'] != $raid_software::STATUS_CLEAN) {
+    if ($myarray['status'] != Raid_Software::STATUS_CLEAN) {
         $iconclass = "icondisabled";
         $status = lang('raid_degraded');
-        if ($software_raid->get_interactive())
+        if ($this->raid->get_interactive())
             $detail_buttons = button_set(
                 array(
                     anchor_custom(lang('raid_repair'), '/app/raid/software/repair/' . $dev)
@@ -73,18 +74,18 @@ foreach ($raid_array as $dev => $myarray) {
             );
     }
     foreach ($myarray['devices'] as $id => $details) {
-        if ($details['status'] == $raid_software::STATUS_SYNCING) {
+        if ($details['status'] == Raid_Software::STATUS_SYNCING) {
             // Provide a more detailed status message
             $status = lang('raid_syncing') . ' (' . $details['dev'] . ') - ' . $details['recovery'] . '%';
-        } else if ($details['status'] == $raid_software::STATUS_SYNC_PENDING) {
+        } else if ($details['status'] == Raid_Software::STATUS_SYNC_PENDING) {
             // Provide a more detailed status message
             $status = lang('raid_sync_pending') . ' (' . $details['dev'] . ')';
-        } else if ($details['status'] == $raid_software::STATUS_DEGRADED) {
+        } else if ($details['status'] == Raid_Software::STATUS_DEGRADED) {
             // Provide a more detailed status message
             $status = lang('raid_degraded') . ' (' . $details['dev'] . ' ' . lang('raid_failed') . ')';
             // Check what action applies
             if ($myarray['number'] >= count($myarray['devices'])) {
-                if ($raid_software->get_interactive())
+                if ($this->raid->get_interactive())
                     $detail_buttons = button_set(
                         array(
                             anchor_delete('/app/raid/software/remove/' . $dev)
@@ -115,7 +116,7 @@ if ($help != NULL) {
         $storage = new Storage_Device();
         $block_devices = $storage->get_devices();
         $info = $block_devices[$help];
-        echo infobox_highlight($help . ' = ' . $info['vendor'] . ' ' . $info['model']);
+        echo infobox_highlight(lang('base_information'), $help . ' = ' . $info['vendor'] . ' ' . $info['model']);
     } catch (Exception $e) {
         // Ignore
     }
