@@ -3,9 +3,9 @@
 /**
  * Javascript helper for Raid.
  *
- * @category   Apps
- * @package    Raid
- * @subpackage Javascript
+ * @category   apps
+ * @package    raid
+ * @subpackage javascript
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

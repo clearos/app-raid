@@ -3,9 +3,9 @@
 /**
  * Raid controller.
  *
- * @category   Apps
- * @package    Raid
- * @subpackage Controllers
+ * @category   apps
+ * @package    raid
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -42,9 +42,9 @@ use \clearos\apps\raid\Raid as Raid_Class;
 /**
  * Raid controller.
  *
- * @category   Apps
- * @package    Raid
- * @subpackage Controllers
+ * @category   apps
+ * @package    raid
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
