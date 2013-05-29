@@ -12,16 +12,15 @@ $app['packager'] = 'ClearFoundation';
 $app['license'] = 'GPLv3';
 $app['license_core'] = 'LGPLv3';
 $app['summary'] = 'ClearOS Raid Manager';
-$app['description'] = 'RAID....'; // FIXME
+$app['description'] = lang('raid_app_description');
 
 /////////////////////////////////////////////////////////////////////////////
 // App name and categories
 /////////////////////////////////////////////////////////////////////////////
 
-$app['name'] = lang('raid_raid');
+$app['name'] = lang('raid_app_name');
 $app['category'] = lang('base_category_system');
 $app['subcategory'] = lang('base_subcategory_storage');
-$app['menu_enabled'] = FALSE;
 
 /////////////////////////////////////////////////////////////////////////////
 // Packaging
@@ -34,11 +33,7 @@ $app['core_requires'] = array(
 $app['core_requires'] = array(
     'app-mail-notification-core', 
     'app-tasks-core', 
-    'mdadm',
-    'tw_cli >= 9.5.3',
-    'util-linux',
-    'vixie-cron',
-    'udev'
+    'mdadm'
 );
 
 $app['core_file_manifest'] = array( 

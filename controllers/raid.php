@@ -67,23 +67,18 @@ class Raid extends ClearOS_Controller
 
         $this->load->library('raid/Raid');
         $this->lang->load('raid');
-        $this->raid = $this->raid->create();
 
         // Load views
         //-----------
 
         $views = array('raid/general');
 
-        $type = $this->raid->get_type_details();
 
-        if ($type['id'] == Raid_Class::TYPE_SOFTWARE)
+        if ($this->raid->get_level() !== FALSE) {
             $views[] = 'raid/software';
-        else if ($type['id'] == Raid_Class::TYPE_3WARE)
-            $views[] = 'raid/hardware/' . Raid_Class::TYPE_3WARE;
-        else if ($type['id'] == Raid_Class::TYPE_LSI)
-            $views[] = 'raid/hardware/' . Raid_Class::TYPE_LSI;
+        }
 
-        $this->page->view_forms($views, $data, lang('raid_overview'));
+        $this->page->view_forms($views, lang('raid_app_name'));
     }
 
 }

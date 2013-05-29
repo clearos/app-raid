@@ -83,7 +83,6 @@ class General extends ClearOS_Controller
 
         $this->load->library('raid/Raid');
         $this->lang->load('raid');
-        $this->raid = $this->raid->create();
 
         $data['mode'] = $mode;
 
@@ -91,7 +90,6 @@ class General extends ClearOS_Controller
         //---------------------
          
         $this->form_validation->set_policy('monitor', 'raid/Raid', 'validate_monitor', TRUE);
-        $this->form_validation->set_policy('notify', 'raid/Raid', 'validate_notify', TRUE);
         $this->form_validation->set_policy('email', 'raid/Raid', 'validate_email', TRUE);
         $form_ok = $this->form_validation->run();
 
@@ -101,7 +99,6 @@ class General extends ClearOS_Controller
         if (($this->input->post('submit') && $form_ok)) {
             try {
                 $this->raid->set_monitor($this->input->post('monitor'));
-                $this->raid->set_notify($this->input->post('notify'));
                 $this->raid->set_email($this->input->post('email'));
                 $this->page->set_status_updated();
                 redirect('/raid');
@@ -115,14 +112,12 @@ class General extends ClearOS_Controller
         //---------------
 
         try {
-            $type = $this->raid->get_type_details();
-            $data['type'] = $type;
-            $data['monitor'] = $this->raid->get_monitor();
-            $data['notify'] = $this->raid->get_notify();
-            $data['email'] = $this->raid->get_email();
-            $data['is_supported'] = TRUE;
-            if ($type['id'] != Raid_Class::TYPE_UNKNOWN)
-                $data['is_supported'] = TRUE;
+            $level = $this->raid->get_level();
+            if ($level !== FALSE) {
+                $data['level'] = $level;
+                $data['monitor'] = $this->raid->get_monitor();
+                $data['email'] = $this->raid->get_email();
+            }
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -131,7 +126,7 @@ class General extends ClearOS_Controller
         // Load views
         //-----------
 
-        $this->page->view_form('general', $data, lang('raid_general_settings'));
+        $this->page->view_form('general', $data, lang('raid_app_name'));
     }
 
 }

@@ -33,10 +33,15 @@
 // Load dependencies
 ///////////////////////////////////////////////////////////////////////////////
 
-use \clearos\apps\raid\Raid_Software as Raid_Software;
+use \clearos\apps\raid\Raid as Raid;
 use \clearos\apps\base\Storage_Device as Storage_Device;
 
+clearos_load_library('raid/Raid');
 clearos_load_library('base/Storage_Device');
+
+$this->load->helper('number');
+$this->lang->load('base');
+$this->lang->load('marketplace');
 
 $this->lang->load('base');
 $this->lang->load('raid');
@@ -60,10 +65,10 @@ $headers = array(
 $help = NULL;
 foreach ($raid_array as $dev => $myarray) {
     $status = lang('raid_clean');
-    $mount = $raid_software->get_mount($dev);
+    $mount = $raid->get_mount($dev);
     $action = '&#160;';
     $detail_buttons = '';
-    if ($myarray['status'] != Raid_Software::STATUS_CLEAN) {
+    if ($myarray['status'] != Raid::STATUS_CLEAN) {
         $iconclass = "icondisabled";
         $status = lang('raid_degraded');
         if ($this->raid->get_interactive())
@@ -74,13 +79,13 @@ foreach ($raid_array as $dev => $myarray) {
             );
     }
     foreach ($myarray['devices'] as $id => $details) {
-        if ($details['status'] == Raid_Software::STATUS_SYNCING) {
+        if ($details['status'] == Raid::STATUS_SYNCING) {
             // Provide a more detailed status message
             $status = lang('raid_syncing') . ' (' . $details['dev'] . ') - ' . $details['recovery'] . '%';
-        } else if ($details['status'] == Raid_Software::STATUS_SYNC_PENDING) {
+        } else if ($details['status'] == Raid::STATUS_SYNC_PENDING) {
             // Provide a more detailed status message
             $status = lang('raid_sync_pending') . ' (' . $details['dev'] . ')';
-        } else if ($details['status'] == Raid_Software::STATUS_DEGRADED) {
+        } else if ($details['status'] == Raid::STATUS_DEGRADED) {
             // Provide a more detailed status message
             $status = lang('raid_degraded') . ' (' . $details['dev'] . ' ' . lang('raid_failed') . ')';
             // Check what action applies
@@ -101,7 +106,7 @@ foreach ($raid_array as $dev => $myarray) {
     $row['anchors'] = $detail_buttons;
     $row['details'] = array (
         $dev,
-        $raid_software->get_formatted_bytes($myarray['size'], 1),
+	byte_format($myarray['size']),
         $mount,
         $myarray['level'],
         $status

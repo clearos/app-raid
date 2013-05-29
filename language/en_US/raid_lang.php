@@ -1,7 +1,7 @@
 <?php
 
-$lang['raid_app_description'] = 'RAID Tools provides status information and administrative actions for software RAID and supported hardware RAID controllers.';
-$lang['raid_raid'] = 'RAID Manager';
+$lang['raid_app_description'] = 'Software RAID provides status information, reporting and administrative actions for software RAID.';
+$lang['raid_app_name'] = 'Software RAID Manager';
 $lang['raid_array'] = 'Array';
 $lang['raid_clean'] = 'Clean';
 $lang['raid_controller'] = 'Controller';
@@ -10,7 +10,6 @@ $lang['raid_device'] = 'Device';
 $lang['raid_disk'] = 'Disk';
 $lang['raid_email_notification'] = 'RAID Status Notification';
 $lang['raid_failed'] = 'failed';
-$lang['raid_hardware'] = 'Hardware RAID';
 $lang['raid_level'] = 'Level';
 $lang['raid_logical_disk'] = 'Logical Disk';
 $lang['raid_mount'] = 'Mount';
@@ -21,17 +20,13 @@ $lang['raid_slot'] = 'Slot';
 $lang['raid_software'] = 'Software RAID';
 $lang['raid_syncing'] = 'Sync in progress';
 $lang['raid_sync_pending'] = 'Sync pending';
-$lang['raid_type'] = 'Type';
+$lang['raid_level'] = 'Level';
 $lang['raid_unit'] = 'Unit';
 $lang['raid_monitor'] = 'Monitor RAID';
 $lang['raid_notify'] = 'E-mail Notification';
 $lang['raid_notify_email'] = 'E-mail Address';
 $lang['raid_unknown'] = 'Unknown';
 $lang['raid_summary'] = 'RAID Summary';
-$lang['raid_vendor'] = 'Vendor';
-$lang['raid_vendor_3ware'] = '3Ware';
-$lang['raid_vendor_linux'] = 'Linux Kernel Module';
-$lang['raid_vendor_lsi'] = 'LSI Logic';
 $lang['raid_email_is_invalid'] = 'E-mail is invalid.';
 $lang['raid_add_device'] = 'Add Device';
 $lang['raid_copy_failed'] = 'Unable to copy the partition table - manual disk partitioning required.';

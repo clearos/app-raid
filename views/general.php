@@ -55,15 +55,12 @@ if ($mode === 'edit') {
     );
 } else {
     $read_only = TRUE;
-    // Only display edit button if RAID is detected/supported
-    if ($is_supported)
+    if ($level != FALSE)
         $buttons = array(anchor_edit('/app/raid/general/edit'));
 }
 
-echo field_input('type', $type['class'], lang('raid_type'), TRUE);
-echo field_input('vendor', $type['vendor'], lang('raid_vendor'), TRUE);
+echo field_input('level', $level, lang('raid_level'), TRUE);
 echo field_toggle_enable_disable('monitor', $monitor, lang('raid_monitor'), $read_only);
-echo field_toggle_enable_disable('notify', $notify, lang('raid_notify'), $read_only);
 echo field_input('email', $email, lang('raid_notify_email'), $read_only);
 echo field_button_set($buttons);
 

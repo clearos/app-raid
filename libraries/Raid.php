@@ -55,22 +55,18 @@ clearos_load_language('raid');
 // Classes
 //--------
 
-use \clearos\apps\raid\Raid3ware as Raid3ware;
-use \clearos\apps\raid\RaidLsi as RaidLsi;
 use \clearos\apps\raid\RaidSoftware as RaidSoftware;
 use \clearos\apps\base\Configuration_File as Configuration_File;
-use \clearos\apps\base\Daemon as Daemon;
+use \clearos\apps\base\Engine as Engine;
 use \clearos\apps\base\File as File;
 use \clearos\apps\base\Shell as Shell;
 use \clearos\apps\mail_notification\Mail_Notification as Mail_Notification;
 use \clearos\apps\network\Hostname as Hostname;
 use \clearos\apps\tasks\Cron as Cron;
 
-clearos_load_library('raid/Raid3ware');
-clearos_load_library('raid/RaidLsi');
 clearos_load_library('raid/RaidSoftware');
 clearos_load_library('base/Configuration_File');
-clearos_load_library('base/Daemon');
+clearos_load_library('base/Engine');
 clearos_load_library('base/File');
 clearos_load_library('base/Shell');
 clearos_load_library('mail_notification/Mail_Notification');
@@ -103,28 +99,27 @@ clearos_load_library('base/Validation_Exception');
  * @link       http://www.clearfoundation.com/docs/developer/apps/raid/
  */
 
-class Raid extends Daemon
+class Raid extends Engine
 {
     // FIXME: is extending Daemon correct?
     ///////////////////////////////////////////////////////////////////////////////
     // C O N S T A N T S
     ///////////////////////////////////////////////////////////////////////////////
 
-    const LOG_TAG = 'raid';
     const FILE_CONFIG = '/etc/clearos/raid.conf';
     const FILE_MDSTAT = '/proc/mdstat';
     const FILE_RAID_STATUS = 'raid.status';
     const FILE_CROND = "app-raid";
     const DEFAULT_CRONTAB_TIME = "0,30 * * * *";
+    const CMD_MDADM = '/sbin/mdadm';
+    const CMD_DD = '/bin/dd';
     const CMD_CAT = '/bin/cat';
     const CMD_DF = '/bin/df';
     const CMD_DIFF = '/usr/bin/diff';
     const CMD_FDISK = '/sbin/fdisk';
     const CMD_SFDISK = '/sbin/sfdisk';
     const CMD_SWAPON = '/sbin/swapon';
-    const CMD_TW_CLI = '/usr/sbin/tw_cli';
-    const CMD_MPT_STATUS = '/usr/sbin/mpt-status';
-    const CMD_RAID_SCRIPT = '/var/webconfig/scripts/raid_notification.php';
+    const CMD_RAID_SCRIPT = '/usr/bin/raid-notification';
     const TYPE_UNKNOWN = 0;
     const TYPE_SOFTWARE = 1;
     const TYPE_3WARE = 2;
@@ -136,7 +131,11 @@ class Raid extends Daemon
     const STATUS_REMOVED = 4;
     const STATUS_SPARE = 5;
 
-    protected $interactive = FALSE;
+    ///////////////////////////////////////////////////////////////////////////////
+    // V A R I A B L E S
+    ///////////////////////////////////////////////////////////////////////////////
+
+    protected $mdstat = Array();
     protected $config = NULL;
     protected $type = NULL;
     protected $status = NULL;
@@ -153,192 +152,12 @@ class Raid extends Daemon
     function __construct()
     {
         clearos_profile(__METHOD__, __LINE__);
-
-        parent::__construct('raid');
-    }
-
-    /**
-     * Create a RAID supported class.
-     *
-     * @return Class
-     */
-
-    static function create()
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        $shell = new Shell();
-        $options['env'] = "LANG=en_US";
-        $found = FALSE;
-        $type = array (
-            'software' => 0,
-            '3ware' => 0,
-            'lsi' => 0
-        );
-
-        try {
-
-            if (! $found) {
-                // Test for software RAID
-                $args = self::FILE_MDSTAT;
-                $retval = $shell->execute(self::CMD_CAT, $args, FALSE, $options);
-
-                if ($retval == 0) {
-                    $lines = $shell->get_output();
-                    foreach ($lines as $line) {
-                        if (preg_match("/^md(\d+).*/", $line)) {
-                            $type['software'] = TRUE;
-                            $found = TRUE;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if (! $found) {
-                // Test for 3WARE
-                $args = 'info';
-                $retval = $shell->execute(self::CMD_TW_CLI, $args, TRUE, $options);
-
-                if ($retval == 0) {
-                    $lines = $shell->get_output();
-                    foreach ($lines as $line) {
-                        if (preg_match("/^Ctl[[:space:]]+Model.*$/", $line)) {
-                            $type['3ware'] = TRUE;
-                            $found = TRUE;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if (! $found) {
-                // Test forLlSI
-                $args = '--autoload';
-                $retval = $shell->execute(self::CMD_MPT_STATUS, $args, TRUE, $options);
-
-                // Exit code of mpt-status changes depending on status of RAID
-                if ($retval != 1) {
-                    $lines = $shell->get_output();
-                    foreach ($lines as $line) {
-                        if (preg_match("/^ioc(.*)vol_id.*$/", $line)) {
-                            $type['lsi'] = TRUE;
-                            $found = TRUE;
-                            break;
-                        }
-                    }
-                }
-            }
-        } catch (Exception $e) {
-            // Ignore
-        }
-
-        if ($type['software']) {
-            include_once clearos_app_base('raid') . '/libraries/Raid_Software.php';
-            return new Raid_Software();
-        } else if ($type['3ware']) {
-            include_once clearos_app_base('raid') . '/libraries/Raid_3ware.php';
-            return new Raid_3Ware();
-        } else if ($type['lsi']) {
-            include_once clearos_app_base('raid') . '/libraries/Raid_Lsi.php';
-            return new Raid_Lsi();
-        }
-
-        // Return base class
-        return new Raid();
     }
 
     /**
      * Returns type of RAID.
      *
-     * @return int
-     * @throws Engine_Exception
-     */
-
-    function get_type()
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        return $this->type;
-    }
-
-    /**
-     * Returns whether type of RAID supports interaction - i.e. resync etc.
-     *
-     * @return boolean
-     * @throws Engine_Exception
-     */
-
-    function get_interactive()
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        return $this->interactive;
-    }
-
-    /**
-     * Returns type of RAID.
-     *
-     * @return array
-     * @throws Engine_Exception
-     */
-
-    function get_type_details()
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        switch ($this->type) {
-
-            case self::TYPE_UNKNOWN:
-                return array(
-                           'id' => self::TYPE_UNKNOWN,
-                           'class' => lang('raid_unknown'),
-                           'vendor' => lang('raid_unknown') 
-                       );
-
-            case self::TYPE_SOFTWARE:
-                return array(
-                           'id' => self::TYPE_SOFTWARE,
-                           'class' => lang('raid_software'),
-                           'vendor' => lang('raid_vendor_linux')
-                       );
-
-            case self::TYPE_3WARE:
-                return array(
-                           'id' => self::TYPE_3WARE,
-                           'class' => lang('raid_hardware'),
-                           'vendor' => lang('raid_vendor_3ware')
-                       );
-
-            case self::TYPE_LSI:
-                return array(
-                           'id' => self::TYPE_LSI,
-                           'class' => lang('raid_hardware'),
-                           'vendor' => lang('raid_vendor_lsi')
-                       );
-        }
-    }
-
-    /**
-     * Returns status of RAID.
-     *
-     * @return string status
-     * @throws Engine_Exception
-     */
-
-    function get_status()
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        return lang('raid_unknown');
-
-    }
-
-    /**
-     * Returns RAID level.
-     *
-     * @return String the raid level
-     *
+     * @return mixed type of software RAID (false if none)
      * @throws Engine_Exception
      */
 
@@ -346,35 +165,19 @@ class Raid extends Daemon
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        return lang('raid_unknown');
+	// Test for software RAID
+        $shell = new Shell();
+	$args = self::FILE_MDSTAT;
+	$retval = $shell->execute(self::CMD_CAT, $args);
 
-    }
-
-    /**
-     * Formats a value into a human readable byte size.
-     *
-     * @param float $input the value
-     * @param int   $dec   number of decimal places
-     *
-     * @return string the byte size suitable for display to end user
-     */
-
-    function get_formatted_bytes($input, $dec)
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        $prefix_arr = array(" B", "KB", "MB", "GB", "TB");
-        $value = round($input, $dec);
-
-        $i = 0;
-
-        while ($value>1024) {
-            $value /= 1024;
-            $i++;
-        }
-
-        $display = round($value, $dec) . " " . $prefix_arr[$i];
-        return $display;
+	if ($retval == 0) {
+	    $lines = $shell->get_output();
+	    foreach ($lines as $line) {
+		if (preg_match("/^Personalities : (.*)$/", $line, $match))
+			return preg_replace('/\[|\]/', '', strtoupper($match[1]));
+	    }
+	}
+	return FALSE;
     }
 
     /**
@@ -674,39 +477,18 @@ class Raid extends Daemon
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        $lines = array();
-
         try {
-            switch ($this->type) {
-
-                case self::TYPE_UNKNOWN:
-                    return;
-
-                case self::TYPE_SOFTWARE:
-                    $myraid = new RaidSoftware();
-                    $lines = $this->_create_software_raid_report($myraid);
-                    break;
-
-                case self::TYPE_3WARE:
-                    $myraid = new Raid3ware();
-                    $lines = $this->_create_hardware_raid_report($myraid);
-                    break;
-
-                case self::TYPE_LSI:
-                    $myraid = new RaidLsi();
-                    $lines = $this->_create_hardware_raid_report($myraid);
-                    break;
-            }
+	    $lines = $this->_create_software_raid_report($myraid);
 
             $file = new File(COMMON_TEMP_DIR . '/' . self::FILE_RAID_STATUS);
 
             if ($file->exists()) {
-                $file->MoveTo(COMMON_TEMP_DIR . '/' . self::FILE_RAID_STATUS . '.orig');
+                $file->move_to(COMMON_TEMP_DIR . '/' . self::FILE_RAID_STATUS . '.orig');
                 $file = new File(COMMON_TEMP_DIR . '/' . self::FILE_RAID_STATUS);
             }
 
-            $file->Create("webconfig", "webconfig", 0644);
-            $file->DumpContentsFromArray($lines);
+            $file->create("webconfig", "webconfig", 0644);
+            $file->dump_contents_from_array($lines);
 
             // Diff files to see if notification should be sent
 
@@ -854,6 +636,30 @@ class Raid extends Daemon
         $this->config = $configfile->Load();
 
         $this->is_loaded = TRUE;
+    }
+
+    /**
+     * Gets the status according to mdstat.
+     *
+     * @access private
+     *
+     * @return void
+     * @throws Engine_Exception
+     */
+    private function _get_md_stat()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $shell = new Shell();
+        $args = self::FILE_MDSTAT;
+        $options['env'] = "LANG=en_US";
+        $retval = $shell->execute(self::CMD_CAT, $args, FALSE, $options);
+        if ($retval != 0) {
+            $errstr = $shell->get_last_output_line();
+            throw new Engine_Exception($errstr, COMMON_WARNING);
+        } else {
+            $this->mdstat = $shell->get_output();
+        }
     }
 
     /**
@@ -1060,5 +866,166 @@ class Raid extends Daemon
     public function validate_notify($notify)
     {
         clearos_profile(__METHOD__, __LINE__);
+    }
+
+    /**
+     * Returns RAID arrays.
+     *
+     * @return Array
+     * @throws Engine_Exception
+     */
+
+    function get_arrays()
+    {
+
+        clearos_profile(__METHOD__, __LINE__);
+
+        $myarrays = Array();
+
+        $this->_get_md_stat();
+
+        $dev = '';
+        $physical_devices = Array();
+        $raid_level = 0;
+        $clean_array = TRUE;
+        foreach ($this->mdstat as $line) {
+            if (preg_match("/^md([[:digit:]]+)[[:space:]]*:[[:space:]]*(.*)$/", $line, $match)) {
+                $dev = '/dev/md' . $match[1];
+                list($state, $level, $device_list) = explode(' ', $match[2], 3);
+                // Always 'active' and not very useful
+                $myarrays[$dev]['state'] = $state;
+                $myarrays[$dev]['status'] = self::STATUS_CLEAN;
+                $myarrays[$dev]['level'] = strtoupper($level);
+                // Try to format for consistency (RAID-1, not RAID1)
+                if (preg_match("/^RAID(\d+)$/", strtoupper($level), $match)) {
+                    $myarrays[$dev]['level'] = 'RAID-' . $match[1];
+                    $raid_level = $match[1];
+                }
+                
+                $devices = explode(' ', $device_list);
+                $members = Array();
+                foreach ($devices as $device) {
+                    if (preg_match("/^(.*)\\[([[:digit:]]+)\\](.*)$/", trim($device), $match))
+                        $members[$match[2]] = preg_match("/^\\/dev\\//", $match[1]) ? $match[1] : '/dev/' . $match[1];
+                }
+                foreach ($members as $index => $member) {
+                    $myarrays[$dev]['devices'][$index]['dev'] = $member;
+                    
+                    if (!in_array(preg_replace("/\d+/", "", $member), $physical_devices))
+                        $physical_devices[] = preg_replace("/\d+/", "", $member);
+                }
+            } else if (preg_match("/^[[:space:]]*([[:digit:]]+)[[:space:]]*blocks[[:space:]]*.*\[(.*)\]$/", $line, $match)) {
+                $myarrays[$dev]['size'] = $match[1]*1024;
+                $clean_array = FALSE;
+                if (preg_match("/.*_.*/", $match[2]))
+                    $myarrays[$dev]['status'] = self::STATUS_DEGRADED;
+                $status = str_split($match[2]);
+                $myarrays[$dev]['number'] = count($status);
+                $counter = 0;
+                foreach ($myarrays[$dev]['devices'] as $index => $myarray) {
+                    // If in degraded mode, any index greater than or equal to total disk has failed
+                    if ($index >= $myarrays[$dev]['number']) {
+                        $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_SPARE;
+                        continue;
+                    } else if ($status[$counter] == "_") {
+                        $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_DEGRADED;
+                    } else {
+                        $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_CLEAN;
+                    }
+                    $counter++;
+                }
+            } else if (preg_match("/^[[:space:]]*(.*)recovery =[[:space:]]+([[:digit:]]+\\.[[:digit:]]+)%[[:space:]]*(.*)$/", $line, $match)) {
+                $clean_array = FALSE;
+                foreach ($myarrays[$dev]['devices'] as $index => $myarray) {
+                    if ($myarrays[$dev]['devices'][$index]['status'] == self::STATUS_DEGRADED) {
+                        $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_SYNCING;
+                        $myarrays[$dev]['devices'][$index]['recovery'] = $match[2];
+                    }
+                }
+            } else if (preg_match("/^[[:space:]]*(.*)resync =[[:space:]]+([[:digit:]]+\\.[[:digit:]]+)%[[:space:]]*(.*)$/", $line, $match)) {
+                $clean_array = FALSE;
+                $this->_set_parameter('copy_mbr', '0');
+                foreach ($myarrays[$dev]['devices'] as $index => $myarray) {
+                    $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_SYNCING;
+                    $myarrays[$dev]['devices'][$index]['recovery'] = $match[2];
+                }
+            } else if (preg_match("/^.*resync=DELAYED.*$/", $line, $match)) {
+                $clean_array = FALSE;
+                foreach ($myarrays[$dev]['devices'] as $index => $myarray)
+                    $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_SYNC_PENDING;
+            }
+        }
+        
+        // TODO ksort($myarrays);
+        //if ((!isset($this->config['copy_mbr']) || $this->config['copy_mbr'] == 0) && $raid_level == 1 && $clean_array) {
+        if (FALSE) {
+            sort($physical_devices);
+            $is_first = TRUE;
+            foreach ($physical_devices as $dev) {
+                if ($is_first) {
+                    $copy_from = $dev;
+                    $is_first = FALSE;
+                    continue;
+                }
+                $shell = new Shell();
+                $args = 'if=' . $copy_from . ' of=' . $dev . ' bs=512 count=1';
+                $retval = $shell->execute(self::CMD_DD, $args, TRUE);
+            }
+            $this->_set_parameter('copy_mbr', '1');
+            $this->loaded = FALSE;
+        }
+        return $myarrays;
+    }
+
+    /**
+     * Removes a device from the specified array.
+     *
+     * @param string $array  the array
+     * @param string $device the device
+     *
+     * @return void
+     * @throws Engine_Exception
+     */
+
+    function remove_device($array, $device)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $shell = new Shell();
+        $args = '-r ' . $array . ' ' . $device;
+        $options['env'] = "LANG=en_US";
+        $retval = $shell->execute(self::CMD_MDADM, $args, TRUE, $options);
+        if ($retval != 0) {
+            $errstr = $shell->get_last_output_line();
+            throw new Engine_Exception($errstr, COMMON_WARNING);
+        } else {
+            $this->mdstat = $shell->get_output();
+        }
+    }
+
+    /**
+     * Repair an array with the specified device.
+     *
+     * @param string $array  the array
+     * @param string $device the device
+     *
+     * @return void
+     * @throws Engine_Exception
+     */
+
+    function repair_array($array, $device)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $shell = new Shell();
+        $args = '-a ' . $array . ' ' . $device;
+        $options['env'] = "LANG=en_US";
+        $retval = $shell->execute(self::CMD_MDADM, $args, TRUE, $options);
+        if ($retval != 0) {
+            $errstr = $shell->get_last_output_line();
+            throw new Engine_Exception($errstr, COMMON_WARNING);
+        } else {
+            $this->mdstat = $shell->get_output();
+        }
     }
 }

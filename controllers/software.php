@@ -63,15 +63,16 @@ class Software extends ClearOS_Controller
         // Load dependencies
         //------------------
 
-        $this->load->library('raid/Raid_Software');
+        $this->load->library('raid/Raid');
         $this->lang->load('raid');
-        $this->raid = $this->raid->create();
 
         try {
-	    $type = $this->raid->get_type_details();
-            $data['raid_array'] = $this->raid->get_arrays();
-            $data['raid_software'] = $this->raid;
-            $data['type'] = $type;
+	    $level = $this->raid->get_level();
+            if ($level !== FALSE) {
+                $data['raid_array'] = $this->raid->get_arrays();
+                $data['level'] = $level;
+                $data['raid'] = $this->raid;
+            }
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -80,6 +81,6 @@ class Software extends ClearOS_Controller
         // Load view
         //----------
 
-        $this->page->view_form('software', $data, lang('raid_software'));
+        $this->page->view_form('software', $data, lang('raid_app_name'));
     }
 }
