@@ -11,7 +11,6 @@ $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
 $app['license'] = 'GPLv3';
 $app['license_core'] = 'LGPLv3';
-$app['summary'] = 'ClearOS Raid Manager';
 $app['description'] = lang('raid_app_description');
 
 /////////////////////////////////////////////////////////////////////////////
@@ -28,10 +27,7 @@ $app['subcategory'] = lang('base_subcategory_storage');
 
 $app['core_requires'] = array(
     'app-mail-notification', 
-);
-
-$app['core_requires'] = array(
-    'app-mail-notification-core', 
+    'app-storage-device-core', 
     'app-tasks-core', 
     'mdadm'
 );
@@ -44,5 +40,12 @@ $app['core_file_manifest'] = array(
         'group' => 'root',
         'config' => TRUE,
         'config_params' => 'noreplace',
+    ),
+    'raid-notification' => array(
+        'target' => '/usr/sbin/raid-notification',
+        'mode' => '0755',
+        'owner' => 'root',
+        'group' => 'root',
     )
 );
+

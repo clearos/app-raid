@@ -36,55 +36,12 @@
 $bootstrap = getenv('CLEAROS_BOOTSTRAP') ? getenv('CLEAROS_BOOTSTRAP') : '/usr/clearos/framework/shared';
 require_once $bootstrap . '/bootstrap.php';
 
-clearos_load_language('raid');
-clearos_load_language('base');
-
 header('Content-Type: application/x-javascript');
 
 echo "
-
-function togglenotify() {
-  if (document.getElementById('monitor').value == 1) {
-    document.getElementById('notify').disabled = false;
-  } else {
-    document.getElementById('notify').value = 0;
-    document.getElementById('notify').disabled = true;
-  }
-  toggleemail();
-}
-
-function toggleemail() {
-  if (document.getElementById('notify').value == 1)
-    document.getElementById('email').disabled = false;
-  else
-    document.getElementById('email').disabled = true;
-}
-
-function enable(id) {
-  if (document.getElementById(id))
-    document.getElementById(id).disabled = false;
-}
-
-function disable(id) {
-  if (document.getElementById(id))
-    document.getElementById(id).disabled = true;
-}
-
-function toggleview() {
-  if (document.getElementById('action').value == 1) {
-    document.getElementById('copyto').style.display = 'none';
-    document.getElementById('copyfrom').style.display = 'none';
-  } else {
-    if (document.all) {
-      document.getElementById('copyto').style.display = 'inline';
-      document.getElementById('copyfrom').style.display = 'inline';
-    } else {
-      document.getElementById('copyto').style.display = 'table-row';
-      document.getElementById('copyfrom').style.display = 'table-row';
-    }
-  }
-}
-
+  $(document).ready(function() {
+    $('#email').css('width', 220);
+  });
 ";
 
 // vim: syntax=php ts=4

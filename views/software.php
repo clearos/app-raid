@@ -34,10 +34,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 use \clearos\apps\raid\Raid as Raid;
-use \clearos\apps\base\Storage_Device as Storage_Device;
+use \clearos\apps\storage\Storage_Device as Storage_Device;
 
 clearos_load_library('raid/Raid');
-clearos_load_library('base/Storage_Device');
+clearos_load_library('storage/Storage_Device');
 
 $this->load->helper('number');
 $this->lang->load('base');
@@ -62,7 +62,7 @@ $headers = array(
 // Row Data
 ///////////////////////////////////////////////////////////////////////////////
 
-$help = NULL;
+$degraded_dev = array();
 foreach ($raid_array as $dev => $myarray) {
     $status = lang('raid_clean');
     $mount = $raid->get_mount($dev);
@@ -71,12 +71,11 @@ foreach ($raid_array as $dev => $myarray) {
     if ($myarray['status'] != Raid::STATUS_CLEAN) {
         $iconclass = "icondisabled";
         $status = lang('raid_degraded');
-        if ($this->raid->get_interactive())
-            $detail_buttons = button_set(
-                array(
-                    anchor_custom(lang('raid_repair'), '/app/raid/software/repair/' . $dev)
-                )
-            );
+        $detail_buttons = button_set(
+            array(
+                anchor_custom(lang('raid_repair'), '/app/raid/software/repair/' . $dev)
+            )
+        );
     }
     foreach ($myarray['devices'] as $id => $details) {
         if ($details['status'] == Raid::STATUS_SYNCING) {
@@ -90,23 +89,28 @@ foreach ($raid_array as $dev => $myarray) {
             $status = lang('raid_degraded') . ' (' . $details['dev'] . ' ' . lang('raid_failed') . ')';
             // Check what action applies
             if ($myarray['number'] >= count($myarray['devices'])) {
-                if ($this->raid->get_interactive())
-                    $detail_buttons = button_set(
-                        array(
-                            anchor_delete('/app/raid/software/remove/' . $dev)
-                        )
-                    );
+                if (preg_match("/.*\/(md\d+)$/", $dev, $match)) {
+                    $raid_dev = $match[1];
+                    if (preg_match("/dev\/(.*)$/", $details['dev'], $match)) {
+                        $phys_dev = $match[1];
+                        $detail_buttons = button_set(
+                            array(
+                                anchor_custom('/app/raid/software/remove/' . $raid_dev . '/' . $phys_dev, lang('raid_remove') . ' ' . $details['dev'])
+                            )
+                        );
+                    }
+                }
             }
-            $help = $details['dev'];
+            $degraded_dev[preg_replace("/\d+$/", "", $details['dev'])] = TRUE;
             
         }
     }
     $row['title'] = $dev;
-    $row['action'] = '/app/raid/FIXME/';
+    $row['action'] = NULL;
     $row['anchors'] = $detail_buttons;
     $row['details'] = array (
         $dev,
-	byte_format($myarray['size']),
+        byte_format($myarray['size']),
         $mount,
         $myarray['level'],
         $status
@@ -115,13 +119,15 @@ foreach ($raid_array as $dev => $myarray) {
 }
 
 // Help box to identify physical device that is degraded
-if ($help != NULL) {
+if (!empty($degraded_dev)) {
     try {
-        // TODO - Put in controller and pass in as argument?
         $storage = new Storage_Device();
-        $block_devices = $storage->get_devices();
-        $info = $block_devices[$help];
-        echo infobox_highlight(lang('base_information'), $help . ' = ' . $info['vendor'] . ' ' . $info['model']);
+        $help_info = '';
+    foreach ($degraded_dev as $dev => $ignore) {
+            $block_device = $storage->get_device_details($dev);
+            $help_info .= '<div>' . $dev . ' = ' . $block_device['identifier'] . '</div>';
+    }
+        echo infobox_highlight(lang('base_information'), $help_info);
     } catch (Exception $e) {
         // Ignore
     }

@@ -55,7 +55,6 @@ clearos_load_language('raid');
 // Classes
 //--------
 
-use \clearos\apps\raid\RaidSoftware as RaidSoftware;
 use \clearos\apps\base\Configuration_File as Configuration_File;
 use \clearos\apps\base\Engine as Engine;
 use \clearos\apps\base\File as File;
@@ -64,7 +63,6 @@ use \clearos\apps\mail_notification\Mail_Notification as Mail_Notification;
 use \clearos\apps\network\Hostname as Hostname;
 use \clearos\apps\tasks\Cron as Cron;
 
-clearos_load_library('raid/RaidSoftware');
 clearos_load_library('base/Configuration_File');
 clearos_load_library('base/Engine');
 clearos_load_library('base/File');
@@ -101,7 +99,6 @@ clearos_load_library('base/Validation_Exception');
 
 class Raid extends Engine
 {
-    // FIXME: is extending Daemon correct?
     ///////////////////////////////////////////////////////////////////////////////
     // C O N S T A N T S
     ///////////////////////////////////////////////////////////////////////////////
@@ -173,8 +170,13 @@ class Raid extends Engine
 	if ($retval == 0) {
 	    $lines = $shell->get_output();
 	    foreach ($lines as $line) {
-		if (preg_match("/^Personalities : (.*)$/", $line, $match))
-			return preg_replace('/\[|\]/', '', strtoupper($match[1]));
+		if (preg_match("/^Personalities : (.*)$/", $line, $match)) {
+			$unformatted = preg_replace('/\[|\]/', '', strtoupper($match[1]));
+			if (preg_match("/^(RAID)(\d+)$/", $unformatted, $match))
+			    return $match[1] . '-' . $match[2];
+			else
+			    return $unformatted;
+		}
 	    }
 	}
 	return FALSE;
@@ -250,23 +252,6 @@ class Raid extends Engine
         } catch (Exception $e) {
             return FALSE;
         }
-    }
-
-    /**
-     * Get the notify status.
-     *
-     * @return String  notification email
-     * @throws Engine_Exception
-     */
-
-    function get_notify()
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        if (! $this->is_loaded)
-            $this->_load_config();
-
-        return $this->config['notify'];
     }
 
     /**
@@ -374,7 +359,7 @@ class Raid extends Engine
 
         try {
             $shell = new Shell();
-            $args = '-d ' . $from . ' > ' . COMMON_TEMP_DIR . '/pt.txt';
+            $args = '-d ' . $from . ' > ' . CLEAROS_TEMP_DIR . '/pt.txt';
             $options['env'] = "LANG=en_US";
             $retval = $shell->execute(self::CMD_SFDISK, $args, TRUE, $options);
 
@@ -383,7 +368,7 @@ class Raid extends Engine
                 throw new Engine_Exception($errstr, CLEAROS_WARNING);
             }
 
-            $args = '-f ' . $to . ' < ' . COMMON_TEMP_DIR . '/pt.txt';
+            $args = '-f ' . $to . ' < ' . CLEAROS_TEMP_DIR . '/pt.txt';
             $options['env'] = "LANG=en_US";
             $retval = $shell->execute(self::CMD_SFDISK, $args, TRUE, $options);
 
@@ -469,35 +454,44 @@ class Raid extends Engine
     /**
      * Checks the change of status of the RAID array.
      *
-     * @return void
+     * @return mixed array if RAID status has changed, NULL otherwise
      * @throws Engine_Exception
      */
 
-    function check_status_change()
+    function check_status_change($force = FALSE)
     {
         clearos_profile(__METHOD__, __LINE__);
 
         try {
-	    $lines = $this->_create_software_raid_report($myraid);
+	    $lines = $this->_create_report();
 
-            $file = new File(COMMON_TEMP_DIR . '/' . self::FILE_RAID_STATUS);
+            $file = new File(CLEAROS_TEMP_DIR . '/' . self::FILE_RAID_STATUS);
 
+            $first_check = FALSE;
             if ($file->exists()) {
-                $file->move_to(COMMON_TEMP_DIR . '/' . self::FILE_RAID_STATUS . '.orig');
-                $file = new File(COMMON_TEMP_DIR . '/' . self::FILE_RAID_STATUS);
+                $file->move_to(CLEAROS_TEMP_DIR . '/' . self::FILE_RAID_STATUS . '.orig');
+                $file = new File(CLEAROS_TEMP_DIR . '/' . self::FILE_RAID_STATUS);
+            } else {
+                $first_check = TRUE;
             }
 
             $file->create("webconfig", "webconfig", 0644);
             $file->dump_contents_from_array($lines);
 
             // Diff files to see if notification should be sent
-
-            $shell = new Shell();
-            $args = COMMON_TEMP_DIR . '/raid.status ' . COMMON_TEMP_DIR . '/raid.status.orig';
-            $retval = $shell->execute(self::CMD_DIFF, $args);
+            $retval = -1;
+            if (!$first_check) {
+                $shell = new Shell();
+                $args = CLEAROS_TEMP_DIR . '/raid.status ' . CLEAROS_TEMP_DIR . '/raid.status.orig';
+                $retval = $shell->execute(self::CMD_DIFF, $args);
+            }
 
             if ($retval != 0)
                 $this->send_status_change_notification($lines);
+            else if (!$force)
+                return NULL;
+
+            return $lines;
         } catch (Exception $e) {
             throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
         }
@@ -517,26 +511,24 @@ class Raid extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         try {
-            if (!$this->get_notify())
+            if (!$this->get_monitor() || $this->get_email() == '')
                 return;
 
             $mailer = new Mail_Notification();
             $hostname = new Hostname();
-            $subject = lang('raid_email_notification') . ' - ' . $hostname->get();
-            $body = "\n\n" . lang('raid_email_notification') . ":\n";
-            $body .= str_pad('', strlen(lang('raid_email_notification') . ':'), '=') . "\n\n";
+            $subject = lang('raid_status') . ' - ' . $hostname->get();
+            $body = "\n\n" . lang('raid_status') . ":\n";
+            $body .= str_pad('', strlen(lang('raid_status') . ':'), '=') . "\n\n";
 
             $thedate = strftime("%b %e %Y");
             $thetime = strftime("%T %Z");
             $body .= str_pad(lang('base_date') . ':', 16) . "\t" . $thedate . ' ' . $thetime . "\n";
             $body .= str_pad(lang('base_status') . ':', 16) . "\t" . $this->status . "\n\n";
             foreach ($lines as $line)
-            $body .= $line . "\n";
+                $body .= $line . "\n";
             $mailer->add_recipient($this->get_email());
-            $mailer->set_subject($subject);
-            $mailer->set_body($body);
-            // May not be a valid sender...TODO
-            // $mailer->set_sender('alert@' . $hostname->get());
+            $mailer->set_message_subject($subject);
+            $mailer->set_message_body($body);
 
             $mailer->set_sender($this->get_email());
             $mailer->send();
@@ -692,13 +684,11 @@ class Raid extends Engine
     /**
      * Report for software RAID.
      *
-     * @param String $myraid System RAID
-     *
      * @return array
      * @throws Engine_Exception
      */
 
-    function _create_software_raid_report($myraid)
+    function _create_report()
     {
         clearos_profile(__METHOD__, __LINE__);
 
@@ -713,7 +703,7 @@ class Raid extends Engine
                 str_pad(lang('raid_level'), $padding[3]) . "\t" .
                 lang('base_status');
             $lines[] = str_pad('', strlen($lines[0]) + 4*4, '-');
-            $myarrays = $myraid->get_arrays();
+            $myarrays = $this->get_arrays();
             foreach ($myarrays as $dev => $myarray) {
                 $status = lang('raid_clean');
                 $mount = $this->get_mount($dev);
@@ -734,81 +724,10 @@ class Raid extends Engine
                     }
                 }
 
+		
                 $lines[] = str_pad($dev, $padding[0]) . "\t" .
-                    str_pad($this->get_formatted_bytes($myarray['size'], 1), $padding[1]) . "\t" .
+                    str_pad(intval(intval($myarray['size'])/(1024*2024)) . lang('base_megabytes'), $padding[1]) . "\t" .
                     str_pad($mount, $padding[2]) . "\t" . str_pad($myarray['level'], $padding[3]) . "\t" . $status;
-            }
-
-            return $lines;
-        } catch (Exception $e) {
-            throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
-        }
-    }
-
-    /**
-     * Report for hardware RAID.
-     *
-     * @param String $myraid System RAID
-     *
-     * @return void
-     * @throws Engine_Exception
-     */
-
-    function _create_hardware_raid_report($myraid)
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        $this->status = lang('raid_clean');
-        $lines = array();
-        $padding = array(20, 15, 12, 10, 12);
-
-        try {
-            $controllers = $myraid->get_arrays();
-            $lines[] = str_pad(lang('raid_controller'), $padding[0]) . "\t" .
-                str_pad(lang('raid_unit'), $padding[1]) . "\t" .
-                str_pad(lang('raid_size'), $padding[2]) . "\t" .
-                str_pad(lang('raid_device'), $padding[3]) . "\t" .
-                str_pad(lang('raid_level'), $padding[4]) . "\t" .
-                lang('base_status')
-            ;
-            $lines[] = str_pad('', strlen($lines[0]) + 4*5, '-');
-
-            foreach ($controllers as $controllerid => $controller) {
-                foreach ($controller['units'] as $unitid => $unit) {
-                    $status = lang('raid_clean');
-                    $mount = $myraid->get_mapping('c' . $controllerid);
-
-                    if ($unit['status'] != self::STATUS_CLEAN) {
-                        $status = lang('raid_degraded');
-                        $this->status = lang('raid_degraded');
-                    } else if ($unit['status'] == self::STATUS_SYNCING) {
-                        $status = lang('raid_syncing');
-                        $this->status = lang('raid_syncing');
-                    }
-
-                    foreach ($unit['devices'] as $id => $details) {
-                        if ($details['status'] == self::STATUS_SYNCING) {
-                            // Provide a more detailed status message
-                            $status = lang('raid_syncing') . ' (' . lang('raid_disk') . ' ' . $id . ') - ' .
-                                $details['recovery'] . '%';
-                        } else if ($details['status'] == self::STATUS_SYNC_PENDING) {
-                            // Provide a more detailed status message
-                            $status = lang('raid_sync_pending') . ' (' . lang('raid_disk') . ' ' . $id . ')';
-                        } else if ($details['status'] == self::STATUS_DEGRADED) {
-                            // Provide a more detailed status message
-                            $status = lang('raid_degraded') . ' (' . lang('raid_disk') . ' ' . $id . ' ' .
-                                lang('raid_failed') . ')';
-                        }
-                    }
-
-                    $lines[] = str_pad(
-                        $controller['model'] . ", " . lang('raid_slot') . " $controllerid", $padding[0]
-                    ) .
-                    "\t" . str_pad(lang('raid_logical_disk') . " " . $unitid, $padding[1]) . "\t" .
-                    str_pad($this->get_formatted_bytes($unit['size'], 1), $padding[2]) . "\t" .
-                    str_pad($mount, $padding[3], ' ', STR_PAD_RIGHT) . "\t" . str_pad($unit['level'], $padding[4]) .
-                    "\t" . $status;
-                }
             }
 
             return $lines;
