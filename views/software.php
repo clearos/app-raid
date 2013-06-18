@@ -67,27 +67,30 @@ foreach ($raid_array as $dev => $myarray) {
     $mount = $raid->get_mount($dev);
     $action = '&#160;';
     $detail_buttons = '';
-    if ($myarray['state'] != Raid::STATUS_CLEAN)
-        $state = lang('raid_degraded');
-    if ($myarray['state'] == Raid::STATUS_SYNCING && $myarray['sync_progress'] >= 0)
+    if ($myarray['state'] == Raid::STATUS_SYNCING && $myarray['sync_progress'] >= 0) {
         $state = lang('raid_syncing') . ' (' . $myarray['sync_progress'] . '%)';
-    else if ($myarray['state'] == Raid::STATUS_SYNCING)
+    } else if ($myarray['state'] == Raid::STATUS_SYNCING) {
         $state = lang('raid_sync_scheduled');
+    } else if ($myarray['state'] != Raid::STATUS_CLEAN) {
+        $state = lang('raid_degraded');
+        $detail_buttons = button_set(
+            array(
+                anchor_custom('/app/raid/software/add_device/' . strtr(base64_encode($dev),  '+/=', '-_.'), lang('raid_add_device'))
+            )
+        );
+    }
     foreach ($myarray['devices'] as $partition => $details) {
         if ($details['state'] == Raid::STATUS_DEGRADED) {
             // Provide a more detailed state message
             $state = lang('raid_degraded') . ' (' . $partition . ' ' . lang('raid_failed') . ')';
             // Check what action applies
-            if ($myarray['number'] >= count($myarray['devices'])) {
-                $hash = base64_encode($dev . '|' . $partition);
-                $detail_buttons = button_set(
-                    array(
-                        anchor_custom('/app/raid/software/remove/' . $hash, lang('raid_remove') . ' ' . $partition)
-                    )
-                );
-            }
+            $hash = strtr(base64_encode($dev . '|' . $partition),  '+/=', '-_.');
+            $detail_buttons = button_set(
+                array(
+                    anchor_custom('/app/raid/software/remove_device/' . $hash, lang('raid_remove') . ' ' . $partition)
+                )
+            );
             $degraded_dev[$details['dev']] = TRUE;
-            
         }
     }
     $row['title'] = $dev;
@@ -98,7 +101,7 @@ foreach ($raid_array as $dev => $myarray) {
         byte_format($myarray['size']),
         $mount,
         $myarray['level'],
-        $state
+        "<div id='state-" . preg_replace('/\/dev\//', '', $dev) . "'>$state</div>"
     );
     $rows[] = $row;
 }

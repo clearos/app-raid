@@ -665,7 +665,7 @@ class Raid extends Engine
     }
 
     /**
-     * Repair an array with the specified device.
+     * Adds a device to the specified array.
      *
      * @param string $array  the array
      * @param string $device the device
@@ -674,9 +674,14 @@ class Raid extends Engine
      * @throws Engine_Exception
      */
 
-    function repair_array($array, $device)
+    function add_device($array, $device)
     {
         clearos_profile(__METHOD__, __LINE__);
+
+        // Let's santify check data coming in
+        $raid_array = $this->get_arrays();
+        if ($raid_array[$array]['state'] != self::STATUS_DEGRADED)
+            throw new Engine_Exception(lang('raid_not_degraded'), COMMON_WARNING);
 
         $shell = new Shell();
         $args = '-a ' . $array . ' ' . $device;
@@ -715,6 +720,38 @@ class Raid extends Engine
             $errstr = $shell->get_last_output_line();
             throw new Engine_Exception($errstr, COMMON_WARNING);
         }
+    }
+
+    /**
+     * Get a list of block devices not in RAID array.
+     *
+     * @return void
+     * @throws Engine_Exception
+     */
+
+    function get_available_block_devices()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $avail = array();
+        $storage = new Storage_Device();
+        $physical_storage = $storage->get_devices();
+        foreach ($physical_storage as $device => $info) {
+            // Skip RAID devices
+            if (preg_match('/^\/dev\/md\d+$/', $device))
+                continue;
+            foreach ($info['partitioning']['partitions'] as $index => $partition) {
+                if (preg_match('/^linux-swap.*/', $partition['file_system']))
+                    continue;
+                if (!preg_match('/^.*raid.*/', $partition['flags']))
+                    continue;
+                if ($storage->is_software_raid_node($device . $index))
+                    continue;
+
+                $avail[$device . $index] = $partition;
+            }
+        }
+        return $avail;
     }
 
     ///////////////////////////////////////////////////////////////////////////////

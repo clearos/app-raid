@@ -41,7 +41,24 @@ header('Content-Type: application/x-javascript');
 echo "
   $(document).ready(function() {
     $('#email').css('width', 220);
+    get_state();
   });
+  function get_state() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/app/raid/software/get_state',
+        data: '',
+        success: function(data) {
+            if (data.code == undefined) {
+                $.each(data, function(id, state) { 
+                    $('#state-' + id).html(state);
+                })
+            }
+            window.setTimeout(get_state, 1000);
+        }
+    });
+  }
 ";
 
 // vim: syntax=php ts=4

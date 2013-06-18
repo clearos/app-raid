@@ -44,7 +44,8 @@ $lang['raid_remove'] = 'Remove';
 $lang['raid_repair'] = 'Repair';
 $lang['raid_repair_partition_table'] = 'Repair Partition Table';
 $lang['raid_verify'] = 'I understand what I am about to do';
-$lang['raid_confirm_remove'] = 'Please confirm you would like to remove %s from the %s RAID array.';
+$lang['raid_confirm_remove'] = 'Please confirm you would like to remove block device %s from the %s RAID array.';
+$lang['raid_confirm_add'] = 'Please confirm you would like to add block device %s to the %s RAID array.';
 $lang['raid_not_degraded'] = 'Array is not in a degraded state.';
 // vi: syntax=php ts=4
 ?>
