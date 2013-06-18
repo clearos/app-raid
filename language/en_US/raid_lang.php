@@ -18,7 +18,7 @@ $lang['raid_size'] = 'Size';
 $lang['raid_slot'] = 'Slot';
 $lang['raid_software'] = 'Software RAID';
 $lang['raid_syncing'] = 'Sync in progress';
-$lang['raid_sync_pending'] = 'Sync pending';
+$lang['raid_sync_scheduled'] = 'Sync scheduled';
 $lang['raid_level'] = 'Level';
 $lang['raid_unit'] = 'Unit';
 $lang['raid_monitor'] = 'Monitor RAID';
@@ -38,11 +38,13 @@ $lang['raid_partition_warning'] = 'Warning...a compatible partition table was no
 $lang['raid_raid_details'] = 'RAID Details';
 $lang['raid_raid_not_detected'] = 'RAID support was not detected on this system.';
 $lang['raid_raid_summary'] = 'RAID Summary';
-$lang['raid_status'] = 'RAID Status';
+$lang['raid_state'] = 'RAID Status';
 $lang['raid_action'] = 'Action';
 $lang['raid_remove'] = 'Remove';
 $lang['raid_repair'] = 'Repair';
 $lang['raid_repair_partition_table'] = 'Repair Partition Table';
 $lang['raid_verify'] = 'I understand what I am about to do';
+$lang['raid_confirm_remove'] = 'Please confirm you would like to remove %s from the %s RAID array.';
+$lang['raid_not_degraded'] = 'Array is not in a degraded state.';
 // vi: syntax=php ts=4
 ?>

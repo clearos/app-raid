@@ -62,6 +62,7 @@ use \clearos\apps\base\Shell as Shell;
 use \clearos\apps\mail_notification\Mail_Notification as Mail_Notification;
 use \clearos\apps\network\Hostname as Hostname;
 use \clearos\apps\tasks\Cron as Cron;
+use \clearos\apps\storage\Storage_Device as Storage_Device;
 
 clearos_load_library('base/Configuration_File');
 clearos_load_library('base/Engine');
@@ -70,6 +71,7 @@ clearos_load_library('base/Shell');
 clearos_load_library('mail_notification/Mail_Notification');
 clearos_load_library('network/Hostname');
 clearos_load_library('tasks/Cron');
+clearos_load_library('storage/Storage_Device');
 
 // Exceptions
 //-----------
@@ -105,37 +107,31 @@ class Raid extends Engine
 
     const FILE_CONFIG = '/etc/clearos/raid.conf';
     const FILE_MDSTAT = '/proc/mdstat';
-    const FILE_RAID_STATUS = 'raid.status';
+    const FILE_STATUS = 'raid.state';
     const FILE_CROND = "app-raid";
-    const DEFAULT_CRONTAB_TIME = "0,30 * * * *";
+    const DEFAULT_CRONTAB_TIME = "0 * * * *";
     const CMD_MDADM = '/sbin/mdadm';
-    const CMD_DD = '/bin/dd';
     const CMD_CAT = '/bin/cat';
     const CMD_DF = '/bin/df';
     const CMD_DIFF = '/usr/bin/diff';
-    const CMD_FDISK = '/sbin/fdisk';
     const CMD_SFDISK = '/sbin/sfdisk';
-    const CMD_SWAPON = '/sbin/swapon';
-    const CMD_RAID_SCRIPT = '/usr/bin/raid-notification';
-    const TYPE_UNKNOWN = 0;
-    const TYPE_SOFTWARE = 1;
-    const TYPE_3WARE = 2;
-    const TYPE_LSI = 3;
-    const STATUS_CLEAN = 0;
-    const STATUS_DEGRADED = 1;
-    const STATUS_SYNCING = 2;
-    const STATUS_SYNC_PENDING = 3;
-    const STATUS_REMOVED = 4;
-    const STATUS_SPARE = 5;
+    const CMD_GREP = '/bin/grep';
+    const CMD_RAID_SCRIPT = '/usr/sbin/raid-notification';
+    const STATUS_CLEAN = 'in_sync';
+    const STATUS_DEGRADED = 'faulty';
+    const STATUS_SYNCING = 'recover';
+    const STATUS_SYNC_SCHEDULED = 'sync_scheduled';
+    const STATUS_REMOVED = 'removed';
+    const STATUS_SPARE = 'spare';
 
     ///////////////////////////////////////////////////////////////////////////////
     // V A R I A B L E S
     ///////////////////////////////////////////////////////////////////////////////
 
-    protected $mdstat = Array();
+    protected $mdstat = array();
     protected $config = NULL;
     protected $type = NULL;
-    protected $status = NULL;
+    protected $state = NULL;
     protected $is_loaded = FALSE;
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -162,24 +158,24 @@ class Raid extends Engine
     {
         clearos_profile(__METHOD__, __LINE__);
 
-	// Test for software RAID
+        // Test for software RAID
         $shell = new Shell();
-	$args = self::FILE_MDSTAT;
-	$retval = $shell->execute(self::CMD_CAT, $args);
+        $args = self::FILE_MDSTAT;
+        $retval = $shell->execute(self::CMD_CAT, $args);
 
-	if ($retval == 0) {
-	    $lines = $shell->get_output();
-	    foreach ($lines as $line) {
-		if (preg_match("/^Personalities : (.*)$/", $line, $match)) {
-			$unformatted = preg_replace('/\[|\]/', '', strtoupper($match[1]));
-			if (preg_match("/^(RAID)(\d+)$/", $unformatted, $match))
-			    return $match[1] . '-' . $match[2];
-			else
-			    return $unformatted;
-		}
-	    }
-	}
-	return FALSE;
+        if ($retval == 0) {
+            $lines = $shell->get_output();
+            foreach ($lines as $line) {
+                if (preg_match("/^Personalities : (.*)$/", $line, $match)) {
+                    $unformatted = preg_replace('/\[|\]/', '', strtoupper($match[1]));
+                    if (preg_match("/^(RAID)(\d+)$/", $unformatted, $match))
+                        return $match[1] . '-' . $match[2];
+                    else
+                        return $unformatted;
+                }
+            }
+        }
+        return FALSE;
     }
 
     /**
@@ -252,51 +248,6 @@ class Raid extends Engine
         } catch (Exception $e) {
             return FALSE;
         }
-    }
-
-    /**
-     * Get the notify status.
-     *
-     * @return String  notification email
-     * @throws Engine_Exception
-     */
-
-    function get_devices_in_use()
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        $devicesinuse = array();
-
-        // Get all block devices in use
-
-        $myarrays = $this->get_arrays();
-
-        foreach ($myarrays as $array) {
-            if (isset($array['devices']) && is_array($array['devices'])) {
-                foreach ($array['devices'] as $device)
-                $devicesinuse[] = $device['dev'];
-            }
-        }
-
-        // Add swap
-        try {
-            $shell = new Shell();
-            $args = '-s';
-            $retval = $shell->execute(self::CMD_SWAPON, $args);
-
-            if ($retval == 0) {
-                $lines = $shell->get_output();
-                foreach ($lines as $line) {
-                    if (preg_match("/^\/dev\/(\S*).*$/", $line, $match))
-                        $devicesinuse[] = $match[1];
-                }
-            }
-        } catch (Exception $e) {
-            // Ignore
-
-        }
-
-        return $devicesinuse;
     }
 
     /**
@@ -407,7 +358,7 @@ class Raid extends Engine
                     foreach ($myarray['devices'] as $device) {
                         // Make sure it is clean
 
-                        if ($device['status'] != self::STATUS_CLEAN)
+                        if ($device['state'] != self::STATUS_CLEAN)
                             continue;
 
                         $partition_match['dev'] = preg_replace("/\d/", "", $device['dev']);
@@ -463,14 +414,14 @@ class Raid extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         try {
-	    $lines = $this->_create_report();
+            $lines = $this->_create_report();
 
-            $file = new File(CLEAROS_TEMP_DIR . '/' . self::FILE_RAID_STATUS);
+            $file = new File(CLEAROS_TEMP_DIR . '/' . self::FILE_STATUS);
 
             $first_check = FALSE;
             if ($file->exists()) {
-                $file->move_to(CLEAROS_TEMP_DIR . '/' . self::FILE_RAID_STATUS . '.orig');
-                $file = new File(CLEAROS_TEMP_DIR . '/' . self::FILE_RAID_STATUS);
+                $file->move_to(CLEAROS_TEMP_DIR . '/' . self::FILE_STATUS . '.orig');
+                $file = new File(CLEAROS_TEMP_DIR . '/' . self::FILE_STATUS);
             } else {
                 $first_check = TRUE;
             }
@@ -482,8 +433,8 @@ class Raid extends Engine
             $retval = -1;
             if (!$first_check) {
                 $shell = new Shell();
-                $args = CLEAROS_TEMP_DIR . '/raid.status ' . CLEAROS_TEMP_DIR . '/raid.status.orig';
-                $retval = $shell->execute(self::CMD_DIFF, $args);
+                $args = CLEAROS_TEMP_DIR . '/' . self::FILE_STATUS . ' ' . CLEAROS_TEMP_DIR . '/' . self::FILE_STATUS . '.orig';
+                $retval = $shell->execute(self::CMD_DIFF, $args, FALSE, array('validate_exit_code' => FALSE));
             }
 
             if ($retval != 0)
@@ -516,14 +467,14 @@ class Raid extends Engine
 
             $mailer = new Mail_Notification();
             $hostname = new Hostname();
-            $subject = lang('raid_status') . ' - ' . $hostname->get();
-            $body = "\n\n" . lang('raid_status') . ":\n";
-            $body .= str_pad('', strlen(lang('raid_status') . ':'), '=') . "\n\n";
+            $subject = lang('raid_state') . ' - ' . $hostname->get();
+            $body = "\n\n" . lang('raid_state') . ":\n";
+            $body .= str_pad('', strlen(lang('raid_state') . ':'), '=') . "\n\n";
 
             $thedate = strftime("%b %e %Y");
             $thetime = strftime("%T %Z");
             $body .= str_pad(lang('base_date') . ':', 16) . "\t" . $thedate . ' ' . $thetime . "\n";
-            $body .= str_pad(lang('base_status') . ':', 16) . "\t" . $this->status . "\n\n";
+            $body .= str_pad(lang('base_status') . ':', 16) . "\t" . $this->state . "\n\n";
             foreach ($lines as $line)
                 $body .= $line . "\n";
             $mailer->add_recipient($this->get_email());
@@ -613,6 +564,164 @@ class Raid extends Engine
     ///////////////////////////////////////////////////////////////////////////////
 
     /**
+     * Gets the RAID arrays.
+     *
+     * @access private
+     *
+     * @return void
+     * @throws Engine_Exception
+     */
+    public function get_arrays()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $shell = new Shell();
+        $args = "'^md.*: active' " . self::FILE_MDSTAT . " | cut -f 1 -d ' '";
+        $options['env'] = "LANG=en_US";
+        $retval = $shell->execute(self::CMD_GREP, $args, FALSE, $options);
+        $storage = new Storage_Device();
+        $physical_storage = $storage->get_devices();
+        if ($retval != 0) {
+            $errstr = $shell->get_last_output_line();
+            throw new Engine_Exception($errstr, COMMON_WARNING);
+        } else {
+            $arrays = $shell->get_output();
+            foreach ($arrays as $md_dev) {
+                $state = self::STATUS_CLEAN;
+                $sync_progress = NULL;
+                try {
+                    if ($this->_get_md_field('/sys/block/' . $md_dev . '/md/degraded') != 0)
+                        $state = self::STATUS_DEGRADED;
+                    if ($this->_get_md_field('/sys/block/' . $md_dev . '/md/sync_action') == 'recover') {
+                        $state = self::STATUS_SYNCING;
+                        // If sync in progress, fetch % complete
+                        $progress = preg_split('|\s+/\s+|',  $this->_get_md_field('/sys/block/' . $md_dev . '/md/sync_completed'));
+                        if ($progress[0] == 0 || $progress[1] == 0)
+                            $sync_progress = -1;
+                        else
+                            $sync_progress = intval($progress[0] / $progress[1] * 100);
+                    }
+                } catch (Exception $e) {
+                }
+                $size = lang('base_unknown');
+                try {
+                    $size = $this->_get_md_field('/sys/block/' . $md_dev . '/md/component_size');
+                } catch (Exception $e) {
+                }
+                $level = lang('base_unknown');
+                try {
+                    $level = $this->_get_md_field('/sys/block/' . $md_dev . '/md/level');
+                    if (preg_match("/^RAID(\d+)$/", strtoupper($level), $match))
+                        $level = 'RAID-' . $match[1];
+                } catch (Exception $e) {
+                }
+                $number = 0;
+                try {
+                    $number = $this->_get_md_field('/sys/block/' . $md_dev . '/md/raid_disks');
+                } catch (Exception $e) {
+                }
+        
+                $this->mdstat['/dev/' . $md_dev] = array(
+                     'state' => $state,
+                     'size' => $size,
+                     'level' => $level,
+                     'number' => $number,
+                     'sync_progress' => $sync_progress,
+                     'devices' => array()
+                );
+                foreach ($physical_storage as $storage_device => $info) {
+                    // Skip removable media
+                    if (isset($info['removable']) && $info['removable'])
+                        continue;
+                    // Skip RAID devices
+                    if (preg_match('/^\/dev\/md\d+$/', $storage_device, $match))
+                        continue;
+                    if (preg_match('/^\/dev\/(.*)$/', $storage_device, $match))
+                        $block_dev = $match[1];
+                    else
+                        $block_dev = $storage_device;
+                    $partitions = array_keys($info['partitioning']['partitions']);
+                    if (empty($partitions))
+                        continue;
+                    foreach ($partitions as $index) {
+                        try {
+                            $state = $this->_get_md_field('/sys/block/' . $md_dev . '/md/dev-' . $block_dev . $index . '/state');
+                            $size = $this->_get_md_field('/sys/block/' . $md_dev . '/md/dev-' . $block_dev . $index . '/size');
+                            $slot = $this->_get_md_field('/sys/block/' . $md_dev . '/md/dev-' . $block_dev . $index . '/slot');
+                            $this->mdstat['/dev/' . $md_dev]['devices'][$storage_device . $index] = array(
+                                'dev' => $storage_device,
+                                'state' => $state,
+                                'size' => $size,
+                                'slot' => $slot
+                            );
+                        } catch (Exception $e) {
+                            // Ignore - not part of array
+                        }
+                    }
+                }
+            }
+        }
+        return $this->mdstat;
+    }
+
+    /**
+     * Repair an array with the specified device.
+     *
+     * @param string $array  the array
+     * @param string $device the device
+     *
+     * @return void
+     * @throws Engine_Exception
+     */
+
+    function repair_array($array, $device)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $shell = new Shell();
+        $args = '-a ' . $array . ' ' . $device;
+        $options['env'] = "LANG=en_US";
+        $retval = $shell->execute(self::CMD_MDADM, $args, TRUE, $options);
+        if ($retval != 0) {
+            $errstr = $shell->get_last_output_line();
+            throw new Engine_Exception($errstr, COMMON_WARNING);
+        }
+    }
+
+    /**
+     * Removes a device from the specified array.
+     *
+     * @param string $array  the array
+     * @param string $device the device
+     *
+     * @return void
+     * @throws Engine_Exception
+     */
+
+    function remove_device($array, $device)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        // Let's santify check data coming in
+        $raid_array = $this->get_arrays();
+        if ($raid_array[$array]['devices'][$device]['state'] != self::STATUS_DEGRADED)
+            throw new Engine_Exception(lang('raid_not_degraded'), COMMON_WARNING);
+
+        $shell = new Shell();
+        $args = '-r ' . $array . ' ' . $device;
+        $options['env'] = "LANG=en_US";
+        $retval = $shell->execute(self::CMD_MDADM, $args, TRUE, $options);
+        if ($retval != 0) {
+            $errstr = $shell->get_last_output_line();
+            throw new Engine_Exception($errstr, COMMON_WARNING);
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
+    // P R I V A T E    R O U T I N E S
+    ///////////////////////////////////////////////////////////////////////////////
+
+    /**
     * Loads configuration files.
     *
     * @return void
@@ -628,6 +737,30 @@ class Raid extends Engine
         $this->config = $configfile->Load();
 
         $this->is_loaded = TRUE;
+    }
+
+    /**
+     * Gets the status of array field from /proc.
+     *
+     * @access private
+     *
+     * @param string $arg arguement
+     *
+     * @return string
+     */
+    private function _get_md_field($arg)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $shell = new Shell();
+        $options['env'] = "LANG=en_US";
+        $retval = $shell->execute(self::CMD_CAT, $arg, FALSE, $options);
+        if ($retval != 0) {
+            $errstr = $shell->get_last_output_line();
+            throw new Engine_Exception($errstr, COMMON_WARNING);
+        } else {
+            return $shell->get_last_output_line();
+        }
     }
 
     /**
@@ -664,7 +797,7 @@ class Raid extends Engine
      * @throws Engine_Exception
      */
 
-    function _set_parameter($key, $value)
+    private function _set_parameter($key, $value)
     {
         clearos_profile(__METHOD__, __LINE__);
 
@@ -688,11 +821,11 @@ class Raid extends Engine
      * @throws Engine_Exception
      */
 
-    function _create_report()
+    private function _create_report()
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        $this->status = lang('raid_clean');
+        $this->state = lang('raid_clean');
 
         try {
             $padding = array(10, 10, 10, 10);
@@ -705,29 +838,31 @@ class Raid extends Engine
             $lines[] = str_pad('', strlen($lines[0]) + 4*4, '-');
             $myarrays = $this->get_arrays();
             foreach ($myarrays as $dev => $myarray) {
-                $status = lang('raid_clean');
+                $state = lang('raid_clean');
                 $mount = $this->get_mount($dev);
 
-                if ($myarray['status'] != self::STATUS_CLEAN) {
-                    $status = lang('raid_degraded');
-                    $this->status = lang('raid_degraded');
+                if ($myarray['state'] != Raid::STATUS_CLEAN) {
+                    $state = lang('raid_degraded');
+		    $this->state = $state;
                 }
+                if ($myarray['state'] == Raid::STATUS_SYNCING && $myarray['sync_progress'] >= 0)
+                    $state = lang('raid_syncing') . ' (' . $myarray['sync_progress'] . '%)';
+                else if ($myarray['state'] == Raid::STATUS_SYNCING)
+                    $state = lang('raid_sync_scheduled');
 
-                foreach ($myarray['devices'] as $index => $details) {
-                    if ($details['status'] == self::STATUS_SYNCING) {
-                        $status = lang('raid_syncing') . ' (' . $details['dev'] . ') - ' . $details['recovery'] . '%';
-                        $this->status = lang('raid_syncing');
-                    } else if ($details['status'] == self::STATUS_SYNC_PENDING) {
-                        $status = lang('raid_sync_pending') . ' (' . $details['dev'] . ')';
-                    } else if ($details['status'] == self::STATUS_DEGRADED) {
-                        $status = lang('raid_degraded') . ' (' . $details['dev'] . ' ' . lang('raid_failed') . ')';
+                foreach ($myarray['devices'] as $partition => $details) {
+                    if ($details['state'] == self::STATUS_SYNCING) {
+                        $state = lang('raid_syncing') . ' (' . $details['dev'] . ') - ' . $details['recovery'] . '%';
+                    } else if ($details['state'] == self::STATUS_SYNC_SCHEDULED) {
+                        $state = lang('raid_sync_pending') . ' (' . $details['dev'] . ')';
+                    } else if ($details['state'] == self::STATUS_DEGRADED) {
+                        $state = lang('raid_degraded') . ' (' . $partition . ' ' . lang('raid_failed') . ')';
                     }
                 }
-
-		
+        
                 $lines[] = str_pad($dev, $padding[0]) . "\t" .
-                    str_pad(intval(intval($myarray['size'])/(1024*2024)) . lang('base_megabytes'), $padding[1]) . "\t" .
-                    str_pad($mount, $padding[2]) . "\t" . str_pad($myarray['level'], $padding[3]) . "\t" . $status;
+                    str_pad(intval(intval($myarray['size'])/1024) . lang('base_megabytes'), $padding[1]) . "\t" .
+                    str_pad($mount, $padding[2]) . "\t" . str_pad($myarray['level'], $padding[3]) . "\t" . $state;
             }
 
             return $lines;
@@ -785,166 +920,5 @@ class Raid extends Engine
     public function validate_notify($notify)
     {
         clearos_profile(__METHOD__, __LINE__);
-    }
-
-    /**
-     * Returns RAID arrays.
-     *
-     * @return Array
-     * @throws Engine_Exception
-     */
-
-    function get_arrays()
-    {
-
-        clearos_profile(__METHOD__, __LINE__);
-
-        $myarrays = Array();
-
-        $this->_get_md_stat();
-
-        $dev = '';
-        $physical_devices = Array();
-        $raid_level = 0;
-        $clean_array = TRUE;
-        foreach ($this->mdstat as $line) {
-            if (preg_match("/^md([[:digit:]]+)[[:space:]]*:[[:space:]]*(.*)$/", $line, $match)) {
-                $dev = '/dev/md' . $match[1];
-                list($state, $level, $device_list) = explode(' ', $match[2], 3);
-                // Always 'active' and not very useful
-                $myarrays[$dev]['state'] = $state;
-                $myarrays[$dev]['status'] = self::STATUS_CLEAN;
-                $myarrays[$dev]['level'] = strtoupper($level);
-                // Try to format for consistency (RAID-1, not RAID1)
-                if (preg_match("/^RAID(\d+)$/", strtoupper($level), $match)) {
-                    $myarrays[$dev]['level'] = 'RAID-' . $match[1];
-                    $raid_level = $match[1];
-                }
-                
-                $devices = explode(' ', $device_list);
-                $members = Array();
-                foreach ($devices as $device) {
-                    if (preg_match("/^(.*)\\[([[:digit:]]+)\\](.*)$/", trim($device), $match))
-                        $members[$match[2]] = preg_match("/^\\/dev\\//", $match[1]) ? $match[1] : '/dev/' . $match[1];
-                }
-                foreach ($members as $index => $member) {
-                    $myarrays[$dev]['devices'][$index]['dev'] = $member;
-                    
-                    if (!in_array(preg_replace("/\d+/", "", $member), $physical_devices))
-                        $physical_devices[] = preg_replace("/\d+/", "", $member);
-                }
-            } else if (preg_match("/^[[:space:]]*([[:digit:]]+)[[:space:]]*blocks[[:space:]]*.*\[(.*)\]$/", $line, $match)) {
-                $myarrays[$dev]['size'] = $match[1]*1024;
-                $clean_array = FALSE;
-                if (preg_match("/.*_.*/", $match[2]))
-                    $myarrays[$dev]['status'] = self::STATUS_DEGRADED;
-                $status = str_split($match[2]);
-                $myarrays[$dev]['number'] = count($status);
-                $counter = 0;
-                foreach ($myarrays[$dev]['devices'] as $index => $myarray) {
-                    // If in degraded mode, any index greater than or equal to total disk has failed
-                    if ($index >= $myarrays[$dev]['number']) {
-                        $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_SPARE;
-                        continue;
-                    } else if ($status[$counter] == "_") {
-                        $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_DEGRADED;
-                    } else {
-                        $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_CLEAN;
-                    }
-                    $counter++;
-                }
-            } else if (preg_match("/^[[:space:]]*(.*)recovery =[[:space:]]+([[:digit:]]+\\.[[:digit:]]+)%[[:space:]]*(.*)$/", $line, $match)) {
-                $clean_array = FALSE;
-                foreach ($myarrays[$dev]['devices'] as $index => $myarray) {
-                    if ($myarrays[$dev]['devices'][$index]['status'] == self::STATUS_DEGRADED) {
-                        $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_SYNCING;
-                        $myarrays[$dev]['devices'][$index]['recovery'] = $match[2];
-                    }
-                }
-            } else if (preg_match("/^[[:space:]]*(.*)resync =[[:space:]]+([[:digit:]]+\\.[[:digit:]]+)%[[:space:]]*(.*)$/", $line, $match)) {
-                $clean_array = FALSE;
-                $this->_set_parameter('copy_mbr', '0');
-                foreach ($myarrays[$dev]['devices'] as $index => $myarray) {
-                    $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_SYNCING;
-                    $myarrays[$dev]['devices'][$index]['recovery'] = $match[2];
-                }
-            } else if (preg_match("/^.*resync=DELAYED.*$/", $line, $match)) {
-                $clean_array = FALSE;
-                foreach ($myarrays[$dev]['devices'] as $index => $myarray)
-                    $myarrays[$dev]['devices'][$index]['status'] = self::STATUS_SYNC_PENDING;
-            }
-        }
-        
-        // TODO ksort($myarrays);
-        //if ((!isset($this->config['copy_mbr']) || $this->config['copy_mbr'] == 0) && $raid_level == 1 && $clean_array) {
-        if (FALSE) {
-            sort($physical_devices);
-            $is_first = TRUE;
-            foreach ($physical_devices as $dev) {
-                if ($is_first) {
-                    $copy_from = $dev;
-                    $is_first = FALSE;
-                    continue;
-                }
-                $shell = new Shell();
-                $args = 'if=' . $copy_from . ' of=' . $dev . ' bs=512 count=1';
-                $retval = $shell->execute(self::CMD_DD, $args, TRUE);
-            }
-            $this->_set_parameter('copy_mbr', '1');
-            $this->loaded = FALSE;
-        }
-        return $myarrays;
-    }
-
-    /**
-     * Removes a device from the specified array.
-     *
-     * @param string $array  the array
-     * @param string $device the device
-     *
-     * @return void
-     * @throws Engine_Exception
-     */
-
-    function remove_device($array, $device)
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        $shell = new Shell();
-        $args = '-r ' . $array . ' ' . $device;
-        $options['env'] = "LANG=en_US";
-        $retval = $shell->execute(self::CMD_MDADM, $args, TRUE, $options);
-        if ($retval != 0) {
-            $errstr = $shell->get_last_output_line();
-            throw new Engine_Exception($errstr, COMMON_WARNING);
-        } else {
-            $this->mdstat = $shell->get_output();
-        }
-    }
-
-    /**
-     * Repair an array with the specified device.
-     *
-     * @param string $array  the array
-     * @param string $device the device
-     *
-     * @return void
-     * @throws Engine_Exception
-     */
-
-    function repair_array($array, $device)
-    {
-        clearos_profile(__METHOD__, __LINE__);
-
-        $shell = new Shell();
-        $args = '-a ' . $array . ' ' . $device;
-        $options['env'] = "LANG=en_US";
-        $retval = $shell->execute(self::CMD_MDADM, $args, TRUE, $options);
-        if ($retval != 0) {
-            $errstr = $shell->get_last_output_line();
-            throw new Engine_Exception($errstr, COMMON_WARNING);
-        } else {
-            $this->mdstat = $shell->get_output();
-        }
     }
 }

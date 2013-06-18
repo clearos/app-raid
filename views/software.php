@@ -41,7 +41,6 @@ clearos_load_library('storage/Storage_Device');
 
 $this->load->helper('number');
 $this->lang->load('base');
-$this->lang->load('marketplace');
 
 $this->lang->load('base');
 $this->lang->load('raid');
@@ -55,7 +54,7 @@ $headers = array(
     lang('raid_size'),
     lang('raid_mount'),
     lang('raid_level'),
-    lang('raid_status')
+    lang('raid_state')
 );
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -64,44 +63,30 @@ $headers = array(
 
 $degraded_dev = array();
 foreach ($raid_array as $dev => $myarray) {
-    $status = lang('raid_clean');
+    $state = lang('raid_clean');
     $mount = $raid->get_mount($dev);
     $action = '&#160;';
     $detail_buttons = '';
-    if ($myarray['status'] != Raid::STATUS_CLEAN) {
-        $iconclass = "icondisabled";
-        $status = lang('raid_degraded');
-        $detail_buttons = button_set(
-            array(
-                anchor_custom(lang('raid_repair'), '/app/raid/software/repair/' . $dev)
-            )
-        );
-    }
-    foreach ($myarray['devices'] as $id => $details) {
-        if ($details['status'] == Raid::STATUS_SYNCING) {
-            // Provide a more detailed status message
-            $status = lang('raid_syncing') . ' (' . $details['dev'] . ') - ' . $details['recovery'] . '%';
-        } else if ($details['status'] == Raid::STATUS_SYNC_PENDING) {
-            // Provide a more detailed status message
-            $status = lang('raid_sync_pending') . ' (' . $details['dev'] . ')';
-        } else if ($details['status'] == Raid::STATUS_DEGRADED) {
-            // Provide a more detailed status message
-            $status = lang('raid_degraded') . ' (' . $details['dev'] . ' ' . lang('raid_failed') . ')';
+    if ($myarray['state'] != Raid::STATUS_CLEAN)
+        $state = lang('raid_degraded');
+    if ($myarray['state'] == Raid::STATUS_SYNCING && $myarray['sync_progress'] >= 0)
+        $state = lang('raid_syncing') . ' (' . $myarray['sync_progress'] . '%)';
+    else if ($myarray['state'] == Raid::STATUS_SYNCING)
+        $state = lang('raid_sync_scheduled');
+    foreach ($myarray['devices'] as $partition => $details) {
+        if ($details['state'] == Raid::STATUS_DEGRADED) {
+            // Provide a more detailed state message
+            $state = lang('raid_degraded') . ' (' . $partition . ' ' . lang('raid_failed') . ')';
             // Check what action applies
             if ($myarray['number'] >= count($myarray['devices'])) {
-                if (preg_match("/.*\/(md\d+)$/", $dev, $match)) {
-                    $raid_dev = $match[1];
-                    if (preg_match("/dev\/(.*)$/", $details['dev'], $match)) {
-                        $phys_dev = $match[1];
-                        $detail_buttons = button_set(
-                            array(
-                                anchor_custom('/app/raid/software/remove/' . $raid_dev . '/' . $phys_dev, lang('raid_remove') . ' ' . $details['dev'])
-                            )
-                        );
-                    }
-                }
+                $hash = base64_encode($dev . '|' . $partition);
+                $detail_buttons = button_set(
+                    array(
+                        anchor_custom('/app/raid/software/remove/' . $hash, lang('raid_remove') . ' ' . $partition)
+                    )
+                );
             }
-            $degraded_dev[preg_replace("/\d+$/", "", $details['dev'])] = TRUE;
+            $degraded_dev[$details['dev']] = TRUE;
             
         }
     }
@@ -113,7 +98,7 @@ foreach ($raid_array as $dev => $myarray) {
         byte_format($myarray['size']),
         $mount,
         $myarray['level'],
-        $status
+        $state
     );
     $rows[] = $row;
 }
@@ -123,10 +108,10 @@ if (!empty($degraded_dev)) {
     try {
         $storage = new Storage_Device();
         $help_info = '';
-    foreach ($degraded_dev as $dev => $ignore) {
+        foreach ($degraded_dev as $dev => $ignore) {
             $block_device = $storage->get_device_details($dev);
             $help_info .= '<div>' . $dev . ' = ' . $block_device['identifier'] . '</div>';
-    }
+        }
         echo infobox_highlight(lang('base_information'), $help_info);
     } catch (Exception $e) {
         // Ignore

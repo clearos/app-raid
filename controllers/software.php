@@ -83,4 +83,46 @@ class Software extends ClearOS_Controller
 
         $this->page->view_form('software', $data, lang('raid_app_name'));
     }
+
+    /**
+     * Raid remove degraded device controller
+     *
+     * @param $hash    base64 encoded reference to array and partition
+     * @param $confirm confirm intent to remove device from array
+     *
+     * @return view
+     */
+
+    function remove($hash, $confirm = NULL)
+    {
+        // Load dependencies
+        //------------------
+
+        $this->load->library('raid/Raid');
+        $this->lang->load('raid');
+
+        try {
+            list($md, $dev) = preg_split('/\|/', base64_decode($hash));
+            if (isset($confirm)) {
+                $this->raid->remove_device($md, $dev);
+            } else {
+                $buttons = button_set(
+                    array(
+                        anchor_custom('/app/raid/software/remove/' . $hash . '/1', lang('base_confirm')),
+                        anchor_cancel('/app/raid')
+                    )
+                );
+                $this->page->set_message(
+                     sprintf(lang('raid_confirm_remove'), '<b>' . $dev . '</b>', '<b>' . $md . '</b>') .
+                     "<div style='text-align: center; padding: 10px;'>" . $buttons . "</div>",
+                     'info'
+                );
+            }
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
+
+        redirect('raid');
+    }
 }
