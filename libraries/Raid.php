@@ -906,7 +906,7 @@ class Raid extends Engine
                 }
         
                 $lines[] = str_pad($dev, $padding[0]) . "\t" .
-                    str_pad(intval(intval($myarray['size'])/1024) . lang('base_megabytes'), $padding[1]) . "\t" .
+                    str_pad(intval(intval($myarray['size'])/(1024 * 1024)) . lang('base_megabytes'), $padding[1]) . "\t" .
                     str_pad($mount, $padding[2]) . "\t" . str_pad($myarray['level'], $padding[3]) . "\t" . $state;
             }
 
