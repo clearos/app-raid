@@ -613,7 +613,7 @@ class Raid extends Engine
                 }
                 $size = lang('base_unknown');
                 try {
-                    $size = $this->_get_md_field('/sys/block/' . $md_dev . '/md/component_size');
+                    $size = $this->_get_md_field('/sys/block/' . $md_dev . '/size') * 512;
                 } catch (Exception $e) {
                 }
                 $level = lang('base_unknown');
