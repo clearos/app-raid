@@ -111,7 +111,13 @@ class Raid extends Engine
     const FILE_MDSTAT = '/proc/mdstat';
     const FILE_STATUS = 'raid.state';
     const FILE_CROND = "app-raid";
-    const DEFAULT_CRONTAB_TIME = "0 * * * *";
+    const CRON_DEFAULT = 1440;
+    const CRON_MINUTE = "* * * * *";
+    const CRON_HALF_HOUR = "0,30 * * * *";
+    const CRON_HOUR = "0 * * * *";
+    const CRON_4_HOUR = "0 */4 * * *";
+    const CRON_DAILY = "0 5 * * *";
+    const CRON_WEEKLY = "0 5 * * 1";
     const CMD_MDADM = '/sbin/mdadm';
     const CMD_CAT = '/bin/cat';
     const CMD_DF = '/bin/df';
@@ -249,6 +255,35 @@ class Raid extends Engine
             return FALSE;
         } catch (Exception $e) {
             return FALSE;
+        }
+    }
+
+    /**
+     * Get the monitor frequency.
+     *
+     * @return string frequency
+     */
+
+    function get_frequency()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        try {
+            $shell = new Shell();
+            $options['env'] = "LANG=en_US";
+            $args = 'API /etc/cron.d/' . self::FILE_CROND;
+            $retval = $shell->execute(self::CMD_GREP, $args, FALSE, $options);
+            if ($retval != 0) {
+                // Return default daily
+                return self::CRON_DEFAULT;
+            } else {
+                $line = $shell->get_last_output_line();
+                if (preg_match('/.*\[(\d+)\]$/', $line, $match))
+                    return $match[1];
+                return self::CRON_DEFAULT;
+            }
+        } catch (Exception $e) {
+            return self::CRON_DEFAULT;
         }
     }
 
@@ -494,7 +529,7 @@ class Raid extends Engine
     }
 
     /**
-     * Set the RAID notificatoin email.
+     * Set the RAID notification email.
      *
      * @param string $email a valid email
      *
@@ -537,9 +572,61 @@ class Raid extends Engine
                 $cron->delete_configlet(self::FILE_CROND);
             } else if (!$cron->exists_configlet(self::FILE_CROND) && $monitor) {
                 $payload  = "# Created by API\n";
-                $payload .= self::DEFAULT_CRONTAB_TIME . " root " . self::CMD_RAID_SCRIPT . " >/dev/NULL 2>&1";
+                $payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . " >/dev/NULL 2>&1";
                 $cron->add_configlet(self::FILE_CROND, $payload);
             }
+        } catch (Exception $e) {
+            throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
+        }
+    }
+
+    /**
+     * Set RAID monitoring frequency.
+     *
+     * @param int $frequency frequency of monitoring
+     *
+     * @return void
+     * @throws Engine_Exception Validation_Exception
+     */
+
+    function set_frequency($frequency)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+        try {
+            $cron = new Cron();
+            if (!$this->get_monitor())
+                return;
+
+            if ($cron->exists_configlet(self::FILE_CROND))
+                $cron->delete_configlet(self::FILE_CROND);
+
+            $options = $this->get_frequency_options();
+            $cron_time = self::CRON_DAILY;
+            if (array_key_exists($frequency, $options)) {
+                switch ($frequency) {
+                    case 1:
+                        $cron_time = self::CRON_MINUTE;
+                        break;
+                    case 30:
+                        $cron_time = self::CRON_HALF_HOUR;
+                        break;
+                    case 60:
+                        $cron_time = self::CRON_HOUR;
+                        break;
+                    case 240:
+                        $cron_time = self::CRON_4_HOUR;
+                        break;
+                    case 1440:
+                        $cron_time = self::CRON_DAILY;
+                        break;
+                    case 10080:
+                        $cron_time = self::CRON_WEEKLY;
+                        break;
+                }
+            }
+            $payload  = "# Created by API [$frequency]\n";
+            $payload .= $cron_time . " root " . self::CMD_RAID_SCRIPT . " >/dev/NULL 2>&1";
+            $cron->add_configlet(self::FILE_CROND, $payload);
         } catch (Exception $e) {
             throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
         }
@@ -762,6 +849,27 @@ class Raid extends Engine
         return $avail;
     }
 
+    /**
+     * Get frequency options.
+     *
+     * @return array
+     * @throws Engine_Exception
+     */
+
+    function get_frequency_options()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+        $options = array (
+            1 => lang('raid_every_minute'),
+            30 => lang('raid_every_half_hour'),
+            60 => lang('base_hourly'),
+            240 => lang('raid_every_4_hours'),
+            1440 => lang('base_daily'),
+            10080 => lang('base_weekly')
+        );
+        return $options;
+    }
+
     ///////////////////////////////////////////////////////////////////////////////
     // P R I V A T E    R O U T I N E S
     ///////////////////////////////////////////////////////////////////////////////
@@ -925,7 +1033,7 @@ class Raid extends Engine
      *
      * @param string $email email
      *
-     * @return boolean TRUE if email is valid
+     * @return mixed string containing error if invalid
      */
 
     public function validate_email($email)
@@ -946,10 +1054,23 @@ class Raid extends Engine
      *
      * @param boolean $monitor monitor flag
      *
-     * @return boolean TRUE if monitor is valid
+     * @return mixed string containing error if invalid
      */
 
     public function validate_monitor($monitor)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+    }
+
+    /**
+     * Validation routine for frequency setting
+     *
+     * @param int $frequency frequency
+     *
+     * @return mixed string containing error if invalid
+     */
+
+    public function validate_frequency($frequency)
     {
         clearos_profile(__METHOD__, __LINE__);
     }
@@ -959,7 +1080,7 @@ class Raid extends Engine
      *
      * @param boolean $notify notify flag
      *
-     * @return boolean TRUE if notify is valid
+     * @return mixed string containing error if invalid
      */
 
     public function validate_notify($notify)
