@@ -1,9 +1,9 @@
 
 Name: app-raid
 Epoch: 1
-Version: 0.9.0
+Version: 1.1.0
 Release: 1%{dist}
-Summary: RAID Manager
+Summary: Software RAID Manager
 License: GPLv3
 Group: ClearOS/Apps
 Source: %{name}-%{version}.tar.gz
@@ -12,19 +12,20 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-RAID Tools provides status information and administrative actions for software RAID and supported hardware RAID controllers.
+Software RAID provides status information, reporting and administrative actions for software RAID.
 
 %package core
-Summary: RAID Manager - APIs and install
+Summary: Software RAID Manager - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-mail-notification-core
+Requires: app-storage-core
 Requires: app-tasks-core
 Requires: mdadm
 
 %description core
-RAID Tools provides status information and administrative actions for software RAID and supported hardware RAID controllers.
+Software RAID provides status information, reporting and administrative actions for software RAID.
 
 This package provides the core API and libraries.
 
@@ -36,6 +37,7 @@ This package provides the core API and libraries.
 mkdir -p -m 755 %{buildroot}/usr/clearos/apps/raid
 cp -r * %{buildroot}/usr/clearos/apps/raid/
 
+install -D -m 0755 packaging/raid-notification %{buildroot}/usr/sbin/raid-notification
 install -D -m 0644 packaging/raid.conf %{buildroot}/etc/clearos/raid.conf
 
 %post
@@ -79,4 +81,5 @@ exit 0
 /usr/clearos/apps/raid/deploy
 /usr/clearos/apps/raid/language
 /usr/clearos/apps/raid/libraries
+/usr/sbin/raid-notification
 %config(noreplace) /etc/clearos/raid.conf

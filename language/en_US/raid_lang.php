@@ -28,6 +28,7 @@ $lang['raid_unknown'] = 'Unknown';
 $lang['raid_summary'] = 'RAID Summary';
 $lang['raid_email_is_invalid'] = 'E-mail is invalid.';
 $lang['raid_add_device'] = 'Add Device';
+$lang['raid_no_support'] = 'No supported RAID arrays found.';
 $lang['raid_copy_failed'] = 'Unable to copy the partition table - manual disk partitioning required.';
 $lang['raid_copy_from'] = 'Source Device';
 $lang['raid_copy_partition_table'] = 'Copy Partition Table';

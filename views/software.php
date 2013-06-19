@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Raid manager view.
+ * Raid software manager view.
  *
  * @category   apps
  * @package    raid
@@ -75,7 +75,10 @@ foreach ($raid_array as $dev => $myarray) {
         $state = lang('raid_degraded');
         $detail_buttons = button_set(
             array(
-                anchor_custom('/app/raid/software/add_device/' . strtr(base64_encode($dev),  '+/=', '-_.'), lang('raid_add_device'))
+                anchor_custom(
+                    '/app/raid/software/add_device/' . strtr(base64_encode($dev),  '+/=', '-_.'),
+                    lang('raid_add_device')
+                )
             )
         );
     }

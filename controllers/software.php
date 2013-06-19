@@ -91,8 +91,8 @@ class Software extends ClearOS_Controller
     /**
      * Raid remove degraded device controller
      *
-     * @param $hash    base64 encoded reference to array and partition
-     * @param $confirm confirm intent to remove device from array
+     * @param string $hash    base64 encoded reference to array and partition
+     * @param string $confirm confirm intent to remove device from array
      *
      * @return view
      */
@@ -119,9 +119,9 @@ class Software extends ClearOS_Controller
                     )
                 );
                 $this->page->set_message(
-                     sprintf(lang('raid_confirm_remove'), '<b>' . $dev . '</b>', '<b>' . $md . '</b>') .
-                     "<div style='text-align: center; padding: 10px;'>" . $buttons . "</div>",
-                     'info'
+                    sprintf(lang('raid_confirm_remove'), '<b>' . $dev . '</b>', '<b>' . $md . '</b>') .
+                    "<div style='text-align: center; padding: 10px;'>" . $buttons . "</div>",
+                    'info'
                 );
             }
         } catch (Exception $e) {
@@ -131,11 +131,12 @@ class Software extends ClearOS_Controller
 
         redirect('raid');
     }
+
     /**
      * Raid add device controller
      *
-     * @param $hash    base64 encoded reference to array and device
-     * @param $confirm confirm intent to remove device from array
+     * @param string $hash    base64 encoded reference to array and device
+     * @param string $confirm confirm intent to remove device from array
      *
      * @return view
      */
@@ -151,20 +152,20 @@ class Software extends ClearOS_Controller
         $this->lang->load('base');
         $this->lang->load('raid');
 
-    $data = array();
+        $data = array();
         $avail_block_devs = $this->raid->get_available_block_devices();
 
-    $data['block_devices'] = array(0 => lang('base_select'));
+        $data['block_devices'] = array(0 => lang('base_select'));
         foreach ($avail_block_devs as $id => $info)
-        $data['block_devices'][$id] = $id . ' (' . $info['size'] . $info['size_units'] . ')';
-    $data['raid_array'] = $this->raid->get_arrays();
+            $data['block_devices'][$id] = $id . ' (' . $info['size'] . $info['size_units'] . ')';
+        $data['raid_array'] = $this->raid->get_arrays();
 
         try {
             list($md, $block_device) = preg_split('/\|/', base64_decode(strtr($hash, '-_.', '+/=')));
             $data['md_device'] = $md;
             if ($md != '' && $block_device != '' && $confirm) {
                 $this->raid->add_device($md, $block_device);
-        redirect('raid');
+                redirect('raid');
                 return;
             } else if ($this->input->post('add')) {
                 $md = $this->input->post('md_device');
@@ -179,9 +180,9 @@ class Software extends ClearOS_Controller
                         )
                     );
                     $this->page->set_message(
-                         sprintf(lang('raid_confirm_add'), '<b>' . $block_device . '</b>', '<b>' . $md . '</b>') .
-                         "<div style='text-align: center; padding: 10px;'>" . $buttons . "</div>",
-                         'info'
+                        sprintf(lang('raid_confirm_add'), '<b>' . $block_device . '</b>', '<b>' . $md . '</b>') .
+                        "<div style='text-align: center; padding: 10px;'>" . $buttons . "</div>",
+                        'info'
                     );
                     redirect('raid');
                     return;
@@ -194,6 +195,12 @@ class Software extends ClearOS_Controller
 
         $this->page->view_form('add_device', $data, lang('raid_app_name'));
     }
+
+    /**
+     * Raid get state controller
+     *
+     * @return json
+     */
 
     function get_state()
     {

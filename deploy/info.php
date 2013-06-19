@@ -26,8 +26,8 @@ $app['subcategory'] = lang('base_subcategory_storage');
 /////////////////////////////////////////////////////////////////////////////
 
 $app['core_requires'] = array(
-    'app-mail-notification', 
-    'app-storage-device-core', 
+    'app-mail-notification-core', 
+    'app-storage-core', 
     'app-tasks-core', 
     'mdadm'
 );

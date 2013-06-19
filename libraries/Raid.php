@@ -59,19 +59,21 @@ use \clearos\apps\base\Configuration_File as Configuration_File;
 use \clearos\apps\base\Engine as Engine;
 use \clearos\apps\base\File as File;
 use \clearos\apps\base\Shell as Shell;
+use \clearos\apps\base\Storage_Device as Storage_Device;
 use \clearos\apps\mail_notification\Mail_Notification as Mail_Notification;
 use \clearos\apps\network\Hostname as Hostname;
+use \clearos\apps\raid\Raid as Raid;
 use \clearos\apps\tasks\Cron as Cron;
-use \clearos\apps\storage\Storage_Device as Storage_Device;
 
 clearos_load_library('base/Configuration_File');
 clearos_load_library('base/Engine');
 clearos_load_library('base/File');
 clearos_load_library('base/Shell');
+clearos_load_library('base/Storage_Device');
 clearos_load_library('mail_notification/Mail_Notification');
 clearos_load_library('network/Hostname');
+clearos_load_library('raid/Raid');
 clearos_load_library('tasks/Cron');
-clearos_load_library('storage/Storage_Device');
 
 // Exceptions
 //-----------
@@ -405,6 +407,8 @@ class Raid extends Engine
     /**
      * Checks the change of status of the RAID array.
      *
+     * @param boolean $force force output of status even when not changed
+     *
      * @return mixed array if RAID status has changed, NULL otherwise
      * @throws Engine_Exception
      */
@@ -433,7 +437,8 @@ class Raid extends Engine
             $retval = -1;
             if (!$first_check) {
                 $shell = new Shell();
-                $args = CLEAROS_TEMP_DIR . '/' . self::FILE_STATUS . ' ' . CLEAROS_TEMP_DIR . '/' . self::FILE_STATUS . '.orig';
+                $args = CLEAROS_TEMP_DIR . '/' . self::FILE_STATUS . ' ' .
+                    CLEAROS_TEMP_DIR . '/' . self::FILE_STATUS . '.orig';
                 $retval = $shell->execute(self::CMD_DIFF, $args, FALSE, array('validate_exit_code' => FALSE));
             }
 
@@ -595,7 +600,10 @@ class Raid extends Engine
                     if ($this->_get_md_field('/sys/block/' . $md_dev . '/md/sync_action') == 'recover') {
                         $state = self::STATUS_SYNCING;
                         // If sync in progress, fetch % complete
-                        $progress = preg_split('|\s+/\s+|',  $this->_get_md_field('/sys/block/' . $md_dev . '/md/sync_completed'));
+                        $progress = preg_split(
+                            '|\s+/\s+|',
+                            $this->_get_md_field('/sys/block/' . $md_dev . '/md/sync_completed')
+                        );
                         if ($progress[0] == 0 || $progress[1] == 0)
                             $sync_progress = -1;
                         else
@@ -637,17 +645,17 @@ class Raid extends Engine
                     if (preg_match('/^\/dev\/md\d+$/', $storage_device, $match))
                         continue;
                     if (preg_match('/^\/dev\/(.*)$/', $storage_device, $match))
-                        $block_dev = $match[1];
+                        $bd = $match[1];
                     else
-                        $block_dev = $storage_device;
+                        $bd = $storage_device;
                     $partitions = array_keys($info['partitioning']['partitions']);
                     if (empty($partitions))
                         continue;
                     foreach ($partitions as $index) {
                         try {
-                            $state = $this->_get_md_field('/sys/block/' . $md_dev . '/md/dev-' . $block_dev . $index . '/state');
-                            $size = $this->_get_md_field('/sys/block/' . $md_dev . '/md/dev-' . $block_dev . $index . '/size');
-                            $slot = $this->_get_md_field('/sys/block/' . $md_dev . '/md/dev-' . $block_dev . $index . '/slot');
+                            $state = $this->_get_md_field("/sys/block/$md_dev/md/dev-$bd$index/state");
+                            $size = $this->_get_md_field("/sys/block/$md_dev/md/dev-$bd$index/size");
+                            $slot = $this->_get_md_field("/sys/block/$md_dev/md/dev-$bd$index/slot");
                             $this->mdstat['/dev/' . $md_dev]['devices'][$storage_device . $index] = array(
                                 'dev' => $storage_device,
                                 'state' => $state,
@@ -779,9 +787,9 @@ class Raid extends Engine
     /**
      * Gets the status of array field from /proc.
      *
-     * @access private
-     *
      * @param string $arg arguement
+     *
+     * @access private
      *
      * @return string
      */
@@ -880,7 +888,7 @@ class Raid extends Engine
 
                 if ($myarray['state'] != Raid::STATUS_CLEAN) {
                     $state = lang('raid_degraded');
-		    $this->state = $state;
+                    $this->state = $state;
                 }
                 if ($myarray['state'] == Raid::STATUS_SYNCING && $myarray['sync_progress'] >= 0)
                     $state = lang('raid_syncing') . ' (' . $myarray['sync_progress'] . '%)';

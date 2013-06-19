@@ -76,6 +76,13 @@ class General extends ClearOS_Controller
         $this->_view_edit('edit');
     }
 
+    /**
+     * Raid view/edit controller
+     *
+     * @param string $mode mode
+     *
+     * @return view
+     */
     function _view_edit($mode = 'view')
     {
         // Load dependencies
@@ -117,6 +124,8 @@ class General extends ClearOS_Controller
                 $data['level'] = $level;
                 $data['monitor'] = $this->raid->get_monitor();
                 $data['email'] = $this->raid->get_email();
+            } else {
+                $data['monitor'] = $this->raid->get_monitor();
             }
         } catch (Exception $e) {
             $this->page->view_exception($e);

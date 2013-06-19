@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Raid overview.
+ * Raid general settings view.
  *
  * @category   apps
  * @package    raid
@@ -36,6 +36,9 @@
 $this->lang->load('base');
 $this->lang->load('raid');
 
+if ($level == FALSE)
+    echo infobox_highlight(lang('base_warning'), lang('raid_no_support'));
+
 ///////////////////////////////////////////////////////////////////////////////
 // Form open
 ///////////////////////////////////////////////////////////////////////////////
@@ -57,6 +60,8 @@ if ($mode === 'edit') {
     $read_only = TRUE;
     if ($level != FALSE)
         $buttons = array(anchor_edit('/app/raid/general/edit'));
+    else
+        $level = '---';
 }
 
 echo field_input('level', $level, lang('raid_level'), TRUE);
