@@ -687,14 +687,7 @@ class Raid extends Engine
                     if ($this->_get_md_field('/sys/block/' . $md_dev . '/md/sync_action') == 'recover') {
                         $state = self::STATUS_SYNCING;
                         // If sync in progress, fetch % complete
-                        $progress = preg_split(
-                            '|\s+/\s+|',
-                            $this->_get_md_field('/sys/block/' . $md_dev . '/md/sync_completed')
-                        );
-                        if ($progress[0] == 0 || $progress[1] == 0)
-                            $sync_progress = -1;
-                        else
-                            $sync_progress = intval($progress[0] / $progress[1] * 100);
+                        $sync_progress = $this->_get_sync_progress('/dev/' . $md_dev);
                     }
                 } catch (Exception $e) {
                 }
@@ -890,6 +883,35 @@ class Raid extends Engine
         $this->config = $configfile->Load();
 
         $this->is_loaded = TRUE;
+    }
+
+    /**
+     * Gets the sync progress of array.
+     *
+     * @param string $dev device array
+     *
+     * @access private
+     *
+     * @return int
+     */
+    private function _get_sync_progress($dev)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $shell = new Shell();
+        $options['env'] = "LANG=en_US";
+        $arg = '-D ' . $dev;
+        $retval = $shell->execute(self::CMD_MDADM, $arg, TRUE, $options);
+        if ($retval != 0) {
+            return -1;
+        } else {
+            $lines = $shell->get_output();
+            foreach ($lines as $line) {
+                if (preg_match('/\s*Rebuild Status\s*:\s*(\d+)% complete/', $line, $match))
+                    return $match[1];
+            }
+        }
+        return -1;
     }
 
     /**
