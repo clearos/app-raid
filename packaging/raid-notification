@@ -74,10 +74,12 @@ use \Exception as Exception;
 
 $short_options  = '';
 $short_options .= 'f';  // Force display and alert status
+$short_options .= 's';  // Force send of email
 
 $options = getopt($short_options);
 
 $force = isset($options['f']) ? TRUE : FALSE;
+$send = isset($options['s']) ? TRUE : FALSE;
 
 // Command line options
 //---------------------
@@ -85,7 +87,7 @@ $force = isset($options['f']) ? TRUE : FALSE;
 $raid = new Raid();
 
 try {
-    $changes = $raid->check_status_change($force);
+    $changes = $raid->check_status_change($force, $send);
     if (is_array($changes)) {
         foreach ($changes as $line)
             echo $line . "\n";

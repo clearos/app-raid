@@ -142,4 +142,26 @@ class General extends ClearOS_Controller
         $this->page->view_form('general', $data, lang('raid_app_name'));
     }
 
+    /**
+     * Send test email
+     *
+     * @return view
+     */
+    function send_test()
+    {
+        // Load dependencies
+        //------------------
+
+        $this->load->library('raid/Raid');
+        $this->lang->load('raid');
+
+        try {
+            $this->raid->check_status_change(TRUE, TRUE);
+            $this->page->set_message(lang('raid_test_sent') . ': ' . $this->raid->get_email() . '.', 'info');
+            redirect('/raid');
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
+    }
 }

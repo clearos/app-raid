@@ -58,10 +58,13 @@ if ($mode === 'edit') {
     );
 } else {
     $read_only = TRUE;
-    if ($level != FALSE)
+    if ($level != FALSE) {
         $buttons = array(anchor_edit('/app/raid/general/edit'));
-    else
+        if (isset($email))
+            $buttons[] = anchor_custom('/app/raid/general/send_test', lang('raid_test_email'), 'high');
+    } else {
         $level = '---';
+    }
 }
 
 echo field_input('level', $level, lang('raid_level'), TRUE);

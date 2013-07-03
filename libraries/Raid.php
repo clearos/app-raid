@@ -443,12 +443,13 @@ class Raid extends Engine
      * Checks the change of status of the RAID array.
      *
      * @param boolean $force force output of status even when not changed
+     * @param boolean $send  force sending of email notification
      *
      * @return mixed array if RAID status has changed, NULL otherwise
      * @throws Engine_Exception
      */
 
-    function check_status_change($force = FALSE)
+    function check_status_change($force = FALSE, $send = FALSE)
     {
         clearos_profile(__METHOD__, __LINE__);
 
@@ -477,7 +478,7 @@ class Raid extends Engine
                 $retval = $shell->execute(self::CMD_DIFF, $args, FALSE, array('validate_exit_code' => FALSE));
             }
 
-            if ($retval != 0)
+            if ($retval != 0 || $send)
                 $this->send_status_change_notification($lines);
             else if (!$force)
                 return NULL;
