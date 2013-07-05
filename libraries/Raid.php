@@ -522,7 +522,6 @@ class Raid extends Engine
             $mailer->set_message_subject($subject);
             $mailer->set_message_body($body);
 
-            $mailer->set_sender($this->get_email());
             $mailer->send();
         } catch (Exception $e) {
             throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
