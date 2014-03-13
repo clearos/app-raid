@@ -58,6 +58,7 @@ clearos_load_language('raid');
 use \clearos\apps\base\Configuration_File as Configuration_File;
 use \clearos\apps\base\Engine as Engine;
 use \clearos\apps\base\File as File;
+use \clearos\apps\base\Folder as Folder;
 use \clearos\apps\base\Shell as Shell;
 use \clearos\apps\storage\Storage_Device as Storage_Device;
 use \clearos\apps\mail_notification\Mail_Notification as Mail_Notification;
@@ -68,6 +69,7 @@ use \clearos\apps\tasks\Cron as Cron;
 clearos_load_library('base/Configuration_File');
 clearos_load_library('base/Engine');
 clearos_load_library('base/File');
+clearos_load_library('base/Folder');
 clearos_load_library('base/Shell');
 clearos_load_library('storage/Storage_Device');
 clearos_load_library('mail_notification/Mail_Notification');
@@ -733,6 +735,9 @@ class Raid extends Engine
                         continue;
                     foreach ($partitions as $index) {
                         try {
+                            $folder = new Folder("/sys/block/$md_dev/md/dev-$bd$index", TRUE);
+                            if (!$folder->exists())
+                                continue;
                             $state = $this->_get_md_field("/sys/block/$md_dev/md/dev-$bd$index/state");
                             $size = $this->_get_md_field("/sys/block/$md_dev/md/dev-$bd$index/size");
                             $slot = $this->_get_md_field("/sys/block/$md_dev/md/dev-$bd$index/slot");
@@ -925,7 +930,7 @@ class Raid extends Engine
      */
     private function _get_md_field($arg)
     {
-        clearos_profile(__METHOD__, __LINE__);
+        clearos_profile(__METHOD__, __LINE__, 'TODO ' . $arg);
 
         $shell = new Shell();
         $options['env'] = "LANG=en_US";

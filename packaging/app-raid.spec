@@ -1,7 +1,7 @@
 
 Name: app-raid
 Epoch: 1
-Version: 1.1.5
+Version: 1.1.6
 Release: 1%{dist}
 Summary: Software RAID Manager
 License: GPLv3
@@ -76,7 +76,6 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/raid/packaging
-%exclude /usr/clearos/apps/raid/tests
 %dir /usr/clearos/apps/raid
 /usr/clearos/apps/raid/deploy
 /usr/clearos/apps/raid/language
