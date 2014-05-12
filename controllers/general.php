@@ -95,7 +95,7 @@ class General extends ClearOS_Controller
 
         // Set validation rules
         //---------------------
-         
+
         $this->form_validation->set_policy('monitor', 'raid/Raid', 'validate_monitor', TRUE);
         $this->form_validation->set_policy('frequency', 'raid/Raid', 'validate_frequency', TRUE);
         $this->form_validation->set_policy('email', 'raid/Raid', 'validate_email', TRUE);
@@ -108,6 +108,7 @@ class General extends ClearOS_Controller
             try {
                 $this->raid->set_monitor($this->input->post('monitor'));
                 $this->raid->set_frequency($this->input->post('frequency'));
+                $this->raid->set_send_mail($this->input->post('send_mail'));
                 $this->raid->set_email($this->input->post('email'));
                 $this->page->set_status_updated();
                 redirect('/raid');
@@ -127,6 +128,7 @@ class General extends ClearOS_Controller
                 $data['level'] = $level;
                 $data['monitor'] = $this->raid->get_monitor();
                 $data['frequency'] = $this->raid->get_frequency();
+                $data['send_mail'] = $this->raid->get_send_mail();
                 $data['email'] = $this->raid->get_email();
             } else {
                 $data['monitor'] = $this->raid->get_monitor();

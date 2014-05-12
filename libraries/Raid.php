@@ -241,6 +241,35 @@ class Raid extends Engine
     }
 
     /**
+     * Get the send mail condition.
+     *
+     * @return String  occasion
+     * @throws Engine_Exception
+     */
+
+    function get_send_mail()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        if (! $this->is_loaded)
+            $this->_load_config();
+
+        return $this->config['send_mail'] ? '1' : '0';
+    }
+
+    /**
+     * Returns configuration to write to cron
+     * @return string
+     */
+    private function _get_send_mail_conf() {
+
+        if (! $this->is_loaded)
+            $this->_load_config();
+
+    	return $this->config['send_mail'] ? " -s " : "";
+    }
+
+    /**
      * Get the monitor status.
      *
      * @return boolean TRUE if monitoring is enabled
@@ -555,6 +584,37 @@ class Raid extends Engine
     }
 
     /**
+     * Set the condition when send email.
+     *
+     * @param string occasion
+     *
+     * @return void
+     * @throws Engine_Exception Validation_Exception
+     */
+
+    function set_send_mail($send_mail)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        if (! $this->is_loaded)
+            $this->_load_config();
+
+        $this->_set_parameter('send_mail', $send_mail);
+
+        try {
+        	$cron = new Cron();
+        	if ($cron->exists_configlet(self::FILE_CROND))
+        		$cron->delete_configlet(self::FILE_CROND);
+
+        	$payload  = "# Created by API\n";
+        	$payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " >/dev/NULL 2>&1";
+        	$cron->add_configlet(self::FILE_CROND, $payload);
+        } catch (Exception $e) {
+        	throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
+        }
+    }
+
+    /**
      * Set RAID monitoring status.
      *
      * @param boolean $monitor toggles monitoring
@@ -574,7 +634,7 @@ class Raid extends Engine
                 $cron->delete_configlet(self::FILE_CROND);
             } else if (!$cron->exists_configlet(self::FILE_CROND) && $monitor) {
                 $payload  = "# Created by API\n";
-                $payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . " >/dev/NULL 2>&1";
+                $payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " >/dev/NULL 2>&1";
                 $cron->add_configlet(self::FILE_CROND, $payload);
             }
         } catch (Exception $e) {
@@ -627,7 +687,7 @@ class Raid extends Engine
                 }
             }
             $payload  = "# Created by API [$frequency]\n";
-            $payload .= $cron_time . " root " . self::CMD_RAID_SCRIPT . " >/dev/NULL 2>&1";
+            $payload .= $cron_time . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " >/dev/NULL 2>&1";
             $cron->add_configlet(self::FILE_CROND, $payload);
         } catch (Exception $e) {
             throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
@@ -710,7 +770,7 @@ class Raid extends Engine
                     $number = $this->_get_md_field('/sys/block/' . $md_dev . '/md/raid_disks');
                 } catch (Exception $e) {
                 }
-        
+
                 $this->mdstat['/dev/' . $md_dev] = array(
                      'state' => $state,
                      'size' => $size,
@@ -884,7 +944,7 @@ class Raid extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         $configfile = new Configuration_File(self::FILE_CONFIG);
-            
+
         $this->config = $configfile->Load();
 
         $this->is_loaded = TRUE;
@@ -1039,7 +1099,7 @@ class Raid extends Engine
                         $state = lang('raid_degraded') . ' (' . $partition . ' ' . lang('raid_failed') . ')';
                     }
                 }
-        
+
                 $lines[] = str_pad($dev, $padding[0]) . "\t" .
                     str_pad(intval(intval($myarray['size'])/(1024 * 1024)) . lang('base_megabytes'), $padding[1]) . "\t" .
                     str_pad($mount, $padding[2]) . "\t" . str_pad($myarray['level'], $padding[3]) . "\t" . $state;
