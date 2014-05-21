@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'raid';
-$app['version'] = '1.1.6';
+$app['version'] = '1.1.7';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -26,13 +26,13 @@ $app['subcategory'] = lang('base_subcategory_storage');
 /////////////////////////////////////////////////////////////////////////////
 
 $app['core_requires'] = array(
-    'app-mail-notification-core', 
-    'app-storage-core', 
-    'app-tasks-core', 
+    'app-mail-notification-core',
+    'app-storage-core',
+    'app-tasks-core',
     'mdadm'
 );
 
-$app['core_file_manifest'] = array( 
+$app['core_file_manifest'] = array(
    'raid.conf' => array(
         'target' => '/etc/clearos/raid.conf',
         'mode' => '0644',
