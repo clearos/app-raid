@@ -54,7 +54,7 @@ $lang['raid_frequency'] = 'Frequency';
 $lang['raid_every_minute'] = 'Every minute';
 $lang['raid_every_half_hour'] = 'Every 30 minutes';
 $lang['raid_every_4_hours'] = 'Every 4 hours';
-$lang['raid_send_mail'] = 'Send mail condition';
+$lang['raid_send_mail'] = 'Send E-mail Notification';
 $lang['raid_send_mail_always'] = 'Always';
 $lang['raid_send_mail_failure'] = 'On failure';
 // vi: syntax=php ts=4
