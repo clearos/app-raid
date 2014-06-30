@@ -990,7 +990,7 @@ class Raid extends Engine
      */
     private function _get_md_field($arg)
     {
-        clearos_profile(__METHOD__, __LINE__, 'TODO ' . $arg);
+        clearos_profile(__METHOD__, __LINE__);
 
         $shell = new Shell();
         $options['env'] = "LANG=en_US";
