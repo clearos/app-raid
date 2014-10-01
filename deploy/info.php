@@ -49,3 +49,15 @@ $app['core_file_manifest'] = array(
     )
 );
 
+/////////////////////////////////////////////////////////////////////////////
+// Dashboard Widgets
+/////////////////////////////////////////////////////////////////////////////
+
+$app['dashboard_widgets'] = array(
+    $app['category'] => array(
+        'raid/raid_dashboard' => array(
+            'title' => lang('raid_raid_summary'),
+            'restricted' => FALSE,
+        )
+    )
+);

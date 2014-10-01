@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Raid software manager view.
+ * Raid dashboar status view.
  *
  * @category   apps
  * @package    raid
@@ -34,12 +34,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 use \clearos\apps\raid\Raid as Raid;
-use \clearos\apps\storage\Storage_Device as Storage_Device;
 
 clearos_load_library('raid/Raid');
-clearos_load_library('storage/Storage_Device');
 
-$this->load->helper('number');
 $this->lang->load('base');
 $this->lang->load('raid');
 
@@ -49,78 +46,32 @@ $this->lang->load('raid');
 
 $headers = array(
     lang('raid_array'),
-    lang('raid_size'),
-    lang('raid_mount'),
     lang('raid_level'),
-    lang('raid_state')
+    lang('base_status')
 );
 
 ///////////////////////////////////////////////////////////////////////////////
 // Row Data
 ///////////////////////////////////////////////////////////////////////////////
 
-$degraded_dev = array();
-foreach ($raid_array as $dev => $myarray) {
-    $state = lang('raid_clean');
-    $mount = $raid->get_mount($dev);
-    $action = '&#160;';
-    $detail_buttons = '';
+foreach ($devices as $dev => $myarray) {
+    $state = "<div class='theme-text-ok'>" . lang('raid_clean') . "</div>";
     if ($myarray['state'] == Raid::STATUS_SYNCING && $myarray['sync_progress'] >= 0) {
-        $state = lang('raid_syncing') . ' (' . $myarray['sync_progress'] . '%)';
+        $state = "<div class='theme-text-warning'>" . lang('raid_syncing') . ' (' . $myarray['sync_progress'] . '%)</div>';
     } else if ($myarray['state'] == Raid::STATUS_SYNCING) {
-        $state = lang('raid_sync_scheduled');
+        $state = "<div class='theme-text-warning'>" . lang('raid_sync_scheduled') . "</div>";
     } else if ($myarray['state'] != Raid::STATUS_CLEAN) {
-        $state = lang('raid_degraded');
-        $detail_buttons = button_set(
-            array(
-                anchor_custom(
-                    '/app/raid/software/add_device/' . strtr(base64_encode($dev),  '+/=', '-_.'),
-                    lang('raid_add_device')
-                )
-            )
-        );
-    }
-    foreach ($myarray['devices'] as $partition => $details) {
-        if ($details['state'] == Raid::STATUS_DEGRADED) {
-            // Provide a more detailed state message
-            $state = lang('raid_degraded') . ' (' . $partition . ' ' . lang('raid_failed') . ')';
-            // Check what action applies
-            $hash = strtr(base64_encode($dev . '|' . $partition),  '+/=', '-_.');
-            $detail_buttons = button_set(
-                array(
-                    anchor_custom('/app/raid/software/remove_device/' . $hash, lang('raid_remove') . ' ' . $partition)
-                )
-            );
-            $degraded_dev[$details['dev']] = TRUE;
-        }
+        $state = "<div class='theme-text-alert'>" . lang('raid_degraded') . "</div>";
     }
     $row['title'] = $dev;
-    $row['action'] = NULL;
-    $row['anchors'] = $detail_buttons;
     $row['details'] = array (
         $dev,
-        byte_format($myarray['size']),
-        $mount,
         $myarray['level'],
-        "<div id='state-" . preg_replace('/\/dev\//', '', $dev) . "'>$state</div>"
+        $state
     );
     $rows[] = $row;
 }
 
-// Help box to identify physical device that is degraded
-if (!empty($degraded_dev)) {
-    try {
-        $storage = new Storage_Device();
-        $help_info = '';
-        foreach ($degraded_dev as $dev => $ignore) {
-            $block_device = $storage->get_device_details($dev);
-            $help_info .= '<div>' . $dev . ' = ' . $block_device['identifier'] . '</div>';
-        }
-        echo infobox_highlight(lang('base_information'), $help_info);
-    } catch (Exception $e) {
-        // Ignore
-    }
-}
 ///////////////////////////////////////////////////////////////////////////////
 // Sumary table
 ///////////////////////////////////////////////////////////////////////////////
@@ -129,5 +80,6 @@ echo summary_table(
     lang('raid_software'),
     NULL,
     $headers,
-    $rows
+    $rows,
+    array('no_action' => TRUE)
 );
