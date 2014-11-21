@@ -41,7 +41,7 @@ $this->lang->load('raid');
 ///////////////////////////////////////////////////////////////////////////////
 
 echo form_open('raid/edit');
-echo form_header(lang('raid_summary'));
+echo form_header(lang('raid_raid_summary'));
 
 ///////////////////////////////////////////////////////////////////////////////
 // Form fields and buttons
@@ -62,9 +62,9 @@ if ($mode === 'edit') {
 
 echo field_input('type', $type['class'], lang('raid_type'), TRUE);
 echo field_input('vendor', $type['vendor'], lang('raid_vendor'), TRUE);
-echo field_toggle_enable_disable('monitor', $monitor, lang('raid_monitor'), $read_only);
-echo field_toggle_enable_disable('notify', $notify, lang('raid_notify'), $read_only);
-echo field_input('email', $email, lang('raid_notify_email'), $read_only);
+echo field_toggle_enable_disable('monitor', $monitor, lang('raid_monitor_raid'), $read_only);
+echo field_toggle_enable_disable('notify', $notify, lang('raid_email_notification'), $read_only);
+echo field_input('email', $email, lang('base_email_address'), $read_only);
 echo field_button_set($buttons);
 
 ///////////////////////////////////////////////////////////////////////////////

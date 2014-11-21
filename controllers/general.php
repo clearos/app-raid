@@ -159,7 +159,7 @@ class General extends ClearOS_Controller
 
         try {
             $this->raid->check_status_change(TRUE, TRUE);
-            $this->page->set_message(lang('raid_test_sent') . ': ' . $this->raid->get_email() . '.', 'info');
+            $this->page->set_message(lang('raid_test_sent_to:') . ' ' . $this->raid->get_email() . '.', 'info');
             redirect('/raid');
         } catch (Exception $e) {
             $this->page->view_exception($e);

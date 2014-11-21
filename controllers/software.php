@@ -230,7 +230,7 @@ class Software extends ClearOS_Controller
                 foreach ($myarray['devices'] as $partition => $details) {
                     if ($details['state'] == Raid::STATUS_DEGRADED) {
                         // Provide a more detailed state message
-                        $output[$device] = lang('raid_degraded') . ' (' . $partition . ' ' . lang('raid_failed') . ')';
+                        $output[$device] = lang('raid_degraded') . ': ' . $partition;
                     }
                 }
             }

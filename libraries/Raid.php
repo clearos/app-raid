@@ -47,6 +47,7 @@ require_once $bootstrap . '/bootstrap.php';
 ///////////////////////////////////////////////////////////////////////////////
 
 clearos_load_language('raid');
+clearos_load_language('base');
 
 ///////////////////////////////////////////////////////////////////////////////
 // D E P E N D E N C I E S
@@ -539,9 +540,9 @@ class Raid extends Engine
 
             $mailer = new Mail_Notification();
             $hostname = new Hostname();
-            $subject = lang('raid_state') . ' - ' . $hostname->get();
-            $body = "\n\n" . lang('raid_state') . ":\n";
-            $body .= str_pad('', strlen(lang('raid_state') . ':'), '=') . "\n\n";
+            $subject = lang('raid_raid_status') . ' - ' . $hostname->get();
+            $body = "\n\n" . lang('raid_raid_status') . ":\n";
+            $body .= str_pad('', strlen(lang('raid_raid_status') . ':'), '=') . "\n\n";
 
             $thedate = strftime("%b %e %Y");
             $thetime = strftime("%T %Z");
@@ -919,7 +920,7 @@ class Raid extends Engine
         clearos_profile(__METHOD__, __LINE__);
         $options = array (
             1 => lang('raid_every_minute'),
-            30 => lang('raid_every_half_hour'),
+            30 => lang('raid_every_30_minutes'),
             60 => lang('base_hourly'),
             240 => lang('raid_every_4_hours'),
             1440 => lang('base_daily'),
@@ -1071,10 +1072,10 @@ class Raid extends Engine
             $padding = array(10, 10, 10, 10);
             $lines = array();
             $lines[] = str_pad(lang('raid_array'), $padding[0]) . "\t" .
-                str_pad(lang('raid_size'), $padding[1]) . "\t" .
+                str_pad(lang('base_size'), $padding[1]) . "\t" .
                 str_pad(lang('raid_mount'), $padding[2]) . "\t" .
                 str_pad(lang('raid_level'), $padding[3]) . "\t" .
-                lang('base_status');
+                lang('raid_raid_status');
             $lines[] = str_pad('', strlen($lines[0]) + 4*4, '-');
             $myarrays = $this->get_arrays();
             foreach ($myarrays as $dev => $myarray) {
@@ -1096,7 +1097,7 @@ class Raid extends Engine
                     } else if ($details['state'] == self::STATUS_SYNC_SCHEDULED) {
                         $state = lang('raid_sync_pending') . ' (' . $details['dev'] . ')';
                     } else if ($details['state'] == self::STATUS_DEGRADED) {
-                        $state = lang('raid_degraded') . ' (' . $partition . ' ' . lang('raid_failed') . ')';
+                        $state = lang('raid_degraded') . ': ' . $partition;
                     }
                 }
 
@@ -1132,7 +1133,7 @@ class Raid extends Engine
         try {
             Validation_Exception::is_valid($notify->validate_email($email));
         } catch (Validation_Exception $e) {
-            return lang('raid_email_is_invalid');
+            return lang('base_email_address_invalid');
         }
     }
 

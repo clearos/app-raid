@@ -44,11 +44,16 @@ if ($level == FALSE)
 ///////////////////////////////////////////////////////////////////////////////
 
 echo form_open('raid/general/edit');
-echo form_header(lang('raid_summary'));
+echo form_header(lang('raid_raid_summary'));
 
 ///////////////////////////////////////////////////////////////////////////////
 // Form fields and buttons
 ///////////////////////////////////////////////////////////////////////////////
+
+$send_mail_options = array(
+    '0' => lang('raid_on_failure'),
+    '1' => lang('raid_always')
+);
 
 if ($mode === 'edit') {
     $read_only = FALSE;
@@ -68,10 +73,10 @@ if ($mode === 'edit') {
 }
 
 echo field_input('level', $level, lang('raid_level'), TRUE);
-echo field_toggle_enable_disable('monitor', $monitor, lang('raid_monitor'), $read_only);
+echo field_toggle_enable_disable('monitor', $monitor, lang('raid_monitor_raid'), $read_only);
 echo field_dropdown('frequency', $frequency_options, $frequency, lang('raid_frequency'), $read_only);
-echo field_dropdown('send_mail', array('0' => lang('raid_send_mail_failure'), '1' => lang('raid_send_mail_always')), $send_mail, lang('raid_send_mail'), $read_only);
-echo field_input('email', $email, lang('raid_notify_email'), $read_only);
+echo field_dropdown('send_mail', $send_mail_options, $send_mail, lang('raid_send_mail'), $read_only);
+echo field_input('email', $email, lang('base_email_address'), $read_only);
 echo field_button_set($buttons);
 
 ///////////////////////////////////////////////////////////////////////////////

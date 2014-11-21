@@ -77,7 +77,7 @@ foreach ($devices as $dev => $myarray) {
 ///////////////////////////////////////////////////////////////////////////////
 
 echo summary_table(
-    lang('raid_software'),
+    lang('raid_software_raid'),
     NULL,
     $headers,
     $rows,

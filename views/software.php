@@ -49,10 +49,10 @@ $this->lang->load('raid');
 
 $headers = array(
     lang('raid_array'),
-    lang('raid_size'),
+    lang('base_size'),
     lang('raid_mount'),
     lang('raid_level'),
-    lang('raid_state')
+    lang('base_status')
 );
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -83,7 +83,7 @@ foreach ($raid_array as $dev => $myarray) {
     foreach ($myarray['devices'] as $partition => $details) {
         if ($details['state'] == Raid::STATUS_DEGRADED) {
             // Provide a more detailed state message
-            $state = lang('raid_degraded') . ' (' . $partition . ' ' . lang('raid_failed') . ')';
+            $state = lang('raid_degraded') . ': ' . $partition;
             // Check what action applies
             $hash = strtr(base64_encode($dev . '|' . $partition),  '+/=', '-_.');
             $detail_buttons = button_set(
@@ -126,7 +126,7 @@ if (!empty($degraded_dev)) {
 ///////////////////////////////////////////////////////////////////////////////
 
 echo summary_table(
-    lang('raid_software'),
+    lang('raid_software_raid'),
     NULL,
     $headers,
     $rows
