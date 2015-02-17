@@ -40,7 +40,6 @@ header('Content-Type: application/x-javascript');
 
 echo "
   $(document).ready(function() {
-    $('#email').css('width', 220);
     get_state();
   });
   function get_state() {

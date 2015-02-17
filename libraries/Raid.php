@@ -607,7 +607,7 @@ class Raid extends Engine
         	if ($cron->exists_configlet(self::FILE_CROND))
         		$cron->delete_configlet(self::FILE_CROND);
 
-        	$payload  = "# Created by API\n";
+            $payload  = "# Created by API [" . $this->get_frequency() . "]\n";
         	$payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " >/dev/NULL 2>&1";
         	$cron->add_configlet(self::FILE_CROND, $payload);
         } catch (Exception $e) {
@@ -634,7 +634,7 @@ class Raid extends Engine
             } else if ($cron->exists_configlet(self::FILE_CROND) && !$monitor) {
                 $cron->delete_configlet(self::FILE_CROND);
             } else if (!$cron->exists_configlet(self::FILE_CROND) && $monitor) {
-                $payload  = "# Created by API\n";
+                $payload  = "# Created by API [" . $this->get_frequency() . "]\n";
                 $payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " >/dev/NULL 2>&1";
                 $cron->add_configlet(self::FILE_CROND, $payload);
             }
