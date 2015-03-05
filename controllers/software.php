@@ -7,7 +7,7 @@
  * @package    raid
  * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2011-2015 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/raid/
  */
@@ -46,7 +46,7 @@ use \clearos\apps\raid\Raid as Raid;
  * @package    raid
  * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2011-2015 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/raid/
  */
@@ -220,17 +220,21 @@ class Software extends ClearOS_Controller
             $raid_array = $this->raid->get_arrays();
             foreach ($raid_array as $dev => $myarray) {
                 $device = preg_replace('/\/dev\//', '', $dev);
-                $output[$device] = lang('raid_clean');
-                if ($myarray['state'] == Raid::STATUS_SYNCING && $myarray['sync_progress'] >= 0)
-                    $output[$device] = lang('raid_syncing') . ' (' . $myarray['sync_progress'] . '%)';
-                else if ($myarray['state'] == Raid::STATUS_SYNCING)
-                    $output[$device] = lang('raid_sync_scheduled');
-                else if ($myarray['state'] != Raid::STATUS_CLEAN)
-                    $output[$device] = lang('raid_degraded');
+                $output[$device]['status'] = lang('raid_clean');
+		$output[$device]['degraded'] = FALSE;
+                if ($myarray['state'] == Raid::STATUS_SYNCING && $myarray['sync_progress'] >= 0) {
+                    $output[$device]['status'] = lang('raid_syncing') . ' (' . $myarray['sync_progress'] . '%)';
+                } else if ($myarray['state'] == Raid::STATUS_SYNCING) {
+                    $output[$device]['status'] = lang('raid_sync_scheduled');
+                } else if ($myarray['state'] != Raid::STATUS_CLEAN) {
+                    $output[$device]['status'] = lang('raid_degraded');
+                    $output[$device]['degraded'] = TRUE;
+                }
                 foreach ($myarray['devices'] as $partition => $details) {
                     if ($details['state'] == Raid::STATUS_DEGRADED) {
                         // Provide a more detailed state message
-                        $output[$device] = lang('raid_degraded') . ': ' . $partition;
+                        $output[$device]['status'] = lang('raid_degraded') . ': ' . $partition;
+                        $output[$device]['degraded'] = TRUE;
                     }
                 }
             }

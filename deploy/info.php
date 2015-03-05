@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'raid';
-$app['version'] = '2.0.0';
+$app['version'] = '2.0.1';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -60,4 +60,8 @@ $app['dashboard_widgets'] = array(
             'restricted' => FALSE,
         )
     )
+);
+
+$app['delete_dependency'] = array(
+    'app-raid-core'
 );

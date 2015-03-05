@@ -7,7 +7,7 @@
  * @package    raid
  * @subpackage javascript
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2011-2015 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearcenter.com/support/documentation/clearos/raid/
  */
@@ -49,9 +49,11 @@ echo "
         url: '/app/raid/software/get_state',
         data: '',
         success: function(data) {
-            if (data.code == undefined) {
-                $.each(data, function(id, state) { 
-                    $('#state-' + id).html(state);
+            if (data != undefined && data.code == undefined) {
+                $.each(data, function(id, info) { 
+                    $('#state-' + id).html(info.status);
+                    if (info.degraded)
+                        $('#state-' + id).addClass('theme-text-alert');
                 })
             }
             window.setTimeout(get_state, 1000);

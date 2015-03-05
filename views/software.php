@@ -70,7 +70,7 @@ foreach ($raid_array as $dev => $myarray) {
     } else if ($myarray['state'] == Raid::STATUS_SYNCING) {
         $state = lang('raid_sync_scheduled');
     } else if ($myarray['state'] != Raid::STATUS_CLEAN) {
-        $state = lang('raid_degraded');
+        $state = "<div class='theme-text-alert'>" . lang('raid_degraded') . "</div>";
         $detail_buttons = button_set(
             array(
                 anchor_custom(
@@ -83,7 +83,7 @@ foreach ($raid_array as $dev => $myarray) {
     foreach ($myarray['devices'] as $partition => $details) {
         if ($details['state'] == Raid::STATUS_DEGRADED) {
             // Provide a more detailed state message
-            $state = lang('raid_degraded') . ': ' . $partition;
+            $state = "<div class='theme-text-alert'>" . lang('raid_degraded') . ': ' . $partition . "</div>";
             // Check what action applies
             $hash = strtr(base64_encode($dev . '|' . $partition),  '+/=', '-_.');
             $detail_buttons = button_set(
