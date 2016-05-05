@@ -608,7 +608,7 @@ class Raid extends Engine
         		$cron->delete_configlet(self::FILE_CROND);
 
             $payload  = "# Created by API [" . $this->get_frequency() . "]\n";
-        	$payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " >/dev/NULL 2>&1";
+        	$payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " > /dev/NULL 2>&1";
         	$cron->add_configlet(self::FILE_CROND, $payload);
         } catch (Exception $e) {
         	throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
