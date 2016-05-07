@@ -106,10 +106,11 @@ class General extends ClearOS_Controller
 
         if (($this->input->post('submit') && $form_ok)) {
             try {
-                $this->raid->set_monitor($this->input->post('monitor'));
                 $this->raid->set_frequency($this->input->post('frequency'));
                 $this->raid->set_send_mail($this->input->post('send_mail'));
                 $this->raid->set_email($this->input->post('email'));
+                // Always set monitor after all parameters have been set
+                $this->raid->set_monitor($this->input->post('monitor'));
                 $this->page->set_status_updated();
                 redirect('/raid');
             } catch (Exception $e) {
