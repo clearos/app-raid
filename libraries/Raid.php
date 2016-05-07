@@ -259,18 +259,6 @@ class Raid extends Engine
     }
 
     /**
-     * Returns configuration to write to cron
-     * @return string
-     */
-    private function _get_send_mail_conf() {
-
-        if (! $this->is_loaded)
-            $this->_load_config();
-
-    	return $this->config['send_mail'] ? " -s " : "";
-    }
-
-    /**
      * Get the monitor status.
      *
      * @return boolean TRUE if monitoring is enabled
@@ -300,23 +288,10 @@ class Raid extends Engine
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        try {
-            $shell = new Shell();
-            $options['env'] = "LANG=en_US";
-            $args = 'API /etc/cron.d/' . self::FILE_CROND;
-            $retval = $shell->execute(self::CMD_GREP, $args, FALSE, $options);
-            if ($retval != 0) {
-                // Return default daily
-                return self::CRON_DEFAULT;
-            } else {
-                $line = $shell->get_last_output_line();
-                if (preg_match('/.*\[(\d+)\]$/', $line, $match))
-                    return $match[1];
-                return self::CRON_DEFAULT;
-            }
-        } catch (Exception $e) {
-            return self::CRON_DEFAULT;
-        }
+        if (! $this->is_loaded)
+            $this->_load_config();
+
+        return $this->config['frequency'];
     }
 
     /**
@@ -510,6 +485,20 @@ class Raid extends Engine
                 $retval = $shell->execute(self::CMD_DIFF, $args, FALSE, array('validate_exit_code' => FALSE));
             }
 
+            
+            if ($this->get_send_mail() == 0) {
+                // Check for failed only setting
+                if (! $this->is_loaded)
+                    $this->_load_config();
+
+                if (isset($this->config['failure_occurred']) && $this->config['failure_occurred']) {
+                    // Force send
+                    $send = TRUE;
+                    // Reset flag
+                    $this->_set_parameter('failure_occurred', FALSE);
+                }
+            }
+
             if ($retval != 0 || $send)
                 $this->send_status_change_notification($lines);
             else if (!$force)
@@ -601,18 +590,6 @@ class Raid extends Engine
             $this->_load_config();
 
         $this->_set_parameter('send_mail', $send_mail);
-
-        try {
-        	$cron = new Cron();
-        	if ($cron->exists_configlet(self::FILE_CROND))
-        		$cron->delete_configlet(self::FILE_CROND);
-
-            $payload  = "# Created by API [" . $this->get_frequency() . "]\n";
-        	$payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " > /dev/NULL 2>&1";
-        	$cron->add_configlet(self::FILE_CROND, $payload);
-        } catch (Exception $e) {
-        	throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
-        }
     }
 
     /**
@@ -627,15 +604,42 @@ class Raid extends Engine
     function set_monitor($monitor)
     {
         clearos_profile(__METHOD__, __LINE__);
+
+        if (! $this->is_loaded)
+            $this->_load_config();
+
         try {
             $cron = new Cron();
-            if ($cron->exists_configlet(self::FILE_CROND) && $monitor) {
-                return;
-            } else if ($cron->exists_configlet(self::FILE_CROND) && !$monitor) {
+            if ($cron->exists_configlet(self::FILE_CROND))
                 $cron->delete_configlet(self::FILE_CROND);
-            } else if (!$cron->exists_configlet(self::FILE_CROND) && $monitor) {
-                $payload  = "# Created by API [" . $this->get_frequency() . "]\n";
-                $payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " >/dev/NULL 2>&1";
+
+            if ($monitor) {
+                $options = $this->get_frequency_options();
+                $cron_time = self::CRON_DAILY;
+                if (array_key_exists($this->get_frequency(), $options)) {
+                    switch ($frequency) {
+                        case 1:
+                            $cron_time = self::CRON_MINUTE;
+                            break;
+                        case 30:
+                            $cron_time = self::CRON_HALF_HOUR;
+                            break;
+                        case 60:
+                            $cron_time = self::CRON_HOUR;
+                            break;
+                        case 240:
+                            $cron_time = self::CRON_4_HOUR;
+                            break;
+                        case 1440:
+                            $cron_time = self::CRON_DAILY;
+                            break;
+                        case 10080:
+                            $cron_time = self::CRON_WEEKLY;
+                            break;
+                    }
+                }
+                $payload  = "# Created by API\n";
+                $payload .= self::CRON_DAILY . " root " . self::CMD_RAID_SCRIPT . " >/dev/NULL 2>&1";
                 $cron->add_configlet(self::FILE_CROND, $payload);
             }
         } catch (Exception $e) {
@@ -655,63 +659,11 @@ class Raid extends Engine
     function set_frequency($frequency)
     {
         clearos_profile(__METHOD__, __LINE__);
-        try {
-            $cron = new Cron();
-            if (!$this->get_monitor())
-                return;
-
-            if ($cron->exists_configlet(self::FILE_CROND))
-                $cron->delete_configlet(self::FILE_CROND);
-
-            $options = $this->get_frequency_options();
-            $cron_time = self::CRON_DAILY;
-            if (array_key_exists($frequency, $options)) {
-                switch ($frequency) {
-                    case 1:
-                        $cron_time = self::CRON_MINUTE;
-                        break;
-                    case 30:
-                        $cron_time = self::CRON_HALF_HOUR;
-                        break;
-                    case 60:
-                        $cron_time = self::CRON_HOUR;
-                        break;
-                    case 240:
-                        $cron_time = self::CRON_4_HOUR;
-                        break;
-                    case 1440:
-                        $cron_time = self::CRON_DAILY;
-                        break;
-                    case 10080:
-                        $cron_time = self::CRON_WEEKLY;
-                        break;
-                }
-            }
-            $payload  = "# Created by API [$frequency]\n";
-            $payload .= $cron_time . " root " . self::CMD_RAID_SCRIPT . self::_get_send_mail_conf() . " >/dev/NULL 2>&1";
-            $cron->add_configlet(self::FILE_CROND, $payload);
-        } catch (Exception $e) {
-            throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
-        }
-    }
-
-    /**
-     * Set RAID notification.
-     *
-     * @param boolean $status toggles notification
-     *
-     * @return void
-     * @throws Engine_Exception
-     */
-
-    function set_notify($status)
-    {
-        clearos_profile(__METHOD__, __LINE__);
 
         if (! $this->is_loaded)
             $this->_load_config();
 
-        $this->_set_parameter('notify', (isset($status) && $status ? 1 : 0));
+        $this->_set_parameter('frequency', $frequency);
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -744,26 +696,29 @@ class Raid extends Engine
             foreach ($arrays as $md_dev) {
                 $state = self::STATUS_CLEAN;
                 $sync_progress = NULL;
+                $level = lang('base_unknown');
                 try {
-                    if ($this->_get_md_field('/sys/block/' . $md_dev . '/md/degraded') != 0)
-                        $state = self::STATUS_DEGRADED;
-                    if ($this->_get_md_field('/sys/block/' . $md_dev . '/md/sync_action') == 'recover') {
-                        $state = self::STATUS_SYNCING;
-                        // If sync in progress, fetch % complete
-                        $sync_progress = $this->_get_sync_progress('/dev/' . $md_dev);
+                    $level = $this->_get_md_field('/sys/block/' . $md_dev . '/md/level');
+                    if (preg_match("/^RAID(\d+)$/", strtoupper($level), $match))
+                        $level = 'RAID-' . $match[1];
+                } catch (Exception $e) {
+                }
+                try {
+                    // Not relavent to RAID0...will just throw a bunch of exceptions
+                    if ($level != 'RAID-0') {
+                        if ($this->_get_md_field('/sys/block/' . $md_dev . '/md/degraded') != 0)
+                            $state = self::STATUS_DEGRADED;
+                        if ($this->_get_md_field('/sys/block/' . $md_dev . '/md/sync_action') == 'recover') {
+                            $state = self::STATUS_SYNCING;
+                            // If sync in progress, fetch % complete
+                            $sync_progress = $this->_get_sync_progress('/dev/' . $md_dev);
+                        }
                     }
                 } catch (Exception $e) {
                 }
                 $size = lang('base_unknown');
                 try {
                     $size = $this->_get_md_field('/sys/block/' . $md_dev . '/size') * 512;
-                } catch (Exception $e) {
-                }
-                $level = lang('base_unknown');
-                try {
-                    $level = $this->_get_md_field('/sys/block/' . $md_dev . '/md/level');
-                    if (preg_match("/^RAID(\d+)$/", strtoupper($level), $match))
-                        $level = 'RAID-' . $match[1];
                 } catch (Exception $e) {
                 }
                 $number = 0;
@@ -1068,6 +1023,15 @@ class Raid extends Engine
 
         $this->state = lang('raid_clean');
 
+        if (! $this->is_loaded)
+            $this->_load_config();
+
+        $failed_list = array();
+        if (isset($this->config['failed_list']))
+            $failed_list = json_decode($this->config['failed_list']);
+        if (!is_array($failed_list))
+            $failed_list = array();
+
         try {
             $padding = array(10, 10, 10, 10);
             $lines = array();
@@ -1085,6 +1049,13 @@ class Raid extends Engine
                 if ($myarray['state'] != Raid::STATUS_CLEAN) {
                     $state = lang('raid_degraded');
                     $this->state = $state;
+                    // User may have settings to alert once on failure only...we need to store this
+                    if (!in_array($dev, $failed_list))
+                        $this->_set_parameter('failure_occurred', TRUE);
+                    $failed_list[] = $dev;
+                } else {
+                    if (($key = array_search($dev, $failed_list)) !== false)
+                        unset($failed_list[$key]);
                 }
                 if ($myarray['state'] == Raid::STATUS_SYNCING && $myarray['sync_progress'] >= 0)
                     $state = lang('raid_syncing') . ' (' . $myarray['sync_progress'] . '%)';
@@ -1105,6 +1076,8 @@ class Raid extends Engine
                     str_pad(intval(intval($myarray['size'])/(1024 * 1024)) . lang('base_megabytes'), $padding[1]) . "\t" .
                     str_pad($mount, $padding[2]) . "\t" . str_pad($myarray['level'], $padding[3]) . "\t" . $state;
             }
+
+            $this->_set_parameter('failed_list', json_encode($failed_list));
 
             return $lines;
         } catch (Exception $e) {
