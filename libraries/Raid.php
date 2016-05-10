@@ -524,7 +524,7 @@ class Raid extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         try {
-            if (!$this->get_monitor() || $this->get_email() == '')
+            if ($this->get_email() == '')
                 return;
 
             $mailer = new Mail_Notification();
