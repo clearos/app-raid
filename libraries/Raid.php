@@ -746,6 +746,9 @@ class Raid extends Engine
                         $bd = $match[1];
                     else
                         $bd = $storage_device;
+                    // Check for devices with no partitioning (eg. DVD)
+                    if (!isset($info['partitioning']['partitions']))
+                        continue;
                     $partitions = array_keys($info['partitioning']['partitions']);
                     if (empty($partitions))
                         continue;
