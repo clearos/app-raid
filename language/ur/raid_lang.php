@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'ڈیوائس شامل کریں';
+$lang['raid_always'] = 'ہمیشہ';
+$lang['raid_app_description'] = 'سافٹ ویئر RAID کی حیثیت معلومات، رپورٹنگ اور سافٹ ویئر RAID کے لئے انتظامی اعمال فراہم کرتا ہے.';
+$lang['raid_app_name'] = 'سافٹ ویئر RAID مینیجر';
+$lang['raid_array'] = 'لڑی';
+$lang['raid_clean'] = 'صاف';
+$lang['raid_confirm_add'] = 'آپ نے٪ s RAID سرنی کرنے کے لئے بلاک کے آلہ٪ s کو شامل کرنے کے لئے چاہوں گا براہ مہربانی تصدیق کریں.';
+$lang['raid_confirm_remove'] = 'آپ نے٪ s RAID سرنی سے بلاک ڈیوائس٪ s کو دور کرنا چاہتے ہیں براہ مہربانی تصدیق کریں.';
+$lang['raid_degraded'] = 'اوکردوست';
+$lang['raid_device'] = 'ڈیوائس';
+$lang['raid_email_notification'] = 'ای میل کے نوٹیفکیشن';
+$lang['raid_every_30_minutes'] = 'ہر 30 منٹ';
+$lang['raid_every_4_hours'] = 'ہر 4 گھنٹے';
+$lang['raid_every_minute'] = 'ہر منٹ';
+$lang['raid_frequency'] = 'ریڈیو فریکوئینسی';
+$lang['raid_level'] = 'لیول';
+$lang['raid_monitor_raid'] = 'مانیٹر RAID';
+$lang['raid_mount'] = 'پہاڑ';
+$lang['raid_no_support'] = 'کوئی حمایت کی RAID arrays کے پایا.';
+$lang['raid_not_degraded'] = 'صف ایک اوکردوست حالت میں نہ ہو.';
+$lang['raid_on_failure'] = 'ناکامی پر';
+$lang['raid_raid_status'] = 'RAID حیثیت';
+$lang['raid_raid_summary'] = 'RAID خلاصہ';
+$lang['raid_remove'] = 'دور';
+$lang['raid_send_mail'] = 'ای میل کے نوٹیفکیشن کا حساب';
+$lang['raid_software_raid'] = 'سافٹ ویئر RAID';
+$lang['raid_sync_pending'] = 'زیر التوا مطابقت پذیری';
+$lang['raid_sync_scheduled'] = 'مطابقت پذیری شیڈول';
+$lang['raid_syncing'] = 'پیش رفت میں مطابقت پذیری';
+$lang['raid_test_email'] = 'ٹیسٹ ای میل بھیج';
+$lang['raid_test_sent_to:'] = 'کامیابی. ای میل نوٹیفکیشن بھیج دیا گیا ہے:';
+$lang['raid_type'] = 'قسم';
+$lang['raid_vendor'] = 'وینڈر';
