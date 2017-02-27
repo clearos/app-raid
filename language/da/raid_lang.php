@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Tilføj enhed';
+$lang['raid_always'] = 'Altid';
+$lang['raid_app_description'] = 'Software RAID giver statusoplysninger, rapportering og administrative foranstaltninger til software RAID.';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'Ren';
+$lang['raid_confirm_add'] = 'Bekræft du ønsker at tilføje blokenheden% s til% s RAID-array.';
+$lang['raid_confirm_remove'] = 'Bekræft du ønsker at fjerne blokenheden% s fra% s RAID-array.';
+$lang['raid_degraded'] = 'forringet';
+$lang['raid_device'] = 'enhed';
+$lang['raid_email_notification'] = 'E-mail-besked';
+$lang['raid_every_30_minutes'] = 'Hver 30 minutter';
+$lang['raid_every_4_hours'] = 'Hver 4. time';
+$lang['raid_every_minute'] = 'Hvert minut';
+$lang['raid_frequency'] = 'Frekvens';
+$lang['raid_level'] = 'Niveau';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'Ingen understøttede RAID fundet.';
+$lang['raid_not_degraded'] = 'Array er ikke i en forringet tilstand.';
+$lang['raid_on_failure'] = 'På fiasko';
+$lang['raid_raid_status'] = 'RAID status';
+$lang['raid_raid_summary'] = 'RAID Summary';
+$lang['raid_remove'] = 'Fjerne';
+$lang['raid_send_mail'] = 'Send e-mail-besked';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Sync afventer';
+$lang['raid_sync_scheduled'] = 'Sync planlagt';
+$lang['raid_syncing'] = 'Sync i gang';
+$lang['raid_test_email'] = 'Send Test E-mail';
+$lang['raid_test_sent_to:'] = 'Succes. E-mail-notifikation er blevet sendt til:';
+$lang['raid_type'] = 'Type';
+$lang['raid_vendor'] = 'Sælger';
