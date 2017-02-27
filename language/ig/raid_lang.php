@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Tinye na Ngwaọrụ';
+$lang['raid_always'] = 'Always';
+$lang['raid_app_description'] = 'Software wakporo-enye ọnọdụ ọmụma, akuko na nhazi omume maka software wakporo.';
+$lang['raid_app_name'] = 'Software wakporo Manager';
+$lang['raid_array'] = 'n&#39;usoro';
+$lang['raid_clean'] = 'ọcha';
+$lang['raid_confirm_add'] = 'Biko gosi ị ga-achọ itinye ngọngọ ngwaọrụ% s ka% s wakporo n&#39;usoro.';
+$lang['raid_confirm_remove'] = 'Biko gosi ị ga-achọ iji wepụ ngọngọ ngwaọrụ% s si% s wakporo n&#39;usoro.';
+$lang['raid_degraded'] = 'rere';
+$lang['raid_device'] = 'ngwaọrụ';
+$lang['raid_email_notification'] = 'E-mail ngosi';
+$lang['raid_every_30_minutes'] = 'Ọ bụla 30 nkeji';
+$lang['raid_every_4_hours'] = '4 ọ bụla awa';
+$lang['raid_every_minute'] = 'na minit ọ bụla';
+$lang['raid_frequency'] = 'Frequency';
+$lang['raid_level'] = 'larịị';
+$lang['raid_monitor_raid'] = 'Monitor wakporo';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'Ọ dịghị akwado wakporo arrays hụrụ.';
+$lang['raid_not_degraded'] = 'N&#39;usoro bụ na a rụrụ arụ nke ala.';
+$lang['raid_on_failure'] = 'on ọdịda';
+$lang['raid_raid_status'] = 'wakporo Status';
+$lang['raid_raid_summary'] = 'wakporo Summary';
+$lang['raid_remove'] = 'wepụ';
+$lang['raid_send_mail'] = 'Send E-mail ngosi';
+$lang['raid_software_raid'] = 'software wakporo';
+$lang['raid_sync_pending'] = 'mmekọrịta rue mgbe';
+$lang['raid_sync_scheduled'] = 'mmekọrịta ndokwa';
+$lang['raid_syncing'] = 'Mmekọrịta na-aga n&#39;ihu';
+$lang['raid_test_email'] = 'Send Test E-mail';
+$lang['raid_test_sent_to:'] = 'Ihe ịga nke ọma. E-mail ngosi e zigara:';
+$lang['raid_type'] = 'ụdị';
+$lang['raid_vendor'] = 'ere';
