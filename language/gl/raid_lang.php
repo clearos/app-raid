@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Agregar dispositivo';
+$lang['raid_always'] = 'sempre';
+$lang['raid_app_description'] = 'Software RAID ofrece información de estado, informes e accións administrativas para RAID software.';
+$lang['raid_app_name'] = 'RAID Manager Software';
+$lang['raid_array'] = 'orde';
+$lang['raid_clean'] = 'Limpar';
+$lang['raid_confirm_add'] = 'Por favor, confirme que desexa engadir ao dispositivo de bloque% s para array RAID% s.';
+$lang['raid_confirm_remove'] = 'Por favor, confirme que desexa eliminar dispositivo de bloque% s do array RAID% s.';
+$lang['raid_degraded'] = 'degradada';
+$lang['raid_device'] = 'dispositivo';
+$lang['raid_email_notification'] = 'Notificación por correo electrónico';
+$lang['raid_every_30_minutes'] = 'Cada 30 minutos';
+$lang['raid_every_4_hours'] = 'Cada 4 horas';
+$lang['raid_every_minute'] = 'cada minuto';
+$lang['raid_frequency'] = 'frecuencia';
+$lang['raid_level'] = 'nivel';
+$lang['raid_monitor_raid'] = 'Monitor de RAID';
+$lang['raid_mount'] = 'monte';
+$lang['raid_no_support'] = 'Non arrays RAID soportados atopados.';
+$lang['raid_not_degraded'] = 'Matriz non está nun estado degradado.';
+$lang['raid_on_failure'] = 'en caso de fallo';
+$lang['raid_raid_status'] = 'Estado RAID';
+$lang['raid_raid_summary'] = 'resumo RAID';
+$lang['raid_remove'] = 'Quitar';
+$lang['raid_send_mail'] = 'Enviar notificación por correo electrónico';
+$lang['raid_software_raid'] = 'software RAID';
+$lang['raid_sync_pending'] = 'sincronización pendente';
+$lang['raid_sync_scheduled'] = 'sincronización programada';
+$lang['raid_syncing'] = 'Sincronización en curso';
+$lang['raid_test_email'] = 'Send Test E-mail';
+$lang['raid_test_sent_to:'] = 'Éxito. Notificación de correo-e foi enviado a:';
+$lang['raid_type'] = 'tipo';
+$lang['raid_vendor'] = 'vendedor';
