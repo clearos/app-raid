@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'បន្ថែមឧបករណ៍';
+$lang['raid_always'] = 'ជានិច្ច';
+$lang['raid_app_description'] = 'RAID កម្មវិធីផ្តល់ព័ស្ថានភាពការរាយការណ៍និងសកម្មភាពរដ្ឋបាលសម្រាប់ RAID កម្មវិធី។';
+$lang['raid_app_name'] = 'កម្មវិធីគ្រប់គ្រង RAID កម្មវិធី';
+$lang['raid_array'] = 'អារេ';
+$lang['raid_clean'] = 'លាងសមាត';
+$lang['raid_confirm_add'] = 'សូមបញ្ជាក់ថាអ្នកចង់បន្ថែមឧបករណ៍ប្លុក% s ទៅជាអារេ RAID% s ។';
+$lang['raid_confirm_remove'] = 'សូមបញ្ជាក់ថាអ្នកចង់យកឧបករណ៍ប្លុក% s ពីអារេ RAID% s ។';
+$lang['raid_degraded'] = 'ការរិចរិល';
+$lang['raid_device'] = 'ឧបករណ៍';
+$lang['raid_email_notification'] = 'ការជូនដំណឹងអ៊ីម៉ែល';
+$lang['raid_every_30_minutes'] = 'ជារៀងរាល់ 30 នាទី';
+$lang['raid_every_4_hours'] = 'ជារៀងរាល់ 4 ម៉ោង';
+$lang['raid_every_minute'] = 'គ្រប់នាទី';
+$lang['raid_frequency'] = 'ភពញឹកញប់';
+$lang['raid_level'] = 'កម្រិត';
+$lang['raid_monitor_raid'] = 'RAID បានត្រួតពិនិត្យ';
+$lang['raid_mount'] = 'ភ្នំ';
+$lang['raid_no_support'] = 'អារេ RAID បានគាំទ្រមិនមានរកឃើញ។';
+$lang['raid_not_degraded'] = 'អារេគឺមិននៅក្នុងរដ្ឋរេចរឹលមួយ។';
+$lang['raid_on_failure'] = 'លើបរាជ័យ';
+$lang['raid_raid_status'] = 'ស្ថានភាព RAID បាន';
+$lang['raid_raid_summary'] = 'សង្ខេប RAID បាន';
+$lang['raid_remove'] = 'យក';
+$lang['raid_send_mail'] = 'ផ្ញើការជូនដំណឹងអ៊ីម៉ែល';
+$lang['raid_software_raid'] = 'RAID កម្មវិធី';
+$lang['raid_sync_pending'] = 'រង់ចាំការធ្វើសមកាលកម្ម';
+$lang['raid_sync_scheduled'] = 'ធ្វើសមកាលកម្មកំណត់ពេលវេលា';
+$lang['raid_syncing'] = 'ធ្វើសមកាលកម្មនៅក្នុងវឌ្ឍនភាព';
+$lang['raid_test_email'] = 'ផ្ញើរអ៊ីម៉ែលការធ្វើតេស្ត';
+$lang['raid_test_sent_to:'] = 'បានភាពជោគជ័យ។ ការជូនដំណឹងអ៊ីមែលត្រូវបានផ្ញើទៅ:';
+$lang['raid_type'] = 'ប្រភេទ';
+$lang['raid_vendor'] = 'អ្នកលក់';
