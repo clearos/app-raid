@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Add mochine';
+$lang['raid_always'] = 'kamehla';
+$lang['raid_app_description'] = 'Software futuheloa fana ka tlhahisoleseding ka boemo, ho tlaleha le liketso tsa tsamaiso tsa etsoe Software futuheloa.';
+$lang['raid_app_name'] = 'Software Manager futuheloa';
+$lang['raid_array'] = 'drive';
+$lang['raid_clean'] = 'Clean';
+$lang['raid_confirm_add'] = 'Ka kōpo tiisetsa u tla rata ho eketsa le literata sesebediswa% &#39;s ho%&#39; s futuheloa drive.';
+$lang['raid_confirm_remove'] = 'Ka kōpo tiisetsa u ka ratang ho tlosa le literata sesebediswa% &#39;s ho tloha%&#39; s futuheloa drive.';
+$lang['raid_degraded'] = 'tlotlolotsoe';
+$lang['raid_device'] = 'sesebediswa';
+$lang['raid_email_notification'] = 'E-mail Tsebiso';
+$lang['raid_every_30_minutes'] = 'Mong le e mong metsotso e 30';
+$lang['raid_every_4_hours'] = 'Mong le e mong lihora tse 4';
+$lang['raid_every_minute'] = 'ka motsotso';
+$lang['raid_frequency'] = 'maqhubu';
+$lang['raid_level'] = 'Level';
+$lang['raid_monitor_raid'] = 'beha leihlo futuheloa';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'No tšehetsoa futuheloa tse fapaneng fumanoa.';
+$lang['raid_not_degraded'] = 'Drive ha le boemong bo nyonyehang.';
+$lang['raid_on_failure'] = 'On hloleha';
+$lang['raid_raid_status'] = 'futuheloa Status';
+$lang['raid_raid_summary'] = 'futuheloa Summary';
+$lang['raid_remove'] = 'tlosa';
+$lang['raid_send_mail'] = 'Romela E-mail Tsebiso';
+$lang['raid_software_raid'] = 'Software futuheloa';
+$lang['raid_sync_pending'] = 'kgokagantswe ntseng';
+$lang['raid_sync_scheduled'] = 'kgokagantswe lokiselitsoe';
+$lang['raid_syncing'] = 'Kgokagantswe tsoela pele';
+$lang['raid_test_email'] = 'Romela Test E-mail';
+$lang['raid_test_sent_to:'] = 'Atlehe. tsebiso E-mail e rometsoe ho tsona:';
+$lang['raid_type'] = 'Type';
+$lang['raid_vendor'] = 'morekisi';
