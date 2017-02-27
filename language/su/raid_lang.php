@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Tambah Alat';
+$lang['raid_always'] = 'salawasna';
+$lang['raid_app_description'] = 'Software razia nyadiakeun informasi status, ngalaporkeun jeung lampah administrasi keur software razia.';
+$lang['raid_app_name'] = 'Software razia Manager';
+$lang['raid_array'] = 'aturan';
+$lang['raid_clean'] = 'beresih';
+$lang['raid_confirm_add'] = 'Mangga mastikeun Anjeun hoyong nambahkeun alat block% s ka% s razia Asép Sunandar Sunarya.';
+$lang['raid_confirm_remove'] = 'Mangga mastikeun Anjeun hoyong nyabut alat block% s ti% s razia Asép Sunandar Sunarya.';
+$lang['raid_degraded'] = 'didegradasi';
+$lang['raid_device'] = 'pakakas';
+$lang['raid_email_notification'] = 'E-mail Bewara';
+$lang['raid_every_30_minutes'] = 'Unggal 30 menit';
+$lang['raid_every_4_hours'] = 'Unggal 4 jam';
+$lang['raid_every_minute'] = 'unggal menit';
+$lang['raid_frequency'] = 'prekuensi';
+$lang['raid_level'] = 'tingkat';
+$lang['raid_monitor_raid'] = 'monitor razia';
+$lang['raid_mount'] = 'Gunung';
+$lang['raid_no_support'] = 'No arrays razia dirojong kapanggih.';
+$lang['raid_not_degraded'] = 'Asép Sunandar Sunarya teu aya dina kaayaan didegradasi.';
+$lang['raid_on_failure'] = 'on kagagalan';
+$lang['raid_raid_status'] = 'Status razia';
+$lang['raid_raid_summary'] = 'razia Summary';
+$lang['raid_remove'] = 'mindahkeun';
+$lang['raid_send_mail'] = 'Kirim surélék Bewara';
+$lang['raid_software_raid'] = 'software razia';
+$lang['raid_sync_pending'] = 'Sync pending';
+$lang['raid_sync_scheduled'] = 'Sync dijadwalkeun';
+$lang['raid_syncing'] = 'Sync dina kamajuan';
+$lang['raid_test_email'] = 'Kirimkeun Test E-mail';
+$lang['raid_test_sent_to:'] = 'Sukses. béwara E-mail geus dikirim ka:';
+$lang['raid_type'] = 'ngetik';
+$lang['raid_vendor'] = 'jelema nu ngajual nguriling';
