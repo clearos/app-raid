@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Lägg till enhet';
+$lang['raid_always'] = 'Alltid';
+$lang['raid_app_description'] = 'Software RAID ger statusinformation, rapportering och administrativa åtgärder för programvaru-RAID.';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'array';
+$lang['raid_clean'] = 'Rena';
+$lang['raid_confirm_add'] = 'Bekräfta att du vill lägga till blockenheten% s till% s RAID-array.';
+$lang['raid_confirm_remove'] = 'Bekräfta att du vill ta bort blockenhet% s från% s RAID-array.';
+$lang['raid_degraded'] = 'degraderas';
+$lang['raid_device'] = 'anordning';
+$lang['raid_email_notification'] = 'E-postmeddelande';
+$lang['raid_every_30_minutes'] = 'Varje 30 minuter';
+$lang['raid_every_4_hours'] = 'Var 4 timmar';
+$lang['raid_every_minute'] = 'Varje minut';
+$lang['raid_frequency'] = 'Frekvens';
+$lang['raid_level'] = 'Nivå';
+$lang['raid_monitor_raid'] = 'monitor RAID';
+$lang['raid_mount'] = 'Montera';
+$lang['raid_no_support'] = 'Inga stöds RAID hittades.';
+$lang['raid_not_degraded'] = 'Array är inte i ett försämrat tillstånd.';
+$lang['raid_on_failure'] = 'på fel';
+$lang['raid_raid_status'] = 'RAID-status';
+$lang['raid_raid_summary'] = 'RAID Sammanfattning';
+$lang['raid_remove'] = 'Avlägsna';
+$lang['raid_send_mail'] = 'Skicka e-postmeddelande';
+$lang['raid_software_raid'] = 'mjukvaru-RAID';
+$lang['raid_sync_pending'] = 'synkronisering väntar';
+$lang['raid_sync_scheduled'] = 'synk planerad';
+$lang['raid_syncing'] = 'Synkronisering pågår';
+$lang['raid_test_email'] = 'Skicka test E-post';
+$lang['raid_test_sent_to:'] = 'Framgång. E-postmeddelande har skickats till:';
+$lang['raid_type'] = 'Typ';
+$lang['raid_vendor'] = 'Säljare';
