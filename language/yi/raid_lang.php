@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'לייג צו דיווייס';
+$lang['raid_always'] = 'אַלע מאָל';
+$lang['raid_app_description'] = 'ווייכווארג RAID גיט סטאַטוס אינפֿאָרמאַציע, ריפּאָרטינג און אַדמיניסטראַטיווע אַקשאַנז פֿאַר ווייכווארג רייד.';
+$lang['raid_app_name'] = 'ווייכווארג RAID מאַנאַגער';
+$lang['raid_array'] = 'מענגע';
+$lang['raid_clean'] = 'ריין';
+$lang['raid_confirm_add'] = 'ביטע באַשטעטיקן איר וואָלט ווי צו לייגן בלאָק מיטל% s צו% s RAID מענגע.';
+$lang['raid_confirm_remove'] = 'ביטע באַשטעטיקן איר וואָלט ווי צו באַזייַטיקן בלאָק מיטל s% פֿון% s RAID מענגע.';
+$lang['raid_degraded'] = 'דיגריידאַד';
+$lang['raid_device'] = 'מיטל';
+$lang['raid_email_notification'] = 'E- פּאָסט אָנזאָג';
+$lang['raid_every_30_minutes'] = 'יעדער 30 מינוט';
+$lang['raid_every_4_hours'] = 'יעדער 4 שעה';
+$lang['raid_every_minute'] = 'יעדער מינוט';
+$lang['raid_frequency'] = 'אָפטקייַט';
+$lang['raid_level'] = 'גלייַך';
+$lang['raid_monitor_raid'] = 'מאָניטאָר RAID';
+$lang['raid_mount'] = 'אָנקלאַפּן';
+$lang['raid_no_support'] = 'ניט קיין שטיצט RAID ערייז געפֿונען.';
+$lang['raid_not_degraded'] = 'מענגע איז נישט אין אַ דיגריידאַד שטאַט.';
+$lang['raid_on_failure'] = 'אויף דורכפאַל';
+$lang['raid_raid_status'] = 'RAID סטאטוס';
+$lang['raid_raid_summary'] = 'RAID סאַמערי';
+$lang['raid_remove'] = 'אַראָפּנעמען';
+$lang['raid_send_mail'] = 'שיקן E- פּאָסט אָנזאָג';
+$lang['raid_software_raid'] = 'ווייכווארג RAID';
+$lang['raid_sync_pending'] = 'סינק פּענדינג';
+$lang['raid_sync_scheduled'] = 'סינק סקעדזשולד';
+$lang['raid_syncing'] = 'סינק אין פּראָגרעס';
+$lang['raid_test_email'] = 'שיקן טעסט E- פּאָסט';
+$lang['raid_test_sent_to:'] = 'הצלחה. E- פּאָסט אָנזאָג האט שוין געשיקט צו:';
+$lang['raid_type'] = 'טיפּ';
+$lang['raid_vendor'] = 'פאַרקויפער';
