@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Ավելացնել սարք';
+$lang['raid_always'] = 'միշտ';
+$lang['raid_app_description'] = 'Software RAID տրամադրում կարգավիճակի մասին, հաշվետվությունների եւ վարչական գործողություններ ծրագրային RAID:';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'զարդ';
+$lang['raid_clean'] = 'մաքուր';
+$lang['raid_confirm_add'] = 'Խնդրում ենք հաստատել, որ դուք ցանկանում է ավելացնել Արգելափակման սարքի% s է% s RAID զանգված:';
+$lang['raid_confirm_remove'] = 'Խնդրում ենք հաստատել, որ դուք ցանկանում է հեռացնել Արգելափակման սարքի% s% s RAID զանգված:';
+$lang['raid_degraded'] = 'վատթարացում';
+$lang['raid_device'] = 'սարք';
+$lang['raid_email_notification'] = 'E-mail ծանուցումը';
+$lang['raid_every_30_minutes'] = 'Ամեն 30 րոպեն մեկ';
+$lang['raid_every_4_hours'] = 'Յուրաքանչյուր 4 ժամ';
+$lang['raid_every_minute'] = 'Ամեն րոպե';
+$lang['raid_frequency'] = 'հաճախականություն';
+$lang['raid_level'] = 'մակարդակ';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'լեռ';
+$lang['raid_no_support'] = 'Ոչ աջակցում RAID arrays գտնվել:';
+$lang['raid_not_degraded'] = 'Array է ոչ մի դեգրադացված վիճակում:';
+$lang['raid_on_failure'] = 'On ձախողման';
+$lang['raid_raid_status'] = 'RAID կարգավիճակը';
+$lang['raid_raid_summary'] = 'RAID Ամփոփում';
+$lang['raid_remove'] = 'հեռացնել';
+$lang['raid_send_mail'] = 'Ուղարկել Էլ-փոստով տեղեկացումը';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Sync սպասող';
+$lang['raid_sync_scheduled'] = 'Sync նախատեսվում';
+$lang['raid_syncing'] = 'Sync ընթացքի';
+$lang['raid_test_email'] = 'Ուղարկել Test E-mail';
+$lang['raid_test_sent_to:'] = 'Հաջողություն. Էլ-փոստով տեղեկացումը արդեն ուղարկվել է:';
+$lang['raid_type'] = 'Տիպ';
+$lang['raid_vendor'] = 'վաճառող';
