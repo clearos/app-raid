@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'სანიშნეს მოწყობილობა';
+$lang['raid_always'] = 'ყოველთვის';
+$lang['raid_app_description'] = 'პროგრამული RAID უზრუნველყოფს სტატუსის შესახებ ინფორმაცია, ანალიზის და ადმინისტრაციული ქმედებები პროგრამული უზრუნველყოფა RAID.';
+$lang['raid_app_name'] = 'პროგრამული RAID Manager';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'სუფთა';
+$lang['raid_confirm_add'] = 'გთხოვთ დაადასტუროთ გსურთ დაამატოთ ბლოკი მოწყობილობა% s% s RAID მასივი.';
+$lang['raid_confirm_remove'] = 'გთხოვთ დაადასტუროთ გსურთ ამოიღონ ბლოკი მოწყობილობა% s% s RAID მასივი.';
+$lang['raid_degraded'] = 'დეგრადირებული';
+$lang['raid_device'] = 'მოწყობილობა';
+$lang['raid_email_notification'] = 'E-mail შეტყობინების';
+$lang['raid_every_30_minutes'] = 'ყოველ 30 წუთში';
+$lang['raid_every_4_hours'] = 'ყოველ 4 საათში';
+$lang['raid_every_minute'] = 'ყოველ წუთს';
+$lang['raid_frequency'] = 'Frequency';
+$lang['raid_level'] = 'დონე';
+$lang['raid_monitor_raid'] = 'მონიტორი RAID';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'მხარდაჭერილ RAID მასივების ი.';
+$lang['raid_not_degraded'] = 'Array არ არის დეგრადირებული სახელმწიფო.';
+$lang['raid_on_failure'] = 'მარცხი';
+$lang['raid_raid_status'] = 'RAID სტატუსი';
+$lang['raid_raid_summary'] = 'RAID რეზიუმე';
+$lang['raid_remove'] = 'წაშლა';
+$lang['raid_send_mail'] = 'პირადი E-mail შეტყობინების';
+$lang['raid_software_raid'] = 'პროგრამული RAID';
+$lang['raid_sync_pending'] = 'sync შექმნილა';
+$lang['raid_sync_scheduled'] = 'sync დაგეგმილი';
+$lang['raid_syncing'] = 'Sync მიმდინარეობს';
+$lang['raid_test_email'] = 'პირადი ტესტი E-mail';
+$lang['raid_test_sent_to:'] = 'წარმატება. E-mail შეტყობინების გაიგზავნა:';
+$lang['raid_type'] = 'ტიპი';
+$lang['raid_vendor'] = 'გამყიდველი';
