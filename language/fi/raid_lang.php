@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Lisää laite';
+$lang['raid_always'] = 'Aina';
+$lang['raid_app_description'] = 'Ohjelmisto RAID tilatietoja, raportointi ja hallinnolliset toimet ohjelmiston RAID.';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'ryhmä';
+$lang['raid_clean'] = 'Puhdas';
+$lang['raid_confirm_add'] = 'Vahvista haluat lisätä lohkolaitteen% s% s RAID.';
+$lang['raid_confirm_remove'] = 'Vahvista haluat poistaa lohkolaitteen% s% s RAID.';
+$lang['raid_degraded'] = 'hajonnut';
+$lang['raid_device'] = 'Laite';
+$lang['raid_email_notification'] = 'Sähköposti-ilmoitus';
+$lang['raid_every_30_minutes'] = '30 minuutin välein';
+$lang['raid_every_4_hours'] = '4 tunnin välein';
+$lang['raid_every_minute'] = 'Joka minuutti';
+$lang['raid_frequency'] = 'Taajuus';
+$lang['raid_level'] = 'Taso';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'asentaa';
+$lang['raid_no_support'] = 'Ei tuettu RAID löydetty.';
+$lang['raid_not_degraded'] = 'Array ei ole huonontunut tilassa.';
+$lang['raid_on_failure'] = 'epäonnistumisesta';
+$lang['raid_raid_status'] = 'RAID status';
+$lang['raid_raid_summary'] = 'RAID Yhteenveto';
+$lang['raid_remove'] = 'Poistaa';
+$lang['raid_send_mail'] = 'Lähetä sähköposti-ilmoitus';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Synkronointi odottaa';
+$lang['raid_sync_scheduled'] = 'Synkronointi aikataulun';
+$lang['raid_syncing'] = 'Synkronointi käynnissä';
+$lang['raid_test_email'] = 'Send Test E-mail';
+$lang['raid_test_sent_to:'] = 'Menestys. Sähköposti-ilmoitus on lähetetty:';
+$lang['raid_type'] = 'Tyyppi';
+$lang['raid_vendor'] = 'Myyjä';
