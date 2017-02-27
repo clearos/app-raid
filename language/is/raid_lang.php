@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Bæta Tæki';
+$lang['raid_always'] = 'alltaf';
+$lang['raid_app_description'] = 'RAID veitir upplýsingar um stöðu, skýrslugerð og stjórn- aðgerðir vegna RAID.';
+$lang['raid_app_name'] = 'RAID Manager';
+$lang['raid_array'] = 'array';
+$lang['raid_clean'] = 'Hreint';
+$lang['raid_confirm_add'] = 'Vinsamlegast staðfestu að þú vildi eins og til bæta blokkatæki% s til% s RAID array.';
+$lang['raid_confirm_remove'] = 'Vinsamlegast staðfestu að þú vildi eins og til að fjarlægja blokk tæki% s frá% s RAID array.';
+$lang['raid_degraded'] = 'rýrnað';
+$lang['raid_device'] = 'tæki';
+$lang['raid_email_notification'] = 'E-mail Tilkynning';
+$lang['raid_every_30_minutes'] = 'Á 30 mínútna fresti';
+$lang['raid_every_4_hours'] = 'Á 4 klst';
+$lang['raid_every_minute'] = 'Sérhver mínúta';
+$lang['raid_frequency'] = 'tíðni';
+$lang['raid_level'] = 'Level';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'Engar studd RAID fylki fundust.';
+$lang['raid_not_degraded'] = 'Array er ekki í rýrnað ríki.';
+$lang['raid_on_failure'] = 'á bilun';
+$lang['raid_raid_status'] = 'RAID Staða';
+$lang['raid_raid_summary'] = 'RAID Yfirlit';
+$lang['raid_remove'] = 'fjarlægja';
+$lang['raid_send_mail'] = 'Senda e-mail tilkynningu';
+$lang['raid_software_raid'] = 'RAID';
+$lang['raid_sync_pending'] = 'Sync bið';
+$lang['raid_sync_scheduled'] = 'Sync áætlað';
+$lang['raid_syncing'] = 'Sync í gangi';
+$lang['raid_test_email'] = 'Senda Test E-mail';
+$lang['raid_test_sent_to:'] = 'Árangur. E-mail tilkynning hefur verið send til:';
+$lang['raid_type'] = 'Gerð';
+$lang['raid_vendor'] = 'Vendor';
