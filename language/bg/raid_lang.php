@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Добави Device';
+$lang['raid_always'] = 'Винаги';
+$lang['raid_app_description'] = 'Software RAID предоставя информация за състоянието, отчитане и административни действия, предлагат софтуер RAID.';
+$lang['raid_app_name'] = 'Software RAID мениджър';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'чист';
+$lang['raid_confirm_add'] = 'Моля, потвърдете, че би искал да добавя блок устройство% и към% S RAID масив.';
+$lang['raid_confirm_remove'] = 'Моля, потвърдете, че искате да премахнете блок устройство% и от% S RAID масив.';
+$lang['raid_degraded'] = 'понижен';
+$lang['raid_device'] = 'приспособление';
+$lang['raid_email_notification'] = 'Е-мейл Уведомление';
+$lang['raid_every_30_minutes'] = 'На всеки 30 минути';
+$lang['raid_every_4_hours'] = 'На всеки 4 часа';
+$lang['raid_every_minute'] = 'Всяка минута';
+$lang['raid_frequency'] = 'Честота';
+$lang['raid_level'] = 'ниво';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'планина';
+$lang['raid_no_support'] = 'Няма намерени поддържани RAID масиви.';
+$lang['raid_not_degraded'] = 'Array не е във влошено състояние.';
+$lang['raid_on_failure'] = 'На недостатъчност';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Резюме';
+$lang['raid_remove'] = 'Премахване';
+$lang['raid_send_mail'] = 'Изпрати E-мейл Уведомление';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Sync очакване';
+$lang['raid_sync_scheduled'] = 'Sync насрочено';
+$lang['raid_syncing'] = 'Sync в ход';
+$lang['raid_test_email'] = 'Изпрати Тест Е-поща';
+$lang['raid_test_sent_to:'] = 'Успех. известяване по електронната поща е изпратена до:';
+$lang['raid_type'] = 'Тип';
+$lang['raid_vendor'] = 'продавач';
