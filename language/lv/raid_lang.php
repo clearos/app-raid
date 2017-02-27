@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Pievienot Device';
+$lang['raid_always'] = 'vienmēr';
+$lang['raid_app_description'] = 'Software RAID sniedz statusa informāciju, ziņošanas un administratīvās darbības, par programmatūras RAID.';
+$lang['raid_app_name'] = 'Software RAID vadītājs';
+$lang['raid_array'] = 'masīvs';
+$lang['raid_clean'] = 'Tīrs';
+$lang['raid_confirm_add'] = 'Lūdzu, apstipriniet jūs vēlētos pievienot bloķēt ierīces% s uz% s RAID masīvu.';
+$lang['raid_confirm_remove'] = 'Lūdzu, apstipriniet vēlaties noņemt bloķēt ierīci% s no% s RAID masīvu.';
+$lang['raid_degraded'] = 'degradēta';
+$lang['raid_device'] = 'ierīce';
+$lang['raid_email_notification'] = 'E-pasts Paziņojums';
+$lang['raid_every_30_minutes'] = 'Ik pēc 30 minūtēm';
+$lang['raid_every_4_hours'] = 'Ik pēc 4 stundām';
+$lang['raid_every_minute'] = 'katru minūti';
+$lang['raid_frequency'] = 'Biežums';
+$lang['raid_level'] = 'līmenis';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'kalns';
+$lang['raid_no_support'] = 'Nav atbalstītie RAID masīvi atrasts.';
+$lang['raid_not_degraded'] = 'Array nav degradēta stāvoklī.';
+$lang['raid_on_failure'] = 'par nespēju';
+$lang['raid_raid_status'] = 'RAID statuss';
+$lang['raid_raid_summary'] = 'RAID kopsavilkums';
+$lang['raid_remove'] = 'noņemt';
+$lang['raid_send_mail'] = 'Sūtīt e-pasta paziņojumu';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Sync gaidot';
+$lang['raid_sync_scheduled'] = 'Sync plānots';
+$lang['raid_syncing'] = 'Sync in progress';
+$lang['raid_test_email'] = 'Nosūtīt Test E-pasts';
+$lang['raid_test_sent_to:'] = 'Veiksme. E-pasta paziņojums ir nosūtīts:';
+$lang['raid_type'] = 'tips';
+$lang['raid_vendor'] = 'pārdevējs';
