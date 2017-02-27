@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Lisa seade';
+$lang['raid_always'] = 'Alati';
+$lang['raid_app_description'] = 'Tarkvara RAID pakub oleku kohta, aruandlust ja haldusmeetmed tarkvara RAID.';
+$lang['raid_app_name'] = 'Tarkvara RAID Manager';
+$lang['raid_array'] = 'array';
+$lang['raid_clean'] = 'puhas';
+$lang['raid_confirm_add'] = 'Palun kinnitage soovid lisada blokeerida seade% s kuni% s RAID massiivi.';
+$lang['raid_confirm_remove'] = 'Kinnitage, et soovite eemaldada plokk seadme% s% s RAID massiivi.';
+$lang['raid_degraded'] = 'Halvema';
+$lang['raid_device'] = 'seade';
+$lang['raid_email_notification'] = 'E-kiri';
+$lang['raid_every_30_minutes'] = 'Iga 30 minuti';
+$lang['raid_every_4_hours'] = 'Iga 4 tundi';
+$lang['raid_every_minute'] = 'iga minut';
+$lang['raid_frequency'] = 'sagedus';
+$lang['raid_level'] = 'tase';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'mägi';
+$lang['raid_no_support'] = 'Ei toeta RAID massiivid leitud.';
+$lang['raid_not_degraded'] = 'Array ei ole halvenenud olekus.';
+$lang['raid_on_failure'] = 'jätmise kohta';
+$lang['raid_raid_status'] = 'RAID staatus';
+$lang['raid_raid_summary'] = 'RAID kokkuvõte';
+$lang['raid_remove'] = 'eemaldama';
+$lang['raid_send_mail'] = 'Saada e-kiri';
+$lang['raid_software_raid'] = 'Tarkvara RAID';
+$lang['raid_sync_pending'] = 'Sync kuni';
+$lang['raid_sync_scheduled'] = 'Sync planeeritud';
+$lang['raid_syncing'] = 'Sync in progress';
+$lang['raid_test_email'] = 'Saada Test E-mail';
+$lang['raid_test_sent_to:'] = 'Edu. E-kiri on saadetud järgmistele:';
+$lang['raid_type'] = 'tüüp';
+$lang['raid_vendor'] = 'müüja';
