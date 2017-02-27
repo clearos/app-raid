@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'afegir dispositiu';
+$lang['raid_always'] = 'Sempre';
+$lang['raid_app_description'] = 'RAID per programari proporciona informació d&#39;estat, informes i accions administratives per al programari RAID.';
+$lang['raid_app_name'] = 'Programari RAID Manager';
+$lang['raid_array'] = 'formació';
+$lang['raid_clean'] = 'net';
+$lang['raid_confirm_add'] = 'Si us plau confirma que voldria afegir dispositiu de bloc% s de la matriu RAID% s.';
+$lang['raid_confirm_remove'] = 'Confirma que desitja eliminar dispositiu de bloc% s de la matriu RAID% s.';
+$lang['raid_degraded'] = 'degradat';
+$lang['raid_device'] = 'Dispositiu';
+$lang['raid_email_notification'] = 'Notificació per correu electrònic';
+$lang['raid_every_30_minutes'] = 'Cada 30 minuts';
+$lang['raid_every_4_hours'] = 'Cada 4 hores';
+$lang['raid_every_minute'] = 'cada minut';
+$lang['raid_frequency'] = 'Freqüència';
+$lang['raid_level'] = 'nivell';
+$lang['raid_monitor_raid'] = 'monitor de RAID';
+$lang['raid_mount'] = 'muntanya';
+$lang['raid_no_support'] = 'No es van trobar matrius RAID compatibles.';
+$lang['raid_not_degraded'] = 'Array no està en un estat degradat.';
+$lang['raid_on_failure'] = 'en cas de fallada';
+$lang['raid_raid_status'] = 'Estat de RAID';
+$lang['raid_raid_summary'] = 'Resum de RAID';
+$lang['raid_remove'] = 'eliminar';
+$lang['raid_send_mail'] = 'Enviar notificació per correu electrònic';
+$lang['raid_software_raid'] = 'RAID per programari';
+$lang['raid_sync_pending'] = 'sincronització pendent';
+$lang['raid_sync_scheduled'] = 'sincronització programada';
+$lang['raid_syncing'] = 'Sincronització en curs';
+$lang['raid_test_email'] = 'Enviar correu electrònic de prova';
+$lang['raid_test_sent_to:'] = 'L&#39;èxit. La notificació per correu electrònic ha estat enviat a:';
+$lang['raid_type'] = 'tipus';
+$lang['raid_vendor'] = 'venedor';
