@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'ajoute Aparèy';
+$lang['raid_always'] = 'toujou';
+$lang['raid_app_description'] = 'Software ATAK bay enfòmasyon estati, rapò ak aksyon administratif pou lojisyèl ATAK.';
+$lang['raid_app_name'] = 'Software ATAK Manadjè';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'Netwaye';
+$lang['raid_confirm_add'] = 'Tanpri konfime ou ta renmen ajoute aparèy blòk% s% nan la etalaj ATAK.';
+$lang['raid_confirm_remove'] = 'Tanpri konfime ou ta renmen yo retire aparèy blòk% a soti nan% nan la etalaj ATAK.';
+$lang['raid_degraded'] = 'degrade';
+$lang['raid_device'] = 'Aparèy';
+$lang['raid_email_notification'] = 'E-mail Notifikasyon';
+$lang['raid_every_30_minutes'] = 'Chak 30 minit';
+$lang['raid_every_4_hours'] = 'Chak 4 èdtan';
+$lang['raid_every_minute'] = 'Chak minit';
+$lang['raid_frequency'] = 'frekans';
+$lang['raid_level'] = 'Nivo';
+$lang['raid_monitor_raid'] = 'ki monitè kè bebe ATAK';
+$lang['raid_mount'] = 'mòn';
+$lang['raid_no_support'] = 'Pa gen sipòte ranje ATAK jwenn.';
+$lang['raid_not_degraded'] = 'Array se pa nan yon eta degrade.';
+$lang['raid_on_failure'] = 'Sou echèk';
+$lang['raid_raid_status'] = 'ATAK Ki dènye nouvèl';
+$lang['raid_raid_summary'] = 'ATAK Rezime';
+$lang['raid_remove'] = 'Retire';
+$lang['raid_send_mail'] = 'Send E-mail Notifikasyon';
+$lang['raid_software_raid'] = 'Software ATAK';
+$lang['raid_sync_pending'] = 'senkro annatant';
+$lang['raid_sync_scheduled'] = 'senkro pwograme';
+$lang['raid_syncing'] = 'Senkro nan pwogrè';
+$lang['raid_test_email'] = 'Voye Egzamen E-mail';
+$lang['raid_test_sent_to:'] = 'Siksè. te notifikasyon E-mail te voye a:';
+$lang['raid_type'] = 'Kalite';
+$lang['raid_vendor'] = 'machann';
