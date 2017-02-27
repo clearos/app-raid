@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'ಸಾಧನವನ್ನು ಸೇರಿಸಿ';
+$lang['raid_always'] = 'ಯಾವಾಗಲೂ';
+$lang['raid_app_description'] = 'ತಂತ್ರಾಂಶ RAID ಸ್ಥಿತಿ ಮಾಹಿತಿ, ವರದಿ ಹಾಗು ತಂತ್ರಾಂಶ RAID ಆಡಳಿತಾತ್ಮಕ ಕ್ರಮಗಳು ಒದಗಿಸುತ್ತದೆ.';
+$lang['raid_app_name'] = 'ತಂತ್ರಾಂಶ RAID ಮ್ಯಾನೇಜರ್';
+$lang['raid_array'] = 'ಅರೇ';
+$lang['raid_clean'] = 'ಕ್ಲೀನ್';
+$lang['raid_confirm_add'] = '% s RAID ವಿನ್ಯಾಸಕ್ಕೆ ಬ್ಲಾಕ್ ಸಾಧನ% s ಸೇರಿಸಲು ಬಯಸುತ್ತೀರಿ ದಯವಿಟ್ಟು ಖಚಿತಪಡಿಸಿ.';
+$lang['raid_confirm_remove'] = '% s RAID ರಚನೆಯ ಬ್ಲಾಕ್ ಸಾಧನ% s ಅನ್ನು ತೆಗೆದು ಬಯಸುತ್ತೀರಿ ದಯವಿಟ್ಟು ಖಚಿತಪಡಿಸಿ.';
+$lang['raid_degraded'] = 'ಕೆಳದರ್ಜೆಗೆ';
+$lang['raid_device'] = 'ಸಾಧನ';
+$lang['raid_email_notification'] = 'ಇಮೇಲ್ ಪ್ರಕಟಣೆ';
+$lang['raid_every_30_minutes'] = 'ಪ್ರತಿ 30 ನಿಮಿಷಗಳ';
+$lang['raid_every_4_hours'] = 'ಪ್ರತಿ 4 ಗಂಟೆಗಳು';
+$lang['raid_every_minute'] = 'ಪ್ರತಿ ನಿಮಿಷ';
+$lang['raid_frequency'] = 'ಆವರ್ತನ';
+$lang['raid_level'] = 'ಮಟ್ಟ';
+$lang['raid_monitor_raid'] = 'ಮಾನಿಟರ್ RAID ಅನ್ನು';
+$lang['raid_mount'] = 'ಮೌಂಟ್';
+$lang['raid_no_support'] = 'ಯಾವುದೇ ಬೆಂಬಲಿತ RAID ರಚನೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ.';
+$lang['raid_not_degraded'] = 'ಅರೇ ಅವನತಿಯ ರಾಜ್ಯದಲ್ಲಿ ಅಲ್ಲ.';
+$lang['raid_on_failure'] = 'ವೈಫಲ್ಯದಲ್ಲಿ';
+$lang['raid_raid_status'] = 'RAID ಅನ್ನು ಸ್ಥಿತಿ';
+$lang['raid_raid_summary'] = 'RAID ಅನ್ನು ಸಾರಾಂಶ';
+$lang['raid_remove'] = 'ತೆಗೆದುಹಾಕಿ';
+$lang['raid_send_mail'] = 'ಇಮೇಲ್ ಪ್ರಕಟಣೆ ಕಳುಹಿಸಿ';
+$lang['raid_software_raid'] = 'ತಂತ್ರಾಂಶ RAID';
+$lang['raid_sync_pending'] = 'ಸಿಂಕ್ ಬಾಕಿ';
+$lang['raid_sync_scheduled'] = 'ಸಿಂಕ್ ನಿಗದಿತ';
+$lang['raid_syncing'] = 'ಸಿಂಕ್ ಪ್ರಗತಿಯಲ್ಲಿದೆ';
+$lang['raid_test_email'] = 'ಟೆಸ್ಟ್ ಮೇಲ್ ಕಳುಹಿಸಿ';
+$lang['raid_test_sent_to:'] = 'ಯಶಸ್ಸು. ಮೇಲ್ ಅಧಿಸೂಚನೆ ಕಳುಹಿಸಲಾಗಿದೆ:';
+$lang['raid_type'] = 'ಕೌಟುಂಬಿಕತೆ';
+$lang['raid_vendor'] = 'ವೆಂಡರ್';
