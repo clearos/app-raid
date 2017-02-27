@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Додај уред';
+$lang['raid_always'] = 'секогаш';
+$lang['raid_app_description'] = 'Софтверскиот RAID обезбедува информации за статусот, известување и административните мерки за софтверски RAID.';
+$lang['raid_app_name'] = 'Софтверскиот RAID менаџер';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'чиста';
+$lang['raid_confirm_add'] = 'Ве молиме потврдете би сакале да додадете блок уред% s на% s RAID низа.';
+$lang['raid_confirm_remove'] = 'Ве молиме потврдете вие ​​би сакале да се отстрани блок уред% s од% s RAID низа.';
+$lang['raid_degraded'] = 'деградирани';
+$lang['raid_device'] = 'уред';
+$lang['raid_email_notification'] = 'Е-пошта известувања';
+$lang['raid_every_30_minutes'] = 'На секои 30 минути';
+$lang['raid_every_4_hours'] = 'На секои 4 часа';
+$lang['raid_every_minute'] = 'секоја минута';
+$lang['raid_frequency'] = 'фреквенција';
+$lang['raid_level'] = 'Ниво';
+$lang['raid_monitor_raid'] = 'RAID монитор';
+$lang['raid_mount'] = 'планината';
+$lang['raid_no_support'] = 'пронајдени поддржан RAID низи.';
+$lang['raid_not_degraded'] = 'Низа не е во деградирана состојба.';
+$lang['raid_on_failure'] = 'на неуспех';
+$lang['raid_raid_status'] = 'RAID Статус';
+$lang['raid_raid_summary'] = 'RAID Резиме';
+$lang['raid_remove'] = 'Отстрани';
+$lang['raid_send_mail'] = 'Испрати e-mail известувања';
+$lang['raid_software_raid'] = 'Софтверскиот RAID';
+$lang['raid_sync_pending'] = 'синхронизација во тек';
+$lang['raid_sync_scheduled'] = 'Sync закажана';
+$lang['raid_syncing'] = 'Синхронизација во тек';
+$lang['raid_test_email'] = 'Испрати Тест Е-пошта';
+$lang['raid_test_sent_to:'] = 'Успех. e-mail известување е испратена до:';
+$lang['raid_type'] = 'тип';
+$lang['raid_vendor'] = 'продавач';
