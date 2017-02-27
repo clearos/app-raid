@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'పరికర జోడించండి';
+$lang['raid_always'] = 'ఎల్లప్పుడూ';
+$lang['raid_app_description'] = 'సాఫ్టువేరు RAID స్థితి సమాచారం, నివేదన మరియు సాఫ్టువేరు RAID కోసం నిర్వాహక చర్యల అందిస్తుంది.';
+$lang['raid_app_name'] = 'సాఫ్టువేరు RAID మేనేజర్';
+$lang['raid_array'] = 'అమరిక';
+$lang['raid_clean'] = 'క్లీన్';
+$lang['raid_confirm_add'] = 'దయచేసి మీరు% s RAID ఎరే బ్లాక్ పరికరం% s జోడించడానికి కోరుకుంటున్నారో నిర్ధారించండి.';
+$lang['raid_confirm_remove'] = 'దయచేసి మీరు% s RAID ఎరే నుండి బ్లాక్ పరికరం% s తొలగించడానికి కోరుకుంటున్నారో నిర్ధారించండి.';
+$lang['raid_degraded'] = 'అధోకరణం';
+$lang['raid_device'] = 'పరికరం';
+$lang['raid_email_notification'] = 'ఇ-మెయిల్ నోటిఫికేషన్';
+$lang['raid_every_30_minutes'] = 'ప్రతి 30 నిమిషాల';
+$lang['raid_every_4_hours'] = 'ప్రతి 4 గంటల';
+$lang['raid_every_minute'] = 'ప్రతి నిమిషం';
+$lang['raid_frequency'] = 'తరచుదనం';
+$lang['raid_level'] = 'స్థాయి';
+$lang['raid_monitor_raid'] = 'మానిటర్ RAID';
+$lang['raid_mount'] = 'మౌంట్';
+$lang['raid_no_support'] = 'మద్దతు RAID ఎరేస్ దొరకలేదు.';
+$lang['raid_not_degraded'] = 'అర్రే క్షీణ రాష్ట్రంలో కాదు.';
+$lang['raid_on_failure'] = 'విఫలమయితే';
+$lang['raid_raid_status'] = 'RAID స్థితి';
+$lang['raid_raid_summary'] = 'RAID సారాంశం';
+$lang['raid_remove'] = 'తొలగించు';
+$lang['raid_send_mail'] = 'ఇ-మెయిల్ నోటిఫికేషన్ పంపండి';
+$lang['raid_software_raid'] = 'సాఫ్టువేరు RAID';
+$lang['raid_sync_pending'] = 'సమకాలీకరణ పెండింగ్లో';
+$lang['raid_sync_scheduled'] = 'సమకాలీకరణ షెడ్యూల్';
+$lang['raid_syncing'] = 'సమకాలీకరణ ప్రోగ్రెస్లో';
+$lang['raid_test_email'] = 'టెస్ట్ ఇ-మెయిల్ పంపండి';
+$lang['raid_test_sent_to:'] = 'విజయం. ఇ-మెయిల్ నోటిఫికేషన్ పంపబడింది:';
+$lang['raid_type'] = 'రకం';
+$lang['raid_vendor'] = 'వెండర్';
