@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Адд Девице';
+$lang['raid_always'] = 'увек';
+$lang['raid_app_description'] = 'Софтваре РАИД даје информације о статусу, извештавање и административне поступке за софтверски РАИД.';
+$lang['raid_app_name'] = 'Софтваре РАИД директор';
+$lang['raid_array'] = 'низ';
+$lang['raid_clean'] = 'Чист';
+$lang['raid_confirm_add'] = 'Молимо Вас да потврдите желите да додате блок уређаја% с на% с РАИД низа.';
+$lang['raid_confirm_remove'] = 'Молимо Вас да потврдите желите да уклоните блок уређаја% с из% с РАИД низа.';
+$lang['raid_degraded'] = 'понижен';
+$lang['raid_device'] = 'уређај';
+$lang['raid_email_notification'] = 'Е-маил обавештења';
+$lang['raid_every_30_minutes'] = 'Сваких 30 минута';
+$lang['raid_every_4_hours'] = 'Свака 4 сата';
+$lang['raid_every_minute'] = 'Сваки минут';
+$lang['raid_frequency'] = 'Фреквенција';
+$lang['raid_level'] = 'ниво';
+$lang['raid_monitor_raid'] = 'монитор РАИД';
+$lang['raid_mount'] = 'постоље';
+$lang['raid_no_support'] = 'Нема подржава РАИД низови фоунд.';
+$lang['raid_not_degraded'] = 'Арраи није у стању деградирани.';
+$lang['raid_on_failure'] = 'na неуспеха';
+$lang['raid_raid_status'] = 'РАИД статус';
+$lang['raid_raid_summary'] = 'РАИД Преглед';
+$lang['raid_remove'] = 'уклонити';
+$lang['raid_send_mail'] = 'Пошаљи Е-маил Нотифицатион';
+$lang['raid_software_raid'] = 'Софтваре РАИД';
+$lang['raid_sync_pending'] = 'Синхронизација је на чекању';
+$lang['raid_sync_scheduled'] = 'синц распореду';
+$lang['raid_syncing'] = 'Синхронизација је у току';
+$lang['raid_test_email'] = 'Пошаљи тест Е-маил';
+$lang['raid_test_sent_to:'] = 'Успех. Е-маил обавештење је послата на:';
+$lang['raid_type'] = 'Тип';
+$lang['raid_vendor'] = 'продавац';
