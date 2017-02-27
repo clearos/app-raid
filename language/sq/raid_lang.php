@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Shto Device';
+$lang['raid_always'] = 'gjithmonë';
+$lang['raid_app_description'] = 'RAID Software jep informacion statusin, raportimin dhe veprimet administrative për RAID software.';
+$lang['raid_app_name'] = 'Software RAID Menaxher';
+$lang['raid_array'] = 'grup';
+$lang['raid_clean'] = 'i pastër';
+$lang['raid_confirm_add'] = 'Ju lutem konfirmoni se ju do të donte të shtoni pajisje bllok% s te% s RAID.';
+$lang['raid_confirm_remove'] = 'Ju lutem konfirmoni se ju do të donte për të hequr pajisjen bllok% s nga% s RAID.';
+$lang['raid_degraded'] = 'i degraduar';
+$lang['raid_device'] = 'pajisje';
+$lang['raid_email_notification'] = 'E-mail Njoftim';
+$lang['raid_every_30_minutes'] = 'Çdo 30 minuta';
+$lang['raid_every_4_hours'] = 'Çdo 4 orë';
+$lang['raid_every_minute'] = 'çdo minutë';
+$lang['raid_frequency'] = 'frekuencë';
+$lang['raid_level'] = 'nivel';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'piedestal';
+$lang['raid_no_support'] = 'Asnjë vargjeve RAID mbështetur gjetur.';
+$lang['raid_not_degraded'] = 'Array nuk është në gjendje të degraduar.';
+$lang['raid_on_failure'] = 'On dështimit';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Përmbledhje';
+$lang['raid_remove'] = 'heq';
+$lang['raid_send_mail'] = 'Dërgo E-mail Njoftim';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Sync pritje';
+$lang['raid_sync_scheduled'] = 'Sync planifikuar';
+$lang['raid_syncing'] = 'Sync në progres';
+$lang['raid_test_email'] = 'Dërgo Test E-mail';
+$lang['raid_test_sent_to:'] = 'Sukses. Njoftimi E-mail është dërguar për:';
+$lang['raid_type'] = 'lloj';
+$lang['raid_vendor'] = 'shitës';
