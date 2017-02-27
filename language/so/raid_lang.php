@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Add Device';
+$lang['raid_always'] = 'Had iyo jeer';
+$lang['raid_app_description'] = 'Weerar Software waxay bixisaa macluumaad xaaladda, warbixinta iyo tallaabooyinka maamulka weerar software.';
+$lang['raid_app_name'] = 'Maareeyaha weerar Software';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'nadiifi';
+$lang['raid_confirm_add'] = 'Fadlan xaqiiji in aad jeclaan lahayd inaad ku darto qalabka block% s% in ka s weerar isugu diyaariyeen.';
+$lang['raid_confirm_remove'] = 'Fadlan xaqiiji in aad jeclaan lahayd inaad ka% ee s weerar isugu diyaariyeen ka saar qalabka block% s.';
+$lang['raid_degraded'] = 'yaraadeen';
+$lang['raid_device'] = 'Device';
+$lang['raid_email_notification'] = 'E-mail Ogeysiinta';
+$lang['raid_every_30_minutes'] = 'Kasta 30 daqiiqo';
+$lang['raid_every_4_hours'] = '4 saacadood kasta';
+$lang['raid_every_minute'] = 'daqiiqadii kasta';
+$lang['raid_frequency'] = 'Frequency';
+$lang['raid_level'] = 'Heerka';
+$lang['raid_monitor_raid'] = 'Monitor weeraray';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'No arrays weerar ay taageerayaan helay.';
+$lang['raid_not_degraded'] = 'Array ma aha ee gobolka a yaraadeen.';
+$lang['raid_on_failure'] = 'On failure';
+$lang['raid_raid_status'] = 'weerar Status';
+$lang['raid_raid_summary'] = 'Summary weeraray';
+$lang['raid_remove'] = 'saar';
+$lang['raid_send_mail'] = 'U dir Ogeysiinta E-mail';
+$lang['raid_software_raid'] = 'Software weeraray';
+$lang['raid_sync_pending'] = 'nidaameed sugayo';
+$lang['raid_sync_scheduled'] = 'nidaameed qorsheeyey';
+$lang['raid_syncing'] = 'Nidaameed ee horumarka';
+$lang['raid_test_email'] = 'U dir Test E-mail';
+$lang['raid_test_sent_to:'] = 'Guusha. wargelin E-mail loo soo diray:';
+$lang['raid_type'] = 'Nooca';
+$lang['raid_vendor'] = 'iibiyaha';
