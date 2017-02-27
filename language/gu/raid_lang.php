@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'ઉપકરણ ઉમેરો';
+$lang['raid_always'] = 'હંમેશા';
+$lang['raid_app_description'] = 'સોફ્ટવેર RAID ને બનાવો સ્થિતિ માહિતી, અહેવાલ અને સોફ્ટવેર RAID વહીવટી ક્રિયાઓ પૂરી પાડે છે.';
+$lang['raid_app_name'] = 'સોફ્ટવેર RAID ને બનાવો વ્યવસ્થાપક';
+$lang['raid_array'] = 'અરે';
+$lang['raid_clean'] = 'સ્વચ્છ';
+$lang['raid_confirm_add'] = 'કૃપા કરીને ખાતરી કરો કે તમે% s RAID એરે બ્લોક ઉપકરણ% s ઉમેરવા માંગો છો.';
+$lang['raid_confirm_remove'] = 'કૃપા કરીને ખાતરી કરો કે તમે% s RAID એરે બ્લોક ઉપકરણ% s દૂર કરવા માંગો છો.';
+$lang['raid_degraded'] = 'ભ્રષ્ટ';
+$lang['raid_device'] = 'ઉપકરણ';
+$lang['raid_email_notification'] = 'ઈ મેલ સૂચના';
+$lang['raid_every_30_minutes'] = 'દરેક 30 મિનિટ';
+$lang['raid_every_4_hours'] = 'દર 4 કલાક';
+$lang['raid_every_minute'] = 'દર મિનિટે';
+$lang['raid_frequency'] = 'આવર્તન';
+$lang['raid_level'] = 'સ્તર';
+$lang['raid_monitor_raid'] = 'મોનિટર RAID';
+$lang['raid_mount'] = 'માઉન્ટ';
+$lang['raid_no_support'] = 'સપોર્ટેડ RAID એરે જોવા મળે છે.';
+$lang['raid_not_degraded'] = 'અરે એક ભ્રષ્ટ રાજ્ય નથી.';
+$lang['raid_on_failure'] = 'નિષ્ફળતા પર';
+$lang['raid_raid_status'] = 'RAID સ્થિતિ';
+$lang['raid_raid_summary'] = 'RAID સારાંશ';
+$lang['raid_remove'] = 'દૂર કરો';
+$lang['raid_send_mail'] = 'મોકલો ઈ મેલ સૂચના';
+$lang['raid_software_raid'] = 'સોફ્ટવેર RAID ને બનાવો';
+$lang['raid_sync_pending'] = 'સમન્વયન બાકી';
+$lang['raid_sync_scheduled'] = 'સમન્વય સુનિશ્ચિત';
+$lang['raid_syncing'] = 'ચાલુ સમન્વય';
+$lang['raid_test_email'] = 'મોકલો ટેસ્ટ ઇ મેલ';
+$lang['raid_test_sent_to:'] = 'સફળતા. ઇ મેલ સૂચના મોકલવામાં આવી છે:';
+$lang['raid_type'] = 'પ્રકાર';
+$lang['raid_vendor'] = 'વેન્ડર';
