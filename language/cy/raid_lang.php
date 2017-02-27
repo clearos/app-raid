@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Ychwanegu Dyfais';
+$lang['raid_always'] = 'Bob amser';
+$lang['raid_app_description'] = 'RAID meddalwedd yn darparu gwybodaeth statws, adrodd a chamau gweithredu gweinyddol ar gyfer RAID meddalwedd.';
+$lang['raid_app_name'] = 'Rheolwr RAID meddalwedd';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'Glân';
+$lang['raid_confirm_add'] = 'Cadarnhewch hoffech ychwanegu dyfais bloc% s at% s amrywiaeth RAID.';
+$lang['raid_confirm_remove'] = 'Cadarnhewch hoffech chi gael gwared ar y ddyfais bloc% s gan% s amrywiaeth RAID.';
+$lang['raid_degraded'] = 'diraddio';
+$lang['raid_device'] = 'dyfais';
+$lang['raid_email_notification'] = 'E-bost Hysbysu';
+$lang['raid_every_30_minutes'] = 'Bob 30 munud';
+$lang['raid_every_4_hours'] = 'Bob 4 awr';
+$lang['raid_every_minute'] = 'Mae pob munud';
+$lang['raid_frequency'] = 'Amlder';
+$lang['raid_level'] = 'lefel';
+$lang['raid_monitor_raid'] = 'monitor RAID';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'Dim araeau RAID gefnogir dod o hyd.';
+$lang['raid_not_degraded'] = 'Nid yw Array mewn cyflwr dirywiedig.';
+$lang['raid_on_failure'] = 'ar fethiant';
+$lang['raid_raid_status'] = 'Statws RAID';
+$lang['raid_raid_summary'] = 'RAID Crynodeb';
+$lang['raid_remove'] = 'Tynnu';
+$lang['raid_send_mail'] = 'Anfon E-bost Hysbysu';
+$lang['raid_software_raid'] = 'RAID meddalwedd';
+$lang['raid_sync_pending'] = 'Sync arfaeth';
+$lang['raid_sync_scheduled'] = 'Sync drefnwyd';
+$lang['raid_syncing'] = 'Cydamseru ar y gweill';
+$lang['raid_test_email'] = 'Anfonwch Prawf E-bost';
+$lang['raid_test_sent_to:'] = 'Llwyddiant. hysbysiad e-bost wedi cael ei hanfon at:';
+$lang['raid_type'] = 'math';
+$lang['raid_vendor'] = 'gwerthwr';
