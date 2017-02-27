@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'डिव्हाइस जोडा';
+$lang['raid_always'] = 'नेहमी';
+$lang['raid_app_description'] = 'सॉफ्टवेअर RAID माहिती स्थिती अहवाल आणि सॉफ्टवेअर RAID करीता प्रशासकीय कारवाईचा उपलब्ध आहे.';
+$lang['raid_app_name'] = 'सॉफ्टवेअर RAID व्यवस्थापक';
+$lang['raid_array'] = 'अरे';
+$lang['raid_clean'] = 'स्वच्छ';
+$lang['raid_confirm_add'] = 'कृपया याची पुष्टी करा% s RAID अर्रे ब्लॉक साधन% s जोडू इच्छित आहे.';
+$lang['raid_confirm_remove'] = 'कृपया याची पुष्टी करा% s RAID अर्रे पासून ब्लॉक साधन% s काढून आवडेल.';
+$lang['raid_degraded'] = 'उध्वस्त';
+$lang['raid_device'] = 'डिव्हाइस';
+$lang['raid_email_notification'] = 'ई-मेल सूचना';
+$lang['raid_every_30_minutes'] = 'प्रत्येक 30 मिनिटे';
+$lang['raid_every_4_hours'] = 'दर 4 तास';
+$lang['raid_every_minute'] = 'दर मिनिटाला';
+$lang['raid_frequency'] = 'वारंवारता';
+$lang['raid_level'] = 'पातळी';
+$lang['raid_monitor_raid'] = 'मॉनिटर RAID';
+$lang['raid_mount'] = 'माउंट';
+$lang['raid_no_support'] = 'समर्थित RAID अर्रे जोडा आढळले.';
+$lang['raid_not_degraded'] = 'अरे एक हिणकस राज्यात नाही.';
+$lang['raid_on_failure'] = 'अपयश वर';
+$lang['raid_raid_status'] = 'RAID स्थिती';
+$lang['raid_raid_summary'] = 'RAID सारांश';
+$lang['raid_remove'] = 'काढा';
+$lang['raid_send_mail'] = 'ई-मेल सूचना पाठवा';
+$lang['raid_software_raid'] = 'सॉफ्टवेअर RAID';
+$lang['raid_sync_pending'] = 'समक्रमण प्रलंबित';
+$lang['raid_sync_scheduled'] = 'समक्रमण होणार';
+$lang['raid_syncing'] = 'समक्रमण प्रगतीपथावर';
+$lang['raid_test_email'] = 'कसोटी ई-मेल पाठवा';
+$lang['raid_test_sent_to:'] = 'यश. ई-मेल सूचना पाठविण्यात आले आहे:';
+$lang['raid_type'] = 'प्रकार';
+$lang['raid_vendor'] = 'विक्रेता';
