@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'اضف جهاز';
+$lang['raid_always'] = 'دائما';
+$lang['raid_app_description'] = 'يوفر البرنامج RAID مركز المعلومات وإعداد التقارير والإجراءات الإدارية لRAID البرمجيات.';
+$lang['raid_app_name'] = 'مدير RAID البرمجيات';
+$lang['raid_array'] = 'مجموعة مصفوفة';
+$lang['raid_clean'] = 'نظيف';
+$lang['raid_confirm_add'] = 'يرجى تأكيد كنت أود أن أضيف جهاز كتلة٪ الصورة إلى٪ ق مصفوفة RAID.';
+$lang['raid_confirm_remove'] = 'يرجى تأكيد كنت ترغب في إزالة الجهاز كتلة٪ الصورة من٪ الصورة مصفوفة RAID.';
+$lang['raid_degraded'] = 'منحط';
+$lang['raid_device'] = 'جهاز';
+$lang['raid_email_notification'] = 'إعلام البريد الإلكتروني';
+$lang['raid_every_30_minutes'] = 'كل 30 دقيقة';
+$lang['raid_every_4_hours'] = 'كل 4 ساعات';
+$lang['raid_every_minute'] = 'كل دقيقة';
+$lang['raid_frequency'] = 'تكرر';
+$lang['raid_level'] = 'مستوى';
+$lang['raid_monitor_raid'] = 'RAID مراقب';
+$lang['raid_mount'] = 'تتزايد';
+$lang['raid_no_support'] = 'لا توجد صفائف RAID المدعومة.';
+$lang['raid_not_degraded'] = 'مجموعة ليست في حالة متدهورة.';
+$lang['raid_on_failure'] = 'على الفشل';
+$lang['raid_raid_status'] = 'الحالة RAID';
+$lang['raid_raid_summary'] = 'ملخص RAID';
+$lang['raid_remove'] = 'إزالة';
+$lang['raid_send_mail'] = 'إرسال إعلام البريد الإلكتروني';
+$lang['raid_software_raid'] = 'RAID البرمجيات';
+$lang['raid_sync_pending'] = 'المزامنة معلقة';
+$lang['raid_sync_scheduled'] = 'تزامن المقرر';
+$lang['raid_syncing'] = 'المزامنة في التقدم';
+$lang['raid_test_email'] = 'إرسال اختبار البريد الإلكتروني';
+$lang['raid_test_sent_to:'] = 'نجاح. تم إرسال البريد الإلكتروني إشعار إلى:';
+$lang['raid_type'] = 'اكتب';
+$lang['raid_vendor'] = 'بائع';
