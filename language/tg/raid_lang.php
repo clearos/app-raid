@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Иловаи дастгоҳ';
+$lang['raid_always'] = 'ҳамеша';
+$lang['raid_app_description'] = 'Рейд Software иттилоот вазъи, њисоботдињї ва амалҳои маъмурӣ барои амалиёти нармафзор таъмин менамояд.';
+$lang['raid_app_name'] = 'Барнома Manager рейд';
+$lang['raid_array'] = 'тартиботи ҳарбӣ';
+$lang['raid_clean'] = 'тоза';
+$lang['raid_confirm_add'] = 'Лутфан таъйид кунед, ки шумо мехоҳам илова дастгоҳи блоки% S ба% р массиви рейд.';
+$lang['raid_confirm_remove'] = 'Лутфан таъйид кунед, ки шумо мехоҳам ба хориҷ дастгоҳи блоки% S аз% р массиви рейд.';
+$lang['raid_degraded'] = 'Фарсуда';
+$lang['raid_device'] = 'дастгоҳ';
+$lang['raid_email_notification'] = 'Огоҳинома E-почтаи электронӣ';
+$lang['raid_every_30_minutes'] = 'Ҳар 30 дақиқа';
+$lang['raid_every_4_hours'] = 'Ҳар 4 соат';
+$lang['raid_every_minute'] = 'Ҳар дақиқа';
+$lang['raid_frequency'] = 'Фосила';
+$lang['raid_level'] = 'сатҳи';
+$lang['raid_monitor_raid'] = 'рейд Monitor';
+$lang['raid_mount'] = 'Маунт-';
+$lang['raid_no_support'] = 'Не, хатогӣ бар рейд дастгирӣ ёфт.';
+$lang['raid_not_degraded'] = 'Array аст, ки дар як давлати фасодкунанда нест.';
+$lang['raid_on_failure'] = 'Дар бораи нокомии';
+$lang['raid_raid_status'] = 'Статуси рейд';
+$lang['raid_raid_summary'] = 'рейд хулоса';
+$lang['raid_remove'] = 'хориҷ';
+$lang['raid_send_mail'] = 'Ирсол Огоҳинома E-почтаи электронӣ';
+$lang['raid_software_raid'] = 'рейд Software';
+$lang['raid_sync_pending'] = 'Ҳмҳнг ва интизори';
+$lang['raid_sync_scheduled'] = 'Ҳмҳнг ва ба нақша';
+$lang['raid_syncing'] = 'Ҳмҳнг дар пешрафти';
+$lang['raid_test_email'] = 'Ирсол Санҷиши E-почтаи электронӣ';
+$lang['raid_test_sent_to:'] = 'Муваффақият. огоҳинома E-почтаи электронӣ фиристода шудааст:';
+$lang['raid_type'] = 'Намуди';
+$lang['raid_vendor'] = 'таъминкунанда';
