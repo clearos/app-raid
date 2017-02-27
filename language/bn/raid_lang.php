@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'যন্ত্র সংযুক্ত করুন';
+$lang['raid_always'] = 'সর্বদা';
+$lang['raid_app_description'] = 'সফ্টওয়্যার RAID স্ট্যাটাস তথ্য দেখানোর, রিপোর্টিং এবং সফ্টওয়্যার RAID প্রশাসনিক কর্ম উপলব্ধ.';
+$lang['raid_app_name'] = 'সফ্টওয়্যার RAID ম্যানেজার';
+$lang['raid_array'] = 'বিন্যাস';
+$lang['raid_clean'] = 'পরিষ্কার';
+$lang['raid_confirm_add'] = 'দয়া করে নিশ্চিত করুন আপনি% s RAID অ্যারের ব্লক ডিভাইস% s যোগ করতে চাই.';
+$lang['raid_confirm_remove'] = 'দয়া করে নিশ্চিত করুন আপনার কাছ থেকে% গুলি RAID অ্যারের ব্লক ডিভাইস% s সরাতে চাই.';
+$lang['raid_degraded'] = 'অধ: পতিত';
+$lang['raid_device'] = 'যন্ত্র';
+$lang['raid_email_notification'] = 'ইমেল বিজ্ঞপ্তি';
+$lang['raid_every_30_minutes'] = 'প্রতি 30 মিনিট';
+$lang['raid_every_4_hours'] = 'প্রতি 4 ঘন্টা';
+$lang['raid_every_minute'] = 'চবন';
+$lang['raid_frequency'] = 'ফ্রিকোয়েন্সি';
+$lang['raid_level'] = 'উচ্চতা';
+$lang['raid_monitor_raid'] = 'মনিটর, RAID';
+$lang['raid_mount'] = 'পর্বত';
+$lang['raid_no_support'] = 'কোন সমর্থিত RAID অ্যারে পাওয়া.';
+$lang['raid_not_degraded'] = 'এরে একটি নিকৃষ্ট অবস্থায় নয়.';
+$lang['raid_on_failure'] = 'ব্যর্থতা উপর';
+$lang['raid_raid_status'] = 'RAID- র স্ট্যাটাস';
+$lang['raid_raid_summary'] = 'RAID- র সারাংশ';
+$lang['raid_remove'] = 'অপসারণ';
+$lang['raid_send_mail'] = 'পাঠান ই-মেইল নোটিফিকেশন';
+$lang['raid_software_raid'] = 'সফ্টওয়্যার RAID';
+$lang['raid_sync_pending'] = 'সিঙ্ক মুলতুবী';
+$lang['raid_sync_scheduled'] = 'সিঙ্ক নির্ধারিত';
+$lang['raid_syncing'] = 'অগ্রগতি সিঙ্ক';
+$lang['raid_test_email'] = 'পাঠান টেস্ট ই-মেইল';
+$lang['raid_test_sent_to:'] = 'সাফল্য. ই-মেইল বিজ্ঞপ্তি পাঠানো হয়েছে:';
+$lang['raid_type'] = 'আদর্শ';
+$lang['raid_vendor'] = 'বিক্রেতা';
