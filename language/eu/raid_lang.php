@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Gehitu gailu';
+$lang['raid_always'] = 'beti';
+$lang['raid_app_description'] = 'Software RAID egoerari buruzko informazioa, erreportaje eta software RAID dagoen administrazio ekintzak eskaintzen ditu.';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'Clean';
+$lang['raid_confirm_add'] = 'Mesedez, baieztatu% s blokea gailua gehitzeko% s RAID array zeniokeen.';
+$lang['raid_confirm_remove'] = 'Mesedez, baieztatu% s blokea gailua kendu% s RAID array-tik nahi duzu.';
+$lang['raid_degraded'] = 'degradatutako';
+$lang['raid_device'] = 'Gailu';
+$lang['raid_email_notification'] = 'E-mail jakinarazpena';
+$lang['raid_every_30_minutes'] = '30 minuturo';
+$lang['raid_every_4_hours'] = '4 orduro';
+$lang['raid_every_minute'] = 'minuturo';
+$lang['raid_frequency'] = 'Frequency';
+$lang['raid_level'] = 'Maila';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'mendia';
+$lang['raid_no_support'] = 'Ez dago onartuta RAID multzo aurkitu.';
+$lang['raid_not_degraded'] = 'Array ez da degradatuta.';
+$lang['raid_on_failure'] = 'porrota On';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Laburpena';
+$lang['raid_remove'] = 'Kendu';
+$lang['raid_send_mail'] = 'Bidali E-mail jakinarazpena';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Sync oraindik';
+$lang['raid_sync_scheduled'] = 'Sync antolatutako';
+$lang['raid_syncing'] = 'Egiten ari diren Sync';
+$lang['raid_test_email'] = 'Bidali Test E-mail';
+$lang['raid_test_sent_to:'] = 'Arrakastaren. E-mail jakinarazpena bidali da den:';
+$lang['raid_type'] = 'Mota';
+$lang['raid_vendor'] = 'Saltzailearen';
