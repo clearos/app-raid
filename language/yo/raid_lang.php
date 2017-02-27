@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'fi Device';
+$lang['raid_always'] = 'nigbagbogbo';
+$lang['raid_app_description'] = 'Software Igbogun ti pese ipo alaye, iroyin ati Isakoso sise fun software igbogun ti.';
+$lang['raid_app_name'] = 'Software Igbogun ti Manager';
+$lang['raid_array'] = 'orun';
+$lang['raid_clean'] = 'mọ';
+$lang['raid_confirm_add'] = 'Jọwọ jẹrisi ti o yoo fẹ lati fi Àkọsílẹ ẹrọ% s si awọn% s igbogun ti orun.';
+$lang['raid_confirm_remove'] = 'Jọwọ jẹrisi ti o yoo fẹ lati yọ Àkọsílẹ ẹrọ% s lati awọn% s igbogun ti orun.';
+$lang['raid_degraded'] = 'degraded';
+$lang['raid_device'] = 'Device';
+$lang['raid_email_notification'] = 'E-mail iwifunni';
+$lang['raid_every_30_minutes'] = 'Gbogbo 30 iṣẹju';
+$lang['raid_every_4_hours'] = 'Gbogbo 4 wakati';
+$lang['raid_every_minute'] = 'gbogbo iseju';
+$lang['raid_frequency'] = 'igbohunsafẹfẹ';
+$lang['raid_level'] = 'ipele';
+$lang['raid_monitor_raid'] = 'atẹle igbogun ti';
+$lang['raid_mount'] = 'òke';
+$lang['raid_no_support'] = 'Ko si ni atilẹyin igbogun ti imole ri.';
+$lang['raid_not_degraded'] = 'Orun ni ko ni kan degraded ipinle.';
+$lang['raid_on_failure'] = 'on ikuna';
+$lang['raid_raid_status'] = 'igbogun Ipo';
+$lang['raid_raid_summary'] = 'igbogun ti Lakotan';
+$lang['raid_remove'] = 'yọ';
+$lang['raid_send_mail'] = 'Fi E-mail iwifunni';
+$lang['raid_software_raid'] = 'software igbogun';
+$lang['raid_sync_pending'] = 'ìsiṣẹpọ ni isunmọtosi ni';
+$lang['raid_sync_scheduled'] = 'Sync eto';
+$lang['raid_syncing'] = 'Ìsiṣẹpọ ni ilọsiwaju';
+$lang['raid_test_email'] = 'Fi igbeyewo E-mail';
+$lang['raid_test_sent_to:'] = 'Aseyori. E-mail iwifunni ti a ti rán si:';
+$lang['raid_type'] = 'iru';
+$lang['raid_vendor'] = 'ataja';
