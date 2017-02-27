@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Device ကို Add';
+$lang['raid_always'] = 'အမြဲ';
+$lang['raid_app_description'] = 'Software ကို RAID software ကို RAID များအတွက်အဆင့်အတန်းသတင်းအချက်အလက်, အစီရင်ခံနှင့်အုပ်ချုပ်ရေးလုပ်ရပ်ပေးစွမ်းသည်။';
+$lang['raid_app_name'] = 'Software ကို RAID Manager ကို';
+$lang['raid_array'] = 'အခင်းအကျင်း';
+$lang['raid_clean'] = 'သန့်ရှင်းသော';
+$lang['raid_confirm_add'] = 'သင်ကို% s RAID ခင်းကျင်းဖို့ပိတ်ပင်တားဆီးမှု device ကိုကို% s add ချင်ပါတယ်အတည်ပြုပေးပါ။';
+$lang['raid_confirm_remove'] = 'သင်ကို% s RAID ခင်းကျင်းထဲကနေပိတ်ပင်တားဆီးမှု device ကိုကို% s ဖယ်ရှားပစ်ရန်ချင်ပါတယ်အတည်ပြုပေးပါ။';
+$lang['raid_degraded'] = 'ပျက်စီးနေ';
+$lang['raid_device'] = 'စက်ကိရိယာ';
+$lang['raid_email_notification'] = 'E-mail ကိုသတိပေးချက်';
+$lang['raid_every_30_minutes'] = 'တိုင်းမိနစ် 30';
+$lang['raid_every_4_hours'] = 'တိုင်း 4 နာရီ';
+$lang['raid_every_minute'] = 'တိုင်းမိနစ်';
+$lang['raid_frequency'] = 'frequency';
+$lang['raid_level'] = 'level';
+$lang['raid_monitor_raid'] = 'monitor RAID';
+$lang['raid_mount'] = 'တောင်ပေါ်မှာ';
+$lang['raid_no_support'] = 'မျှမတွေ့ထောက်ခံ RAID သည် array ။';
+$lang['raid_not_degraded'] = 'array တစ်ခုယုတျညံ့ပြည်နယ်မရှိ။';
+$lang['raid_on_failure'] = 'ပျက်ကွက်တွင်';
+$lang['raid_raid_status'] = 'RAID အခြေအနေ';
+$lang['raid_raid_summary'] = 'RAID အကျဉ်းချုပ်';
+$lang['raid_remove'] = 'Remove';
+$lang['raid_send_mail'] = 'E-mail ကိုသတိပေးချက် Send';
+$lang['raid_software_raid'] = 'Software ကို RAID';
+$lang['raid_sync_pending'] = 'ဆိုင်းငံ့ Sync ကို';
+$lang['raid_sync_scheduled'] = 'Sync ကိုစီစဉ်ထား';
+$lang['raid_syncing'] = 'တိုးတက်မှုအတွက် Sync ကို';
+$lang['raid_test_email'] = 'စမ်းသပ်ခြင်း, E-mail ပို့';
+$lang['raid_test_sent_to:'] = 'အောင်မြင်မှု။ E-mail ကိုအကြောင်းကြားစာပို့လိုက်ပါပြီ:';
+$lang['raid_type'] = 'ပုံစံ';
+$lang['raid_vendor'] = 'ရောင်းချသူ';
