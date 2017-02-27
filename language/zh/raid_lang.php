@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = '添加设备';
+$lang['raid_always'] = '总是';
+$lang['raid_app_description'] = '软件RAID提供状态信息，报告和软件RAID管理操作。';
+$lang['raid_app_name'] = '软件RAID经理';
+$lang['raid_array'] = '排列';
+$lang['raid_clean'] = '清洁';
+$lang['raid_confirm_add'] = '请确认您想块设备％s添加到％s的RAID阵列。';
+$lang['raid_confirm_remove'] = '请确认您想从％s的RAID阵列删除块设备％S。';
+$lang['raid_degraded'] = '降级';
+$lang['raid_device'] = '设备';
+$lang['raid_email_notification'] = '电子邮件通知';
+$lang['raid_every_30_minutes'] = '每30分钟';
+$lang['raid_every_4_hours'] = '每4小时';
+$lang['raid_every_minute'] = '每一分钟';
+$lang['raid_frequency'] = '频率';
+$lang['raid_level'] = '水平';
+$lang['raid_monitor_raid'] = '监控RAID';
+$lang['raid_mount'] = '安装';
+$lang['raid_no_support'] = '不支持RAID阵列中。';
+$lang['raid_not_degraded'] = '数组不处于降级状态。';
+$lang['raid_on_failure'] = '如果失败';
+$lang['raid_raid_status'] = 'RAID状态';
+$lang['raid_raid_summary'] = 'RAID摘要';
+$lang['raid_remove'] = '去掉';
+$lang['raid_send_mail'] = '发送电子邮件通知';
+$lang['raid_software_raid'] = '软件RAID';
+$lang['raid_sync_pending'] = '等待同步';
+$lang['raid_sync_scheduled'] = '同步计划';
+$lang['raid_syncing'] = '正在同步';
+$lang['raid_test_email'] = '发送测试电子邮件';
+$lang['raid_test_sent_to:'] = '成功。 E-mail通知已经发送到：';
+$lang['raid_type'] = '类型';
+$lang['raid_vendor'] = '供应商';
