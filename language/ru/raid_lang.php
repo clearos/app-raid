@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Добавить устройство';
+$lang['raid_always'] = 'Всегда';
+$lang['raid_app_description'] = 'Программный RAID предоставляет информацию о состоянии, отчетности и административные действия для программного обеспечения RAID.';
+$lang['raid_app_name'] = 'RAID Manager Software';
+$lang['raid_array'] = 'массив';
+$lang['raid_clean'] = 'чистый';
+$lang['raid_confirm_add'] = 'Пожалуйста, подтвердите, что вы хотели бы добавить блок устройства% S в% S в массиве RAID.';
+$lang['raid_confirm_remove'] = 'Пожалуйста, подтвердите, что вы хотите удалить блок устройства% S из% S массива RAID.';
+$lang['raid_degraded'] = 'Degraded';
+$lang['raid_device'] = 'устройство';
+$lang['raid_email_notification'] = 'Уведомление по электронной почте';
+$lang['raid_every_30_minutes'] = 'Каждые 30 минут';
+$lang['raid_every_4_hours'] = 'Каждые 4 часа';
+$lang['raid_every_minute'] = 'Каждую минуту';
+$lang['raid_frequency'] = 'частота';
+$lang['raid_level'] = 'уровень';
+$lang['raid_monitor_raid'] = 'монитор RAID';
+$lang['raid_mount'] = 'гора';
+$lang['raid_no_support'] = 'Нет поддерживаемых RAID-массивы не найдено.';
+$lang['raid_not_degraded'] = 'Массив не находится в нерабочем состоянии.';
+$lang['raid_on_failure'] = 'В случае неудачи';
+$lang['raid_raid_status'] = 'Статус RAID';
+$lang['raid_raid_summary'] = 'RAID Резюме';
+$lang['raid_remove'] = 'Удалить';
+$lang['raid_send_mail'] = 'Отправить уведомления по электронной почте';
+$lang['raid_software_raid'] = 'Программное обеспечение RAID';
+$lang['raid_sync_pending'] = 'Синхронизация в ожидании';
+$lang['raid_sync_scheduled'] = 'Синхронизация по расписанию';
+$lang['raid_syncing'] = 'Идет синхронизация';
+$lang['raid_test_email'] = 'Отправить тестовое сообщение электронной почты';
+$lang['raid_test_sent_to:'] = 'Успех. Уведомление по электронной почте было отправлено:';
+$lang['raid_type'] = 'Тип';
+$lang['raid_vendor'] = 'продавец';
