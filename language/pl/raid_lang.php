@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Dodaj urządzenie';
+$lang['raid_always'] = 'Zawsze';
+$lang['raid_app_description'] = 'Software RAID zapewnia informacje o statusie, raportowania i działań administracyjnych w zakresie oprogramowania RAID.';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'Szyk';
+$lang['raid_clean'] = 'Czysty';
+$lang['raid_confirm_add'] = 'Proszę potwierdzić chcesz dodać urządzeniu% s do% s macierzy RAID.';
+$lang['raid_confirm_remove'] = 'Proszę potwierdzić, że chcesz usunąć urządzenie blokowe% sz% s macierzy RAID.';
+$lang['raid_degraded'] = 'Zdegradowany';
+$lang['raid_device'] = 'Urządzenie';
+$lang['raid_email_notification'] = 'Powiadomienie e-mail';
+$lang['raid_every_30_minutes'] = 'Co 30 minut';
+$lang['raid_every_4_hours'] = 'Co 4 godziny';
+$lang['raid_every_minute'] = 'Każda minuta';
+$lang['raid_frequency'] = 'Częstotliwość';
+$lang['raid_level'] = 'Poziom';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'Uchwyt';
+$lang['raid_no_support'] = 'Nie znaleziono wspierane macierze RAID.';
+$lang['raid_not_degraded'] = 'Tablica nie jest w stanie awaryjnym.';
+$lang['raid_on_failure'] = 'W przypadku błędu';
+$lang['raid_raid_status'] = 'Stan RAID';
+$lang['raid_raid_summary'] = 'RAID Podsumowanie';
+$lang['raid_remove'] = 'Usunąć';
+$lang['raid_send_mail'] = 'Wyślij powiadomienie e-mail';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Synchronizacja czasu';
+$lang['raid_sync_scheduled'] = 'Synchronizacja zaplanowana';
+$lang['raid_syncing'] = 'Synchronizacja w toku';
+$lang['raid_test_email'] = 'Wyślij testowy e-mail';
+$lang['raid_test_sent_to:'] = 'Powodzenie. Powiadomienie E-mail został wysłany do:';
+$lang['raid_type'] = 'Rodzaj';
+$lang['raid_vendor'] = 'Sprzedawca';
