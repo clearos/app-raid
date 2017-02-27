@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Voeg toestel toe';
+$lang['raid_always'] = 'Altijd';
+$lang['raid_app_description'] = 'Software RAID biedt informatie over de status, rapportage en administratieve handelingen voor software RAID.';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'reeks';
+$lang['raid_clean'] = 'Schoon';
+$lang['raid_confirm_add'] = 'Bevestig dat je wilt block device% s toe te voegen aan de% s RAID-array.';
+$lang['raid_confirm_remove'] = 'Bevestig dat je wilt block device% s verwijderen uit de map% s RAID-array.';
+$lang['raid_degraded'] = 'gedegradeerd';
+$lang['raid_device'] = 'Apparaat';
+$lang['raid_email_notification'] = 'E-mail notificatie';
+$lang['raid_every_30_minutes'] = 'Elke 30 minuten';
+$lang['raid_every_4_hours'] = 'Elke 4 uur';
+$lang['raid_every_minute'] = 'Elke minuut';
+$lang['raid_frequency'] = 'Frequentie';
+$lang['raid_level'] = 'Niveau';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'berg';
+$lang['raid_no_support'] = 'Geen ondersteunde RAID arrays gevonden.';
+$lang['raid_not_degraded'] = 'Array zit niet in een gedegradeerde staat.';
+$lang['raid_on_failure'] = 'Bij falen';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Samenvatting';
+$lang['raid_remove'] = 'Verwijderen';
+$lang['raid_send_mail'] = 'Stuur dan een e-mail Notification';
+$lang['raid_software_raid'] = 'software RAID';
+$lang['raid_sync_pending'] = 'Sync in afwachting';
+$lang['raid_sync_scheduled'] = 'Sync gepland';
+$lang['raid_syncing'] = 'Sync in progress';
+$lang['raid_test_email'] = 'Stuur Test E-mail';
+$lang['raid_test_sent_to:'] = 'Succes. E-mail notificatie is gestuurd naar:';
+$lang['raid_type'] = 'Type';
+$lang['raid_vendor'] = 'Verkoper';
