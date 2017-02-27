@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'เพิ่มอุปกรณ์';
+$lang['raid_always'] = 'เสมอ';
+$lang['raid_app_description'] = 'การโจมตีซอฟต์แวร์ให้ข้อมูลสถานะการรายงานและการดำเนินการในการบริหารสำหรับ RAID ซอฟต์แวร์';
+$lang['raid_app_name'] = 'ผู้จัดการฝ่ายการโจมตีซอฟต์แวร์';
+$lang['raid_array'] = 'แถว';
+$lang['raid_clean'] = 'สะอาด';
+$lang['raid_confirm_add'] = 'กรุณายืนยันว่าท่านต้องการที่จะเพิ่มอุปกรณ์ป้องกัน% s เพื่ออาร์เรย์ RAID% ดัชนี S';
+$lang['raid_confirm_remove'] = 'กรุณายืนยันว่าท่านต้องการลบอุปกรณ์ป้องกัน% S จากอาร์เรย์ RAID% ดัชนี S';
+$lang['raid_degraded'] = 'การสลายตัว';
+$lang['raid_device'] = 'เครื่อง';
+$lang['raid_email_notification'] = 'แจ้งทาง E-mail';
+$lang['raid_every_30_minutes'] = 'ทุก 30 นาที';
+$lang['raid_every_4_hours'] = 'ทุก 4 ชั่วโมง';
+$lang['raid_every_minute'] = 'ทุกนาที';
+$lang['raid_frequency'] = 'ความถี่';
+$lang['raid_level'] = 'ชั้น';
+$lang['raid_monitor_raid'] = 'ตรวจสอบ RAID';
+$lang['raid_mount'] = 'ภูเขา';
+$lang['raid_no_support'] = 'ไม่มีการสนับสนุนอาร์เรย์ RAID พบ';
+$lang['raid_not_degraded'] = 'อาร์เรย์ไม่อยู่ในสภาพที่เสื่อมโทรม';
+$lang['raid_on_failure'] = 'ในความล้มเหลว';
+$lang['raid_raid_status'] = 'สถานะ RAID';
+$lang['raid_raid_summary'] = 'RAID อย่างย่อ';
+$lang['raid_remove'] = 'เอาออก';
+$lang['raid_send_mail'] = 'ส่งการแจ้งเตือนทาง E-mail';
+$lang['raid_software_raid'] = 'การโจมตีซอฟต์แวร์';
+$lang['raid_sync_pending'] = 'รอดำเนินการซิงค์';
+$lang['raid_sync_scheduled'] = 'ซิงค์ที่กำหนด';
+$lang['raid_syncing'] = 'ความคืบหน้าในการซิงค์';
+$lang['raid_test_email'] = 'ส่งทดสอบทาง E-mail';
+$lang['raid_test_sent_to:'] = 'ความสำเร็จ การแจ้งเตือนทาง E-mail ได้รับการส่งไปที่:';
+$lang['raid_type'] = 'ชนิด';
+$lang['raid_vendor'] = 'ผู้ขาย';
