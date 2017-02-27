@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Thêm thiết bị';
+$lang['raid_always'] = 'Luôn luôn';
+$lang['raid_app_description'] = 'RAID phần mềm cung cấp thông tin tình trạng, báo cáo và hành vi hành chính cho phần mềm RAID.';
+$lang['raid_app_name'] = 'Phần mềm quản lý RAID';
+$lang['raid_array'] = 'Mảng';
+$lang['raid_clean'] = 'Dọn dẹp';
+$lang['raid_confirm_add'] = 'Vui lòng xác nhận bạn muốn thêm khối thiết bị% s đến mảng RAID% s.';
+$lang['raid_confirm_remove'] = 'Vui lòng xác nhận bạn muốn loại bỏ khối thiết bị% s từ mảng RAID% s.';
+$lang['raid_degraded'] = 'suy thoái';
+$lang['raid_device'] = 'thiết bị';
+$lang['raid_email_notification'] = 'Thông báo có email';
+$lang['raid_every_30_minutes'] = 'Cứ mỗi 30 phút';
+$lang['raid_every_4_hours'] = 'Mỗi 4 giờ';
+$lang['raid_every_minute'] = 'Mỗi phút';
+$lang['raid_frequency'] = 'Tần số';
+$lang['raid_level'] = 'Cấp độ';
+$lang['raid_monitor_raid'] = 'màn hình RAID';
+$lang['raid_mount'] = 'núi';
+$lang['raid_no_support'] = 'Không tìm thấy mảng RAID hỗ trợ.';
+$lang['raid_not_degraded'] = 'Mảng không phải là ở trong tình trạng suy thoái.';
+$lang['raid_on_failure'] = 'về thất bại';
+$lang['raid_raid_status'] = 'trạng thái RAID';
+$lang['raid_raid_summary'] = 'Tóm tắt RAID';
+$lang['raid_remove'] = 'Tẩy';
+$lang['raid_send_mail'] = 'Gửi E-mail thông báo';
+$lang['raid_software_raid'] = 'phần mềm RAID';
+$lang['raid_sync_pending'] = 'chờ đồng bộ hóa';
+$lang['raid_sync_scheduled'] = 'Đồng bộ hóa lịch';
+$lang['raid_syncing'] = 'Đồng bộ trong tiến trình';
+$lang['raid_test_email'] = 'Send Test E-mail';
+$lang['raid_test_sent_to:'] = 'Sự thành công. thông báo E-mail đã được gửi đến:';
+$lang['raid_type'] = 'Kiểu';
+$lang['raid_vendor'] = 'người bán';
