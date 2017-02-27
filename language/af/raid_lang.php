@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'apparaat Voeg';
+$lang['raid_always'] = 'altyd';
+$lang['raid_app_description'] = 'Sagteware RAID bied status inligting, verslagdoening en administratiewe aksies vir sagteware RAID.';
+$lang['raid_app_name'] = 'Sagteware RAID Bestuurder';
+$lang['raid_array'] = 'verskeidenheid';
+$lang['raid_clean'] = 'skoon';
+$lang['raid_confirm_add'] = 'Bevestig asseblief u wil blok toestel% s voeg tot die% s RAID-array.';
+$lang['raid_confirm_remove'] = 'Bevestig asseblief u wil blok toestel% s verwyder uit die% s RAID-array.';
+$lang['raid_degraded'] = 'vervalle';
+$lang['raid_device'] = 'toestel';
+$lang['raid_email_notification'] = 'E-pos kennisgewings';
+$lang['raid_every_30_minutes'] = 'Elke 30 minute';
+$lang['raid_every_4_hours'] = 'Elke 4 uur';
+$lang['raid_every_minute'] = 'elke minuut';
+$lang['raid_frequency'] = 'Frekwensie';
+$lang['raid_level'] = 'vlak';
+$lang['raid_monitor_raid'] = 'monitor RAID';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'Geen ondersteun RAID skikkings gevind.';
+$lang['raid_not_degraded'] = 'Skikking is nie in &#39;n vervalle toestand.';
+$lang['raid_on_failure'] = 'op mislukking';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Opsomming';
+$lang['raid_remove'] = 'verwyder';
+$lang['raid_send_mail'] = 'Stuur E-pos kennisgewings';
+$lang['raid_software_raid'] = 'sagteware RAID';
+$lang['raid_sync_pending'] = 'Sync hangende';
+$lang['raid_sync_scheduled'] = 'Sync geskeduleer';
+$lang['raid_syncing'] = 'Sync aan die gang';
+$lang['raid_test_email'] = 'Stuur Toets E-pos';
+$lang['raid_test_sent_to:'] = 'Sukses. E-pos kennisgewings is gestuur na:';
+$lang['raid_type'] = 'tipe';
+$lang['raid_vendor'] = 'verkoper';
