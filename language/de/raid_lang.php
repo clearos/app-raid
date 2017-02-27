@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Gerät hinzufügen';
+$lang['raid_always'] = 'Immer';
+$lang['raid_app_description'] = 'Software-RAID-Statusinformationen, Berichte und Verwaltungsaktionen für Software-RAID.';
+$lang['raid_app_name'] = 'Software-RAID-Manager';
+$lang['raid_array'] = 'Feld';
+$lang['raid_clean'] = 'Reinigen';
+$lang['raid_confirm_add'] = 'Bitte bestätigen Sie möchten Blockgerät% s% s RAID-Array hinzuzufügen.';
+$lang['raid_confirm_remove'] = 'Bitte bestätigen Sie möchten Blockgerät% s von% s RAID-Array zu entfernen.';
+$lang['raid_degraded'] = 'Beeinträchtigt';
+$lang['raid_device'] = 'Gerät';
+$lang['raid_email_notification'] = 'Email Benachrichtigung';
+$lang['raid_every_30_minutes'] = 'Alle 30 Minuten';
+$lang['raid_every_4_hours'] = 'Alle 4 Stunden';
+$lang['raid_every_minute'] = 'Jede Minute';
+$lang['raid_frequency'] = 'Frequenz';
+$lang['raid_level'] = 'Ebene';
+$lang['raid_monitor_raid'] = 'Monitor-RAID';
+$lang['raid_mount'] = 'Montieren';
+$lang['raid_no_support'] = 'Keine unterstützten RAID-Arrays gefunden.';
+$lang['raid_not_degraded'] = 'Array ist nicht in einem verschlechterten Zustand.';
+$lang['raid_on_failure'] = 'Bei einem Fehler';
+$lang['raid_raid_status'] = 'RAID-Status';
+$lang['raid_raid_summary'] = 'RAID Zusammenfassung';
+$lang['raid_remove'] = 'Entfernen';
+$lang['raid_send_mail'] = 'Senden Sie eine E-Mail-Benachrichtigung';
+$lang['raid_software_raid'] = 'Software-RAID';
+$lang['raid_sync_pending'] = 'Sync anhängig';
+$lang['raid_sync_scheduled'] = 'Sync geplant';
+$lang['raid_syncing'] = 'Sync im Gange';
+$lang['raid_test_email'] = 'Senden Test-E-Mail';
+$lang['raid_test_sent_to:'] = 'Erfolg. E-Mail-Benachrichtigung wurde gesendet an:';
+$lang['raid_type'] = 'Art';
+$lang['raid_vendor'] = 'Verkäufer';
