@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Dodaj Device';
+$lang['raid_always'] = 'uvijek';
+$lang['raid_app_description'] = 'Software RAID pruža informacije o statusu, izvještavanje i upravne postupke za softverski RAID.';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'mnoštvo';
+$lang['raid_clean'] = 'čist';
+$lang['raid_confirm_add'] = 'Molimo Vas da potvrdite želite dodati blok uređaj% s% s RAID polje.';
+$lang['raid_confirm_remove'] = 'Molimo Vas da potvrdite želite ukloniti blok uređaj% s iz% s RAID polje.';
+$lang['raid_degraded'] = 'degradirana';
+$lang['raid_device'] = 'uređaj';
+$lang['raid_email_notification'] = 'E-mail obavijest';
+$lang['raid_every_30_minutes'] = 'Svakih 30 minuta';
+$lang['raid_every_4_hours'] = 'Svaka 4 sata';
+$lang['raid_every_minute'] = 'Svakog minuta';
+$lang['raid_frequency'] = 'frekvencija';
+$lang['raid_level'] = 'nivo';
+$lang['raid_monitor_raid'] = 'monitor RAID';
+$lang['raid_mount'] = 'montiranje';
+$lang['raid_no_support'] = 'Ništa nije podržana RAID polja.';
+$lang['raid_not_degraded'] = 'Array nije u degradiranom stanju.';
+$lang['raid_on_failure'] = 'na neuspjeh';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Pregled';
+$lang['raid_remove'] = 'ukloniti';
+$lang['raid_send_mail'] = 'Pošaljite E-mail Notification';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Sync na čekanju';
+$lang['raid_sync_scheduled'] = 'Sync zakazana';
+$lang['raid_syncing'] = 'Sync u tijeku';
+$lang['raid_test_email'] = 'Pošalji Test E-mail';
+$lang['raid_test_sent_to:'] = 'Uspjeh. E-mail obavijest je poslana na:';
+$lang['raid_type'] = 'tip';
+$lang['raid_vendor'] = 'prodavač';
