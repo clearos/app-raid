@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'qurilma qo&#39;shish';
+$lang['raid_always'] = 'har doim';
+$lang['raid_app_description'] = 'Software RAID holati haqida ma&#39;lumot, hisobot va dasturiy ta&#39;minot RAID uchun ma&#39;muriy harakatlarini beradi.';
+$lang['raid_app_name'] = 'Software RAID menejeri';
+$lang['raid_array'] = 'bir qator';
+$lang['raid_clean'] = 'toza';
+$lang['raid_confirm_add'] = '% s RAID majmuasini uchun blok qurilmasi% s qo&#39;shish istayman tasdiqlash qiling.';
+$lang['raid_confirm_remove'] = '% s RAID majmuasini dan blok qurilma% s olib tashlash uchun istardim tasdiqlash qiling.';
+$lang['raid_degraded'] = 'Buzilib';
+$lang['raid_device'] = 'Qurilma';
+$lang['raid_email_notification'] = 'E-mail Xabarnoma';
+$lang['raid_every_30_minutes'] = 'Har 30 daqiqada';
+$lang['raid_every_4_hours'] = 'Har 4 soat';
+$lang['raid_every_minute'] = 'har daqiqa';
+$lang['raid_frequency'] = 'Frequency';
+$lang['raid_level'] = 'daraja';
+$lang['raid_monitor_raid'] = 'monitor RAID';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'No RAID suhbat topildi.';
+$lang['raid_not_degraded'] = 'Array bir tanazzulga uchragan holatda emas.';
+$lang['raid_on_failure'] = 'qobiliyatsiz';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Xulosa';
+$lang['raid_remove'] = 'olib tashlash';
+$lang['raid_send_mail'] = 'E-mail Xabarnoma yuborish';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'sinxronlash kutilmoqda';
+$lang['raid_sync_scheduled'] = 'Sinx rejalashtirilgan';
+$lang['raid_syncing'] = 'amalga sinxronlash';
+$lang['raid_test_email'] = 'Test E-mail yuborish';
+$lang['raid_test_sent_to:'] = 'Muvaffaqiyat. E-mail xabar yuborildi:';
+$lang['raid_type'] = 'shrift';
+$lang['raid_vendor'] = 'sotuvchi';
