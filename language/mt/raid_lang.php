@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Żid Device';
+$lang['raid_always'] = 'dejjem';
+$lang['raid_app_description'] = 'Softwer RAID jipprovdi informazzjoni dwar status, ir-rappurtar u l-azzjonijiet amministrattivi għall RAID software.';
+$lang['raid_app_name'] = 'Softwer RAID Manager';
+$lang['raid_array'] = 'array';
+$lang['raid_clean'] = 'nadif';
+$lang['raid_confirm_add'] = 'Jekk jogħġbok ikkonferma li inti tixtieq iżżid mezz blokk% tal-Kummissjoni li l-% s firxa RAID.';
+$lang['raid_confirm_remove'] = 'Jekk jogħġbok ikkonferma li inti tixtieq li tneħħi mezz blokk% tal mil-% s firxa RAID.';
+$lang['raid_degraded'] = 'degradata';
+$lang['raid_device'] = 'apparat';
+$lang['raid_email_notification'] = 'E-mail Notifika';
+$lang['raid_every_30_minutes'] = 'Kull 30 minuti';
+$lang['raid_every_4_hours'] = 'Kull 4 sigħat';
+$lang['raid_every_minute'] = 'kull minuta';
+$lang['raid_frequency'] = 'frekwenza';
+$lang['raid_level'] = 'livell';
+$lang['raid_monitor_raid'] = 'RAID monitor';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'Ebda arrays RAID appoġġjati misjuba.';
+$lang['raid_not_degraded'] = 'Array mhix fi stat degradat.';
+$lang['raid_on_failure'] = 'fuq in-nuqqas';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Sommarju';
+$lang['raid_remove'] = 'Neħħi';
+$lang['raid_send_mail'] = 'Send E-mail Notifika';
+$lang['raid_software_raid'] = 'softwer RAID';
+$lang['raid_sync_pending'] = 'sync pendenti';
+$lang['raid_sync_scheduled'] = 'sync skedat';
+$lang['raid_syncing'] = 'Sync fil-progress';
+$lang['raid_test_email'] = 'Ibgħat test E-mail';
+$lang['raid_test_sent_to:'] = 'Suċċess. Notifika E-mail ġiet mibgħuta lil:';
+$lang['raid_type'] = 'tip';
+$lang['raid_vendor'] = 'bejjiegħ';
