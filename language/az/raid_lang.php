@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Qurğu əlavə et';
+$lang['raid_always'] = 'Həmişə';
+$lang['raid_app_description'] = 'Software RAID statusu məlumat, hesabat və proqram RAID üçün inzibati tədbirlər təmin edir.';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'array';
+$lang['raid_clean'] = 'təmiz';
+$lang['raid_confirm_add'] = 'Siz% s RAID array blok cihaz% s əlavə etmək istərdim təsdiq edin.';
+$lang['raid_confirm_remove'] = 'Siz% s RAID array blok cihaz% s aradan qaldırılması üçün istəyirəm təsdiq edin.';
+$lang['raid_degraded'] = 'deqradasiyaya';
+$lang['raid_device'] = 'Qurğu';
+$lang['raid_email_notification'] = 'E-mail Notification';
+$lang['raid_every_30_minutes'] = 'Hər 30 dəqiqə';
+$lang['raid_every_4_hours'] = 'Hər 4 saat';
+$lang['raid_every_minute'] = 'dəqiqəbaşı';
+$lang['raid_frequency'] = 'Frequency';
+$lang['raid_level'] = 'Səviyyə';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'No dəstəyi RAID Diziler tapılmadı.';
+$lang['raid_not_degraded'] = 'Array bir deqradasiyaya dövlət deyil.';
+$lang['raid_on_failure'] = 'uğursuzluq';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Xülasə';
+$lang['raid_remove'] = 'çıxarmaq';
+$lang['raid_send_mail'] = 'E-mail bildiriş göndər';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'bekleyen Sync';
+$lang['raid_sync_scheduled'] = 'Sync təyin';
+$lang['raid_syncing'] = 'davam Sync';
+$lang['raid_test_email'] = 'Test E-poçt göndər';
+$lang['raid_test_sent_to:'] = 'Success. E-mail bildiriş göndərilib:';
+$lang['raid_type'] = 'Type';
+$lang['raid_vendor'] = 'satıcı';
