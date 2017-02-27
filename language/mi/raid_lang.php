@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Tāpiri Pūrere';
+$lang['raid_always'] = 'ngā wā katoa';
+$lang['raid_app_description'] = 'RAID Pūmanawa whakarato mōhiohio tūnga, pūrongo, me ngā mahi whakahaere mō te RAID pūmanawa.';
+$lang['raid_app_name'] = 'Kaiwhakahaere RAID Pūmanawa';
+$lang['raid_array'] = 'ngohi';
+$lang['raid_clean'] = 'Clean';
+$lang['raid_confirm_add'] = 'Koa whakau e hiahia ana koe ki te tāpiri pūrere poraka% s ki te% s ngohi RAID.';
+$lang['raid_confirm_remove'] = 'Koa whakau e hiahia ana koe ki te tango pūrere poraka% s i te% s ngohi RAID.';
+$lang['raid_degraded'] = 'iho';
+$lang['raid_device'] = 'pūrere';
+$lang['raid_email_notification'] = 'Whakamōhiotanga E-mēra';
+$lang['raid_every_30_minutes'] = 'Nga 30 meneti';
+$lang['raid_every_4_hours'] = 'Nga 4 haora';
+$lang['raid_every_minute'] = 'nga meneti';
+$lang['raid_frequency'] = 'auautanga';
+$lang['raid_level'] = 'taumata';
+$lang['raid_monitor_raid'] = 'RAID Aroturuki';
+$lang['raid_mount'] = 'maunga';
+$lang['raid_no_support'] = 'kitea he huānga RAID tautoko.';
+$lang['raid_not_degraded'] = 'kahore he ngohi i roto i te āhua tuukinotanga.';
+$lang['raid_on_failure'] = 'I te kore';
+$lang['raid_raid_status'] = 'Tūnga RAID';
+$lang['raid_raid_summary'] = 'Whakarāpopoto RAID';
+$lang['raid_remove'] = 'Tangohia te';
+$lang['raid_send_mail'] = 'Tukua Whakamōhiotanga E-mēra';
+$lang['raid_software_raid'] = 'RAID pūmanawa';
+$lang['raid_sync_pending'] = 'tukutahi tārewa';
+$lang['raid_sync_scheduled'] = 'whakaritea tukutahi';
+$lang['raid_syncing'] = 'Tukutahi i roto i te ahunga whakamua';
+$lang['raid_test_email'] = 'Tukua Test E-mēra';
+$lang['raid_test_sent_to:'] = 'Success. Kua whakamōhiotanga E-mēra kua tonoa ki:';
+$lang['raid_type'] = 'momo';
+$lang['raid_vendor'] = 'kaihoko';
