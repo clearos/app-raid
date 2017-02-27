@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Add Na&#39;ura';
+$lang['raid_always'] = 'Koyaushe';
+$lang['raid_app_description'] = 'Software hari samar da bayanin hali, rahoto da administrative ayyuka ga software hari.';
+$lang['raid_app_name'] = 'Software hari Manager';
+$lang['raid_array'] = 'array';
+$lang['raid_clean'] = 'Clean';
+$lang['raid_confirm_add'] = 'Da fatan a tabbatar ka so a ƙara block na&#39;urar% s zuwa% s hari tsararru.';
+$lang['raid_confirm_remove'] = 'Da fatan a tabbatar ka so a cire block na&#39;urar% s daga% s hari tsararru.';
+$lang['raid_degraded'] = 'kaskanta';
+$lang['raid_device'] = 'Na&#39;ura';
+$lang['raid_email_notification'] = 'E-mail Notification';
+$lang['raid_every_30_minutes'] = 'Kowane minti 30';
+$lang['raid_every_4_hours'] = 'Kowane 4 hours';
+$lang['raid_every_minute'] = 'Kowane minti';
+$lang['raid_frequency'] = 'Frequency';
+$lang['raid_level'] = 'Level';
+$lang['raid_monitor_raid'] = 'Monitor hari';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'No goyan hari iri-iri samu.';
+$lang['raid_not_degraded'] = 'Array ba a kaskanta jihar.';
+$lang['raid_on_failure'] = 'A gazawar';
+$lang['raid_raid_status'] = 'hari Status';
+$lang['raid_raid_summary'] = 'hari Summary';
+$lang['raid_remove'] = 'cire';
+$lang['raid_send_mail'] = 'Aika E-mail Notification';
+$lang['raid_software_raid'] = 'software hari';
+$lang['raid_sync_pending'] = 'Sync a lokacin';
+$lang['raid_sync_scheduled'] = 'Sync shirya';
+$lang['raid_syncing'] = 'Sync a ci gaba';
+$lang['raid_test_email'] = 'Aika Test E-mail';
+$lang['raid_test_sent_to:'] = 'Success. E-mail sanarwar da aka aiko zuwa ga:';
+$lang['raid_type'] = 'type';
+$lang['raid_vendor'] = 'mai sayarwa';
