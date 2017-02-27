@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Engeza Kudivayisi';
+$lang['raid_always'] = 'Njalo';
+$lang['raid_app_description'] = 'Raid Software inikeza ukwaziswa isimo, ukubika kanye nezenzo zokuphatha software raid.';
+$lang['raid_app_name'] = 'Software Raid Manager';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'Clean';
+$lang['raid_confirm_add'] = 'Sicela uqinisekise ungathanda ukwengeza kudivayisi block% s kuya% s raid afanayo.';
+$lang['raid_confirm_remove'] = 'Sicela uqinisekise ukuthi ungathanda ukususa kudivayisi block% s kusukela% s raid afanayo.';
+$lang['raid_degraded'] = 'okululaziwe';
+$lang['raid_device'] = 'Idivayisi';
+$lang['raid_email_notification'] = 'E-mail Isaziso';
+$lang['raid_every_30_minutes'] = 'Njalo ngamaminithi angu-30';
+$lang['raid_every_4_hours'] = 'Njalo emahoreni 4';
+$lang['raid_every_minute'] = 'Njalo ngomzuzu';
+$lang['raid_frequency'] = 'imvamisa';
+$lang['raid_level'] = 'Level';
+$lang['raid_monitor_raid'] = 'Monitor Raid';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'Ayikho asekelwa Raid afanayo atholakele.';
+$lang['raid_not_degraded'] = 'Array alikho esimweni onakaliswa.';
+$lang['raid_on_failure'] = 'On ukwehluleka';
+$lang['raid_raid_status'] = 'Raid Isimo';
+$lang['raid_raid_summary'] = 'Raid Summary';
+$lang['raid_remove'] = 'Susa';
+$lang['raid_send_mail'] = 'Thumela E-mail Isaziso';
+$lang['raid_software_raid'] = 'Raid Software';
+$lang['raid_sync_pending'] = 'Vumelanisa okulindile';
+$lang['raid_sync_scheduled'] = 'Vumelanisa okuhleliwe';
+$lang['raid_syncing'] = 'Vumelanisa kuyaqhubeka';
+$lang['raid_test_email'] = 'Thumela Test E-mail';
+$lang['raid_test_sent_to:'] = 'Impumelelo. E-mail isaziso ithunyelwe ku:';
+$lang['raid_type'] = 'Uhlobo';
+$lang['raid_vendor'] = 'umthengisi';
