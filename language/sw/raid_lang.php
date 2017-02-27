@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Kuongeza hila';
+$lang['raid_always'] = 'Kila mara';
+$lang['raid_app_description'] = 'Uvamizi programu hutoa kwa sasa habari, utoaji wa taarifa na hatua ya utawala kwa ajili ya programu uvamizi.';
+$lang['raid_app_name'] = 'Programu Meneja uvamizi';
+$lang['raid_array'] = 'safu';
+$lang['raid_clean'] = 'safi';
+$lang['raid_confirm_add'] = 'Tafadhali kuthibitisha ungependa kuongeza kuzuia kifaa% s kwa% s uvamizi safu.';
+$lang['raid_confirm_remove'] = 'Tafadhali kuthibitisha ungependa kuondoa kuzuia kifaa% s kutoka% s uvamizi safu.';
+$lang['raid_degraded'] = 'imeharibika';
+$lang['raid_device'] = 'kifaa';
+$lang['raid_email_notification'] = 'E-mail Notification';
+$lang['raid_every_30_minutes'] = 'Kila baada ya dakika 30';
+$lang['raid_every_4_hours'] = 'Kila baada ya masaa 4';
+$lang['raid_every_minute'] = 'Kila dakika';
+$lang['raid_frequency'] = 'frequency';
+$lang['raid_level'] = 'kiwango cha';
+$lang['raid_monitor_raid'] = 'kufuatilia uvamizi';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'Hakuna mkono uvamizi arrays kupatikana.';
+$lang['raid_not_degraded'] = 'Safu ni si katika hali duni.';
+$lang['raid_on_failure'] = 'On kushindwa';
+$lang['raid_raid_status'] = 'uvamizi Hali';
+$lang['raid_raid_summary'] = 'uvamizi Summary';
+$lang['raid_remove'] = 'Ondoa';
+$lang['raid_send_mail'] = 'Kutuma barua pepe Notification';
+$lang['raid_software_raid'] = 'Programu uvamizi';
+$lang['raid_sync_pending'] = 'Sync inasubiri';
+$lang['raid_sync_scheduled'] = 'Sync imepangwa';
+$lang['raid_syncing'] = 'Sync katika maendeleo';
+$lang['raid_test_email'] = 'Kutuma Mtihani E-mail';
+$lang['raid_test_sent_to:'] = 'Mafanikio. notification E-mail imekuwa kutumwa kwa:';
+$lang['raid_type'] = 'aina';
+$lang['raid_vendor'] = 'muuzaji';
