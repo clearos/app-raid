@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Pridať zariadenie';
+$lang['raid_always'] = 'Vždy';
+$lang['raid_app_description'] = 'Softvérový RAID poskytuje informácie o stave, reporting a administratívne opatrenia pre softvérový RAID.';
+$lang['raid_app_name'] = 'Softvér RAID Manager';
+$lang['raid_array'] = 'rad';
+$lang['raid_clean'] = 'čistý';
+$lang['raid_confirm_add'] = 'Prosím potvrďte by ste chceli pridať blokové zariadenie% s pre% s RAID poľa.';
+$lang['raid_confirm_remove'] = 'Prosím potvrďte chcete odstrániť blokového zariadenia% s z% s RAID poľa.';
+$lang['raid_degraded'] = 'degradovaný';
+$lang['raid_device'] = 'Zariadenie';
+$lang['raid_email_notification'] = 'Oznámenie e-mailom';
+$lang['raid_every_30_minutes'] = 'Každých 30 minút';
+$lang['raid_every_4_hours'] = 'Každé 4 hodiny';
+$lang['raid_every_minute'] = 'Každú minútu';
+$lang['raid_frequency'] = 'Frekvencia';
+$lang['raid_level'] = 'hladina';
+$lang['raid_monitor_raid'] = 'monitor RAID';
+$lang['raid_mount'] = 'kôň';
+$lang['raid_no_support'] = 'Neboli nájdené žiadne podporované RAID poľa.';
+$lang['raid_not_degraded'] = 'Pole nie je v zhoršenom stave.';
+$lang['raid_on_failure'] = 'pri výpadku';
+$lang['raid_raid_status'] = 'RAID Status';
+$lang['raid_raid_summary'] = 'RAID Súhrn';
+$lang['raid_remove'] = 'odstrániť';
+$lang['raid_send_mail'] = 'Odosielanie e-mailových oznámení';
+$lang['raid_software_raid'] = 'softvérový RAID';
+$lang['raid_sync_pending'] = 'synchronizácia prebieha';
+$lang['raid_sync_scheduled'] = 'sync naplánovaný';
+$lang['raid_syncing'] = 'prebieha synchronizácia';
+$lang['raid_test_email'] = 'Poslať testovaciu e-mailovú';
+$lang['raid_test_sent_to:'] = 'Úspech. Oznámenie E-mail bol odoslaný na adresu:';
+$lang['raid_type'] = 'typ';
+$lang['raid_vendor'] = 'predajcu';
