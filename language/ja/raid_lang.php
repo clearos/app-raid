@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'デバイスを追加';
+$lang['raid_always'] = '常に';
+$lang['raid_app_description'] = 'ソフトウェアRAIDは、ソフトウェアRAIDのステータス情報、レポート作成や管理アクションを提供します。';
+$lang['raid_app_name'] = 'ソフトウェアRAIDマネージャー';
+$lang['raid_array'] = 'アレイ';
+$lang['raid_clean'] = 'クリーン';
+$lang['raid_confirm_add'] = 'あなたは％sのRAIDアレイにブロックデバイス％sを追加したいご確認ください。';
+$lang['raid_confirm_remove'] = 'あなたは％sのRAIDアレイからブロックデバイス％sを削除したいご確認ください。';
+$lang['raid_degraded'] = '劣化';
+$lang['raid_device'] = 'デバイス';
+$lang['raid_email_notification'] = 'Eメール通知';
+$lang['raid_every_30_minutes'] = '30分ごと';
+$lang['raid_every_4_hours'] = '4時間ごと';
+$lang['raid_every_minute'] = '毎分';
+$lang['raid_frequency'] = '周波数';
+$lang['raid_level'] = 'レベル';
+$lang['raid_monitor_raid'] = 'モニターのRAID';
+$lang['raid_mount'] = 'マウント';
+$lang['raid_no_support'] = 'なしサポートされているRAIDアレイが見つかりませんでした。';
+$lang['raid_not_degraded'] = 'アレイが機能低下状態ではありません。';
+$lang['raid_on_failure'] = '失敗した場合';
+$lang['raid_raid_status'] = 'RAIDステータス';
+$lang['raid_raid_summary'] = 'RAIDの概要';
+$lang['raid_remove'] = '削除します';
+$lang['raid_send_mail'] = 'Eメール通知の送信';
+$lang['raid_software_raid'] = 'ソフトウェアRAID';
+$lang['raid_sync_pending'] = '保留中の同期';
+$lang['raid_sync_scheduled'] = '同期スケジュール設定';
+$lang['raid_syncing'] = '進行中の同期';
+$lang['raid_test_email'] = 'テスト電子メールを送信します';
+$lang['raid_test_sent_to:'] = '成功。 Eメール通知が送信されました：';
+$lang['raid_type'] = 'タイプ';
+$lang['raid_vendor'] = 'ベンダー';
