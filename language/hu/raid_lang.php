@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Eszköz hozzáadása';
+$lang['raid_always'] = 'Mindig';
+$lang['raid_app_description'] = 'Szoftveres RAID ad állapotáról, jelentési és adminisztratív intézkedéseket a szoftver RAID.';
+$lang['raid_app_name'] = 'Szoftver RAID Manager';
+$lang['raid_array'] = 'Sor';
+$lang['raid_clean'] = 'Tiszta';
+$lang['raid_confirm_add'] = 'Kérjük, erősítse meg szeretné hozzáadni% s blokk eszköz a% s RAID tömbben.';
+$lang['raid_confirm_remove'] = 'Kérjük, erősítse meg szeretné eltávolítani% s blokk eszköz a% s RAID tömbben.';
+$lang['raid_degraded'] = 'Csökkent';
+$lang['raid_device'] = 'Eszköz';
+$lang['raid_email_notification'] = 'E-mail értesítés';
+$lang['raid_every_30_minutes'] = '30 percenként';
+$lang['raid_every_4_hours'] = '4 óránként';
+$lang['raid_every_minute'] = 'Minden perc';
+$lang['raid_frequency'] = 'Frekvencia';
+$lang['raid_level'] = 'Szint';
+$lang['raid_monitor_raid'] = 'monitor RAID';
+$lang['raid_mount'] = 'Hegy';
+$lang['raid_no_support'] = 'Nem támogatott RAID tömbök talált.';
+$lang['raid_not_degraded'] = 'Array nincs olyan leromlott állapotban.';
+$lang['raid_on_failure'] = 'a kudarc';
+$lang['raid_raid_status'] = 'RAID állapota';
+$lang['raid_raid_summary'] = 'RAID Összefoglaló';
+$lang['raid_remove'] = 'eltávolít';
+$lang['raid_send_mail'] = 'Küldj e-mail értesítés';
+$lang['raid_software_raid'] = 'Szoftveres RAID';
+$lang['raid_sync_pending'] = 'Szinkronizálás függőben';
+$lang['raid_sync_scheduled'] = 'Szinkronizálás menetrend';
+$lang['raid_syncing'] = 'Szinkronizálás folyamatban';
+$lang['raid_test_email'] = 'Küldj Teszt e-mail';
+$lang['raid_test_sent_to:'] = 'Siker. E-mail értesítést küldtünk:';
+$lang['raid_type'] = 'típus';
+$lang['raid_vendor'] = 'Eladó';
