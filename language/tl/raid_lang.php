@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Magdagdag ng Device';
+$lang['raid_always'] = 'palagi';
+$lang['raid_app_description'] = 'Software RAID ay nagbibigay ng impormasyon sa katayuan, pag-uulat at administrative mga aksyon para sa software salakayin.';
+$lang['raid_app_name'] = 'Software RAID Manager';
+$lang['raid_array'] = 'array';
+$lang['raid_clean'] = 'Malinis';
+$lang['raid_confirm_add'] = 'Pakikumpirma na nais mong upang magdagdag ng block aparato% s sa% s RAID array.';
+$lang['raid_confirm_remove'] = 'Pakikumpirma na nais mong alisin block aparato% s mula sa% s RAID array.';
+$lang['raid_degraded'] = 'nagpapasama';
+$lang['raid_device'] = 'aparato';
+$lang['raid_email_notification'] = 'Notification E-mail';
+$lang['raid_every_30_minutes'] = 'Bawat 30 minuto';
+$lang['raid_every_4_hours'] = 'Bawat 4 na oras';
+$lang['raid_every_minute'] = 'Bawat minuto';
+$lang['raid_frequency'] = 'dalas';
+$lang['raid_level'] = 'antas';
+$lang['raid_monitor_raid'] = 'monitor RAID';
+$lang['raid_mount'] = 'sakyan';
+$lang['raid_no_support'] = 'No suportado RAID arrays natagpuan.';
+$lang['raid_not_degraded'] = 'Array ay hindi sa isang nagpapasama estado.';
+$lang['raid_on_failure'] = 'on failure';
+$lang['raid_raid_status'] = 'Katayuan RAID';
+$lang['raid_raid_summary'] = 'RAID Buod';
+$lang['raid_remove'] = 'alisin';
+$lang['raid_send_mail'] = 'Send E-mail Pag-abiso';
+$lang['raid_software_raid'] = 'Software RAID';
+$lang['raid_sync_pending'] = 'Sync nakabinbin';
+$lang['raid_sync_scheduled'] = 'Sync naka-iskedyul';
+$lang['raid_syncing'] = 'Sync sa pag-unlad';
+$lang['raid_test_email'] = 'Magpadala Test E-mail';
+$lang['raid_test_sent_to:'] = 'Tagumpay. E-mail notification ay naipadala na sa:';
+$lang['raid_type'] = 'uri';
+$lang['raid_vendor'] = 'tindero';
