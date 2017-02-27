@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Aldoni Aparato';
+$lang['raid_always'] = 'ĉiam';
+$lang['raid_app_description'] = 'Programaro RAID provizas statinformoj, raportado kaj administraj agoj por programaro RAID.';
+$lang['raid_app_name'] = 'Programaro RAID Direktisto';
+$lang['raid_array'] = 'tabelo';
+$lang['raid_clean'] = 'pura';
+$lang['raid_confirm_add'] = 'Bonvolu konfirmi vi ŝatus aldoni bloko aparato% s al la% s RAID tabelo.';
+$lang['raid_confirm_remove'] = 'Bonvolu konfirmi vi ŝatus forigi blokon aparato% s el la% s RAID tabelo.';
+$lang['raid_degraded'] = 'degradis';
+$lang['raid_device'] = 'artefakto';
+$lang['raid_email_notification'] = 'Retpoŝto Sciigo';
+$lang['raid_every_30_minutes'] = 'Ĉiuj 30 minutoj';
+$lang['raid_every_4_hours'] = 'Ĉiu 4 horoj';
+$lang['raid_every_minute'] = 'ĉiuminute';
+$lang['raid_frequency'] = 'frekvenco';
+$lang['raid_level'] = 'nivelo';
+$lang['raid_monitor_raid'] = 'monitoro RAID';
+$lang['raid_mount'] = 'monto';
+$lang['raid_no_support'] = 'Ne apogis RAID arrays trovita.';
+$lang['raid_not_degraded'] = 'Tabelo estas ne en degraditaj stato.';
+$lang['raid_on_failure'] = 'sur fiasko';
+$lang['raid_raid_status'] = 'RAID Statuso';
+$lang['raid_raid_summary'] = 'RAID Resumo';
+$lang['raid_remove'] = 'forigu';
+$lang['raid_send_mail'] = 'Sendu Retpoŝto Sciigo';
+$lang['raid_software_raid'] = 'programaro RAID';
+$lang['raid_sync_pending'] = 'sync pritraktata';
+$lang['raid_sync_scheduled'] = 'sync planita';
+$lang['raid_syncing'] = 'Sync en progreso';
+$lang['raid_test_email'] = 'Sendu Testo Retpoŝto';
+$lang['raid_test_sent_to:'] = 'Sukceso. Retpoŝta sciigo estas sendita al:';
+$lang['raid_type'] = 'tipo';
+$lang['raid_vendor'] = 'vendisto';
