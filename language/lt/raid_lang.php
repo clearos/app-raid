@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Pridėti Device';
+$lang['raid_always'] = 'visada';
+$lang['raid_app_description'] = 'Programinė įranga RAID teikia informaciją būsenos, ataskaitų teikimo ir administravimo veiksmus įranga RAID.';
+$lang['raid_app_name'] = 'Programinė įranga RAID direktorius';
+$lang['raid_array'] = 'masyvas';
+$lang['raid_clean'] = 'Švarus';
+$lang['raid_confirm_add'] = 'Prašome patvirtinti norėtumėte pridėti blokas įrenginio% s į% s RAID masyvo.';
+$lang['raid_confirm_remove'] = 'Patvirtinkite, kad norite pašalinti blokas įrenginio% s iš% s RAID masyvo.';
+$lang['raid_degraded'] = 'Pablogėjusios';
+$lang['raid_device'] = 'prietaisas';
+$lang['raid_email_notification'] = 'Pranešimas El.paštas';
+$lang['raid_every_30_minutes'] = 'Kas 30 minučių';
+$lang['raid_every_4_hours'] = 'Kas 4 valandas';
+$lang['raid_every_minute'] = 'kiekvieną minutę';
+$lang['raid_frequency'] = 'dažnis';
+$lang['raid_level'] = 'lygis';
+$lang['raid_monitor_raid'] = 'monitorius RAID';
+$lang['raid_mount'] = 'stovas';
+$lang['raid_no_support'] = 'Nėra remiami RAID masyvai nerasta.';
+$lang['raid_not_degraded'] = 'Masyvo negali nualintą valstybę.';
+$lang['raid_on_failure'] = 'Dėl gedimo';
+$lang['raid_raid_status'] = 'RAID būsena';
+$lang['raid_raid_summary'] = 'RAID santrauka';
+$lang['raid_remove'] = 'pašalinti';
+$lang['raid_send_mail'] = 'Siųsti el Pranešimas';
+$lang['raid_software_raid'] = 'programinė įranga RAID';
+$lang['raid_sync_pending'] = 'sinchronizavimo kol';
+$lang['raid_sync_scheduled'] = 'sinchronizavimo planuojama';
+$lang['raid_syncing'] = 'Sync in Progress';
+$lang['raid_test_email'] = 'Siųsti testas E-mail';
+$lang['raid_test_sent_to:'] = 'Sėkmė. pranešimas El.paštas buvo išsiųstas:';
+$lang['raid_type'] = 'tipas';
+$lang['raid_vendor'] = 'pardavėjas';
