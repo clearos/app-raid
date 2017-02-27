@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Tambahkan Perangkat';
+$lang['raid_always'] = 'Selalu';
+$lang['raid_app_description'] = 'Software RAID memberikan informasi status, pelaporan dan tindakan administratif untuk perangkat lunak RAID.';
+$lang['raid_app_name'] = 'Software RAID Manajer';
+$lang['raid_array'] = 'susunan';
+$lang['raid_clean'] = 'Bersih';
+$lang['raid_confirm_add'] = 'Konfirmasikan bahwa Anda ingin menambahkan perangkat blok% s ke% s array RAID.';
+$lang['raid_confirm_remove'] = 'Konfirmasikan bahwa Anda ingin menghapus perangkat blok% s dari% s array RAID.';
+$lang['raid_degraded'] = 'terdegradasi';
+$lang['raid_device'] = 'Alat';
+$lang['raid_email_notification'] = 'Pemberitahuan email';
+$lang['raid_every_30_minutes'] = 'Setiap 30 menit';
+$lang['raid_every_4_hours'] = 'Setiap 4 jam';
+$lang['raid_every_minute'] = 'Setiap menit';
+$lang['raid_frequency'] = 'Frekuensi';
+$lang['raid_level'] = 'Tingkat';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'Meningkat';
+$lang['raid_no_support'] = 'Tidak ada array RAID didukung ditemukan.';
+$lang['raid_not_degraded'] = 'Array tidak dalam keadaan rusak.';
+$lang['raid_on_failure'] = 'pada kegagalan';
+$lang['raid_raid_status'] = 'Status RAID';
+$lang['raid_raid_summary'] = 'RAID Ringkasan';
+$lang['raid_remove'] = 'Menghapus';
+$lang['raid_send_mail'] = 'Kirim E-mail Pemberitahuan';
+$lang['raid_software_raid'] = 'software RAID';
+$lang['raid_sync_pending'] = 'sinkronisasi tertunda';
+$lang['raid_sync_scheduled'] = 'sinkronisasi dijadwalkan';
+$lang['raid_syncing'] = 'Sinkronisasi berlangsung';
+$lang['raid_test_email'] = 'Kirim Uji E-mail';
+$lang['raid_test_sent_to:'] = 'Keberhasilan. pemberitahuan E-mail telah dikirim ke:';
+$lang['raid_type'] = 'Mengetik';
+$lang['raid_vendor'] = 'Penjaja';
