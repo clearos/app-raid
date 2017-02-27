@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'ഉപകരണ ചേർക്കുക';
+$lang['raid_always'] = 'എല്ലായിപ്പോഴും';
+$lang['raid_app_description'] = 'സോഫ്റ്റ്വെയർ റെയിഡ് സോഫ്റ്റ്വെയർ റെയിഡിനുള്ള നില വിവരവും, റിപ്പോർട്ടിംഗ് അഡ്മിനിസ്ട്രേറ്റീവ് പ്രവർത്തനങ്ങൾ നൽകുന്നു.';
+$lang['raid_app_name'] = 'സോഫ്റ്റ്വെയർ റെയിഡ് മാനേജർ';
+$lang['raid_array'] = 'അറേ';
+$lang['raid_clean'] = 'വെടിപ്പുള്ള';
+$lang['raid_confirm_add'] = 'നിങ്ങൾ% s റെയിഡ് അറേയിലേക്കു് ബ്ലോക്ക് ഡിവൈസ്% s ചേർക്കുന്നതിന് ആഗ്രഹിക്കുന്നു സ്ഥിരീകരിക്കുക.';
+$lang['raid_confirm_remove'] = 'നിങ്ങൾ% s റെയിഡ് അറേ നിന്ന് ബ്ലോക്ക് ഡിവൈസ്% ങ്ങൾ നീക്കം ആഗ്രഹിക്കുന്നു സ്ഥിരീകരിക്കുക.';
+$lang['raid_degraded'] = 'അപചയം';
+$lang['raid_device'] = 'ഉപകരണ';
+$lang['raid_email_notification'] = 'ഇ-മെയിൽ വിജ്ഞാപനം';
+$lang['raid_every_30_minutes'] = 'ഓരോ 30 മിനിറ്റിലും';
+$lang['raid_every_4_hours'] = '4 മണിക്കൂർ';
+$lang['raid_every_minute'] = 'ഓരോ മിനിറ്റും';
+$lang['raid_frequency'] = 'ഫ്രീക്വൻസി';
+$lang['raid_level'] = 'ലെവൽ';
+$lang['raid_monitor_raid'] = 'മോണിറ്റർ റെയിഡ്';
+$lang['raid_mount'] = 'മൌണ്ട്';
+$lang['raid_no_support'] = 'പിന്തുണയ്ക്കുന്ന RAID അറേ കണ്ടെത്തി.';
+$lang['raid_not_degraded'] = 'അറേ ഒരു മോശം സംസ്ഥാനത്ത് അല്ല.';
+$lang['raid_on_failure'] = 'പരാജയപ്പെട്ടാൽ';
+$lang['raid_raid_status'] = 'റെയിഡ് അവസ്ഥ';
+$lang['raid_raid_summary'] = 'റെയിഡ് ചുരുക്കം';
+$lang['raid_remove'] = 'നീക്കംചെയ്യുക';
+$lang['raid_send_mail'] = 'ഇ-മെയിൽ വിജ്ഞാപനം അയയ്ക്കുക';
+$lang['raid_software_raid'] = 'സോഫ്റ്റ്വെയർ റെയിഡ്';
+$lang['raid_sync_pending'] = 'സമന്വയം ശേഷിക്കുന്നു';
+$lang['raid_sync_scheduled'] = 'സമന്വയം ഷെഡ്യൂൾ';
+$lang['raid_syncing'] = 'സമന്വയം പുരോഗമിക്കുന്നു';
+$lang['raid_test_email'] = 'ടെസ്റ്റ് ഇ-മെയിൽ അയയ്ക്കുക';
+$lang['raid_test_sent_to:'] = 'വിജയകരം. ഇ-മെയിൽ വിജ്ഞാപനം അയച്ചു:';
+$lang['raid_type'] = 'ടൈപ്പ് ചെയ്യുക';
+$lang['raid_vendor'] = 'വില്പ്പനക്കാരന്';
