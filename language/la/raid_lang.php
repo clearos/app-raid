@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'adjiciam Device';
+$lang['raid_always'] = 'Semper';
+$lang['raid_app_description'] = 'INCURSUS software providet status notitia, ut quaestor, et administrationis actuum software habiturum.';
+$lang['raid_app_name'] = 'INCURSUS Music Procurator';
+$lang['raid_array'] = 'array';
+$lang['raid_clean'] = 'tersus';
+$lang['raid_confirm_add'] = 'Confirmabit vos scandalum quaeso consilium velim proferre escensio% s% ad pugnandum.';
+$lang['raid_confirm_remove'] = 'Obsecro vos ut confirmetis in scandalum, remove cogitationem de s%% escensio aciem.';
+$lang['raid_degraded'] = 'vilis';
+$lang['raid_device'] = 'fabrica';
+$lang['raid_email_notification'] = 'E-mail Notification';
+$lang['raid_every_30_minutes'] = 'Omnis XXX minutes';
+$lang['raid_every_4_hours'] = 'Omnis IV horis';
+$lang['raid_every_minute'] = 'et omne minute';
+$lang['raid_frequency'] = 'frequency';
+$lang['raid_level'] = 'Level';
+$lang['raid_monitor_raid'] = 'Monitor INCURSUS';
+$lang['raid_mount'] = 'montem';
+$lang['raid_no_support'] = 'INCURSUS vestit sustineri non inveni.';
+$lang['raid_not_degraded'] = 'Forum, non est in statu deiectum.';
+$lang['raid_on_failure'] = 'in ruinam';
+$lang['raid_raid_status'] = 'Status INCURSUS';
+$lang['raid_raid_summary'] = 'Summary INCURSUS';
+$lang['raid_remove'] = 'Remove';
+$lang['raid_send_mail'] = 'E-mail Send Notification';
+$lang['raid_software_raid'] = 'Software INCURSUS';
+$lang['raid_sync_pending'] = 'Sync pendente';
+$lang['raid_sync_scheduled'] = 'Sync scheduled';
+$lang['raid_syncing'] = 'Sync in progress';
+$lang['raid_test_email'] = 'E-mail Send Test';
+$lang['raid_test_sent_to:'] = 'Success. E-mail missus notificatio:';
+$lang['raid_type'] = 'Type';
+$lang['raid_vendor'] = 'Vendor';
