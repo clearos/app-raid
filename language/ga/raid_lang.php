@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Cuir Gléas';
+$lang['raid_always'] = 'I gcónaí';
+$lang['raid_app_description'] = 'Soláthraíonn Bogearraí Raid faisnéis maidir le stádas, tuairisciú agus gníomhartha riaracháin Raid bogearraí.';
+$lang['raid_app_name'] = 'Bainisteoir Raid Bogearraí';
+$lang['raid_array'] = 'eagar';
+$lang['raid_clean'] = 'Clean';
+$lang['raid_confirm_add'] = 'Cinntigh ar mhaith leat a chur leis gléas bloc% s leis an% s eagar Raid.';
+$lang['raid_confirm_remove'] = 'Cinntigh ba mhaith leat a bhaint gléas bloc% s ón% s eagar Raid.';
+$lang['raid_degraded'] = 'díghrádaithe';
+$lang['raid_device'] = 'gléas';
+$lang['raid_email_notification'] = 'Fógra Ríomhphost';
+$lang['raid_every_30_minutes'] = 'Gach 30 nóiméad';
+$lang['raid_every_4_hours'] = 'Gach 4 uair an chloig';
+$lang['raid_every_minute'] = 'gach nóiméad';
+$lang['raid_frequency'] = 'minicíocht';
+$lang['raid_level'] = 'leibhéal';
+$lang['raid_monitor_raid'] = 'Monatóireacht a dhéanamh ar Raid';
+$lang['raid_mount'] = 'mount';
+$lang['raid_no_support'] = 'Níl arrays Raid tacaíocht le fáil.';
+$lang['raid_not_degraded'] = 'Níl an Eagar i stát díghrádaithe.';
+$lang['raid_on_failure'] = 'ar teip';
+$lang['raid_raid_status'] = 'Stádas Raid';
+$lang['raid_raid_summary'] = 'Achoimre Raid';
+$lang['raid_remove'] = 'bain';
+$lang['raid_send_mail'] = 'Seol Fógra Ríomhphost';
+$lang['raid_software_raid'] = 'Bogearraí Raid';
+$lang['raid_sync_pending'] = 'Sioncrónaigh feitheamh';
+$lang['raid_sync_scheduled'] = 'Sioncrónaigh sceidealta';
+$lang['raid_syncing'] = 'Info siúl';
+$lang['raid_test_email'] = 'Seol Tástáil Ríomhphost';
+$lang['raid_test_sent_to:'] = 'Rath. Tá fógra ríomhphoist seolta chuig:';
+$lang['raid_type'] = 'cineál';
+$lang['raid_vendor'] = 'díoltóir';
