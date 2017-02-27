@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'Құрылғы қосу';
+$lang['raid_always'] = 'әрқашан';
+$lang['raid_app_description'] = 'Бағдарламалық қамтамасыз ету RAID бағдарламалық қамтамасыз RAID күйі туралы ақпаратты, есептілікті және әкімшілік іс-әрекеттерді қамтамасыз етеді.';
+$lang['raid_app_name'] = 'Бағдарламалық қамтамасыз ету RAID менеджері';
+$lang['raid_array'] = 'Array';
+$lang['raid_clean'] = 'таза';
+$lang['raid_confirm_add'] = 'Сіз% S RAID алапқа блок құрылғыны% S қосу келеді растаңыз.';
+$lang['raid_confirm_remove'] = 'Сіз% S RAID жиым блок құрылғысын% S жойғыңыз келеді растаңыз.';
+$lang['raid_degraded'] = 'тозған';
+$lang['raid_device'] = 'құрал';
+$lang['raid_email_notification'] = 'Электрондық пошта хабарлама';
+$lang['raid_every_30_minutes'] = 'Әрбір 30 минут';
+$lang['raid_every_4_hours'] = 'Әр 4 сағат';
+$lang['raid_every_minute'] = 'Әрбір минут';
+$lang['raid_frequency'] = 'жиілік';
+$lang['raid_level'] = 'деңгей';
+$lang['raid_monitor_raid'] = 'монитор RAID';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'табылған жоқ қолдау RAID массивтер.';
+$lang['raid_not_degraded'] = 'Массив тозған күйде емес.';
+$lang['raid_on_failure'] = 'істен туралы';
+$lang['raid_raid_status'] = 'RAID Күй';
+$lang['raid_raid_summary'] = 'RAID Резюме';
+$lang['raid_remove'] = 'кетіру';
+$lang['raid_send_mail'] = 'Электрондық пошта хабарландыруын жіберу';
+$lang['raid_software_raid'] = 'Бағдарламалық қамтамасыз ету RAID';
+$lang['raid_sync_pending'] = 'күтудегі Sync';
+$lang['raid_sync_scheduled'] = 'Sync жоспарланған';
+$lang['raid_syncing'] = 'аяқталмаған Sync';
+$lang['raid_test_email'] = 'Test электрондық хат жіберу';
+$lang['raid_test_sent_to:'] = 'Жетістік. Электрондық пошта хабарландыруы жіберілді:';
+$lang['raid_type'] = 'түрі';
+$lang['raid_vendor'] = 'Жеткізуші';
