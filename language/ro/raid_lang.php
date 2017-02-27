@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'adăugaţi un dispozitiv';
+$lang['raid_always'] = 'Mereu';
+$lang['raid_app_description'] = 'Software-ul RAID oferă informații de stare, de raportare și acțiuni administrative pentru RAID software.';
+$lang['raid_app_name'] = 'Software-ul RAID Manager de';
+$lang['raid_array'] = 'mulțime';
+$lang['raid_clean'] = 'Curat';
+$lang['raid_confirm_add'] = 'Confirmați că doriți să adăugați dispozitiv bloc% s la% s matrice RAID.';
+$lang['raid_confirm_remove'] = 'Confirmați că doriți să eliminați dispozitivul bloc% s din% s matrice RAID.';
+$lang['raid_degraded'] = 'Degradat';
+$lang['raid_device'] = 'Dispozitiv';
+$lang['raid_email_notification'] = 'Notificare prin e-mail';
+$lang['raid_every_30_minutes'] = 'La fiecare 30 de minute';
+$lang['raid_every_4_hours'] = 'La fiecare 4 ore';
+$lang['raid_every_minute'] = 'In fiecare minut';
+$lang['raid_frequency'] = 'Frecvență';
+$lang['raid_level'] = 'Nivel';
+$lang['raid_monitor_raid'] = 'Monitor RAID';
+$lang['raid_mount'] = 'montură';
+$lang['raid_no_support'] = 'Nu există matrice RAID acceptate gasit.';
+$lang['raid_not_degraded'] = 'Matrice nu este într-o stare de degradare.';
+$lang['raid_on_failure'] = 'în caz de eșec';
+$lang['raid_raid_status'] = 'Stare RAID';
+$lang['raid_raid_summary'] = 'Rezumat RAID';
+$lang['raid_remove'] = 'Elimina';
+$lang['raid_send_mail'] = 'Trimiteți o notificare prin E-mail';
+$lang['raid_software_raid'] = 'Software-ul RAID';
+$lang['raid_sync_pending'] = 'sincronizare în așteptare';
+$lang['raid_sync_scheduled'] = 'sincronizare programată';
+$lang['raid_syncing'] = 'Sincronizare în curs';
+$lang['raid_test_email'] = 'Test de a trimite E-mail';
+$lang['raid_test_sent_to:'] = 'Succes. Notificare prin e-mail a fost trimisa la:';
+$lang['raid_type'] = 'Tip';
+$lang['raid_vendor'] = 'furnizor de';
