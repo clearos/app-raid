@@ -1,0 +1,35 @@
+<?php
+
+$lang['raid_add_device'] = 'kuwonjezera Chipangizo';
+$lang['raid_always'] = 'nthawizonse';
+$lang['raid_app_description'] = 'Mapulogalamu kunkhondo amapereka udindo mudziwe, malipoti ndi zochita utsogoleri kwa mapulogalamu kunkhondo.';
+$lang['raid_app_name'] = 'Mapulogalamu Manager anaukira';
+$lang['raid_array'] = 'Zungulirani';
+$lang['raid_clean'] = 'woyera';
+$lang['raid_confirm_add'] = 'Chonde kutsimikizira mukufuna kuwonjezera chipika chipangizo% m kwa% m kunkhondo zosiyanasiyana.';
+$lang['raid_confirm_remove'] = 'Chonde kutsimikizira mukufuna kuchotsa njerwa chipangizo% m kwa% m kunkhondo zosiyanasiyana.';
+$lang['raid_degraded'] = 'adzitsitsa';
+$lang['raid_device'] = 'chipangizo';
+$lang['raid_email_notification'] = 'E-mail womwe umapangidwa wokha';
+$lang['raid_every_30_minutes'] = 'Aliyense mphindi 30';
+$lang['raid_every_4_hours'] = 'Mawola 4';
+$lang['raid_every_minute'] = 'miniti iliyonse';
+$lang['raid_frequency'] = 'pafupipafupi';
+$lang['raid_level'] = 'Level';
+$lang['raid_monitor_raid'] = 'polojekiti anaukira';
+$lang['raid_mount'] = 'Mount';
+$lang['raid_no_support'] = 'No amapereka kunkhondo magulu anapeza.';
+$lang['raid_not_degraded'] = 'Zungulirani si mu mkhalidwe ongo-.';
+$lang['raid_on_failure'] = 'pa kulephera';
+$lang['raid_raid_status'] = 'anaukira .Umo';
+$lang['raid_raid_summary'] = 'anaukira Chidule';
+$lang['raid_remove'] = 'Chotsani';
+$lang['raid_send_mail'] = 'Tumizani E-mail womwe umapangidwa wokha';
+$lang['raid_software_raid'] = 'mapulogalamu anaukira';
+$lang['raid_sync_pending'] = 'kulunzanitsa podikira';
+$lang['raid_sync_scheduled'] = 'kulunzanitsa inakonzedwa';
+$lang['raid_syncing'] = 'Kulunzanitsa patsogolo';
+$lang['raid_test_email'] = 'Tumizani Mayeso E-mail';
+$lang['raid_test_sent_to:'] = 'Bwino. zidziwitso E-mail watumidwa kwa:';
+$lang['raid_type'] = 'Type';
+$lang['raid_vendor'] = 'bizinezi';
